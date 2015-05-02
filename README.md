@@ -2,6 +2,8 @@
 
 A beautiful alternative to the `UIStepper` with a snapping slider in the middle written in Swift.
 
+![screenshot](http://yannickloriot.com/resources/snappingstepper-screenshot.png)
+
 *Note: the control is inspired by a very beautiful control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
 
 #### CocoaPods

@@ -173,6 +173,8 @@ import UIKit
   // MARK: - Managing the Components
   
   func initComponents() {
+    backgroundColor = UIColor(hex: 0xe74c3c)
+    
     minusLabel.text                   = "-"
     minusLabel.font                   = font
     minusLabel.textAlignment          = .Center
@@ -253,6 +255,8 @@ import UIKit
     case .Began:
       touchesBeganPoint = sender.translationInView(sliderView)
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
+
+      sender.view?.backgroundColor = backgroundColor?.lighterColor()
       
       if autorepeat {
         startAutorepeat()
@@ -276,6 +280,8 @@ import UIKit
       }
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
+      
+      sender.view?.backgroundColor = backgroundColor?.lighterColor()
       
       stopAutorepeat()
     case .Possible:
