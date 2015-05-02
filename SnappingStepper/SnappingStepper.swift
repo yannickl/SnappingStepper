@@ -189,14 +189,12 @@ import UIKit
   }
   
   func setupGestures() {
-    let touchGesture = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
-    plusLabel.addGestureRecognizer(touchGesture)
-    
-    let touchGesture2 = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
-    minusLabel.addGestureRecognizer(touchGesture2)
-    
     let panGesture = UIPanGestureRecognizer(target: self, action: "sliderPanned:")
     sliderView.addGestureRecognizer(panGesture)
+    
+    let touchGesture = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
+    touchGesture.requireGestureRecognizerToFail(panGesture)
+    addGestureRecognizer(touchGesture)
   }
   
   func layoutComponents() {
@@ -213,7 +211,7 @@ import UIKit
   
   func stepperTouched(sender: UITouchGestureRecognizer) {
     _factorValue = sender.view == minusLabel ? -1 : 1
-
+println("stepperTouched")
     switch sender.state {
     case .Began:
       if autorepeat {
@@ -247,6 +245,7 @@ import UIKit
   var touchesBeganPoint = CGPointZero
   
   func sliderPanned(sender: UIPanGestureRecognizer) {
+    println("sliderPanned")
     switch sender.state {
     case .Began:
       touchesBeganPoint = sender.translationInView(sliderView)
