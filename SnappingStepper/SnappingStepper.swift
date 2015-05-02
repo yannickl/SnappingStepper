@@ -26,6 +26,7 @@
 
 import UIKit
 
+/// Alternative to `UIStepper` to allow the user to change the value by sliding the thumb in the middle in the left to decrement the value, or in the right side to increment the value.
 @IBDesignable public final class SnappingStepper: UIControl {
   let minusLabel = UILabel()
   let plusLabel  = UILabel()
@@ -202,9 +203,7 @@ import UIKit
     plusLabel.frame  = CGRectMake(bounds.width / 3 * 2, 0, bounds.width / 3, bounds.height)
     sliderView.frame = CGRectMake(bounds.width / 3, 0, bounds.width / 3, bounds.height)
     
-    if snappingBehavior?.snappingPoint.x != center.x {
-      snappingBehavior = SnappingStepperBehavior(item: sliderView, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
-    }
+    snappingBehavior = SnappingStepperBehavior(item: sliderView, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
   }
   
   // MARK: - Responding to Gesture Events
@@ -255,6 +254,9 @@ import UIKit
       touchesBeganPoint = sender.translationInView(sliderView)
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
       
+      if autorepeat {
+        startAutorepeat()
+      }
     case .Changed:
       let translationInView = sender.translationInView(sliderView)
       
@@ -263,9 +265,19 @@ import UIKit
       
       sliderView.center = CGPointMake(centerX, sliderView.center.y);
       
+      if centerX < bounds.width / 2 - 5 {
+        _factorValue = -1
+      }
+      else if centerX > bounds.width / 2 + 5 {
+        _factorValue = 1
+      }
+      else {
+        _factorValue = 0
+      }
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
       
+      stopAutorepeat()
     case .Possible:
       break
     }
@@ -342,18 +354,14 @@ import UIKit
 }
 
 final class SnappingStepperBehavior: UIDynamicBehavior {
-  let snappingPoint: CGPoint
-  
   init(item: UIDynamicItem, snapToPoint point: CGPoint) {
+    super.init()
+    
     let dynamicItemBehavior            = UIDynamicItemBehavior(items: [item])
     dynamicItemBehavior.allowsRotation = false
     
     let snapBehavior     = UISnapBehavior(item: item, snapToPoint: point)
     snapBehavior.damping = 0.25
-    
-    snappingPoint = point
-    
-    super.init()
     
     addChildBehavior(dynamicItemBehavior)
     addChildBehavior(snapBehavior)
