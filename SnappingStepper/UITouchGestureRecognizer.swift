@@ -42,7 +42,7 @@ final class UITouchGestureRecognizer: UIGestureRecognizer {
       
       let touchAreaRect = CGRectInset(view.bounds, -10, -10)
       let isInside      = CGRectContainsPoint(touchAreaRect, touchLocation)
-      
+
       if !isTouchInside && isInside {
         isTouchInside = true
         
@@ -57,7 +57,7 @@ final class UITouchGestureRecognizer: UIGestureRecognizer {
   }
   
   override func touchesEnded(touches: Set<NSObject>!, withEvent event: UIEvent!) {
-    state = .Ended
+    state = .Failed
   }
   
   override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {

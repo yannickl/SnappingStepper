@@ -1,28 +1,28 @@
 /*
- * SnappingStepper
- *
- * Copyright 2015-present Yannick Loriot.
- * http://yannickloriot.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- */
+* SnappingStepper
+*
+* Copyright 2015-present Yannick Loriot.
+* http://yannickloriot.com
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*
+*/
 
 import UIKit
 
@@ -210,10 +210,13 @@ import UIKit
   // MARK: - Responding to Gesture Events
   
   func stepperTouched(sender: UITouchGestureRecognizer) {
-    _factorValue = sender.view == minusLabel ? -1 : 1
-println("stepperTouched")
-    switch sender.state {
-    case .Began:
+    let touchLocation = sender.locationInView(self)
+    let hitView       = hitTest(touchLocation, withEvent: nil)
+    
+    _factorValue = hitView == minusLabel ? -1 : 1
+    
+    switch (sender.state, hitView) {
+    case (.Began, let v) where v == minusLabel || v == plusLabel:
       if autorepeat {
         startAutorepeat()
       }
@@ -221,22 +224,24 @@ println("stepperTouched")
         updateValue(nil)
       }
       
-      sender.view?.backgroundColor = backgroundColor?.darkerColor()
-    case .Changed:
-      if sender.isTouchInside {
-        sender.view?.backgroundColor = backgroundColor?.darkerColor()
+      v!.backgroundColor = backgroundColor?.darkerColor()
+    case (.Changed, let v):
+      if v == minusLabel || v == plusLabel {
+        v!.backgroundColor = backgroundColor?.darkerColor()
         
         if autorepeat {
           startAutorepeat()
         }
       }
       else {
-        sender.view?.backgroundColor = backgroundColor
+        minusLabel.backgroundColor = backgroundColor
+        plusLabel.backgroundColor  = backgroundColor
         
         stopAutorepeat()
       }
     default:
-      sender.view?.backgroundColor = backgroundColor
+      minusLabel.backgroundColor = backgroundColor
+      plusLabel.backgroundColor  = backgroundColor
       
       stopAutorepeat()
     }
@@ -245,7 +250,6 @@ println("stepperTouched")
   var touchesBeganPoint = CGPointZero
   
   func sliderPanned(sender: UIPanGestureRecognizer) {
-    println("sliderPanned")
     switch sender.state {
     case .Began:
       touchesBeganPoint = sender.translationInView(sliderView)
@@ -294,19 +298,19 @@ println("stepperTouched")
   func updateValue(sender: AnyObject?) {
     let needsIncrement: Bool
     
-    if _autorepeatCount < 15 {
+    if _autorepeatCount < 10 {
       needsIncrement = _autorepeatCount % 5 == 0
     }
-    else if _autorepeatCount < 25 {
+    else if _autorepeatCount < 20 {
       needsIncrement = _autorepeatCount % 4 == 0
     }
-    else if _autorepeatCount < 30 {
+    else if _autorepeatCount < 25 {
       needsIncrement = _autorepeatCount % 3 == 0
     }
-    else if _autorepeatCount < 35 {
+    else if _autorepeatCount < 30 {
       needsIncrement = _autorepeatCount % 2 == 0
     }
-    else if _autorepeatCount < 40 {
+    else if _autorepeatCount < 35 {
       needsIncrement = _autorepeatCount % 1 == 0
     }
     else {
@@ -317,7 +321,18 @@ println("stepperTouched")
     
     if needsIncrement {
       _value = _value + stepValue * _factorValue
-      _value = max(minimumValue, min(_value, maximumValue))
+      
+      if !wraps {
+        _value = max(minimumValue, min(_value, maximumValue))
+      }
+      else {
+        if value < minimumValue {
+          value = maximumValue
+        }
+        else if value > maximumValue {
+          value = minimumValue
+        }
+      }
       
       if continuous {
         sendActionsForControlEvents(.ValueChanged)
