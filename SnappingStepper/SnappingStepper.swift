@@ -1,28 +1,28 @@
 /*
-* SnappingStepper
-*
-* Copyright 2015-present Yannick Loriot.
-* http://yannickloriot.com
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*
-*/
+ * SnappingStepper
+ *
+ * Copyright 2015-present Yannick Loriot.
+ * http://yannickloriot.com
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ */
 
 import UIKit
 
@@ -43,7 +43,6 @@ import UIKit
   The continuous vs. noncontinuous state of the stepper.
   
   :discussion:
-  
   If true, value change events are sent immediately when the value changes during user interaction. If false, a value change event is sent when user interaction ends.
   
   The default value for this property is true.
@@ -132,6 +131,7 @@ import UIKit
     }
   }
   
+  /// The view’s background color.
   override public var backgroundColor: UIColor? {
     didSet {
       minusLabel.backgroundColor = backgroundColor
@@ -146,8 +146,9 @@ import UIKit
     timer?.invalidate()
   }
   
-  // MARK: Initializing a Snapping Stepper
+  // MARK: - Initializing a Snapping Stepper
   
+  /// Initializes and returns a newly allocated view object with the specified frame rectangle.
   override public init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -155,6 +156,7 @@ import UIKit
     setupGestures()
   }
   
+  /// Returns an object initialized from data in a given unarchiver.
   required public init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     
@@ -162,8 +164,9 @@ import UIKit
     setupGestures()
   }
   
-  // MARK: Laying out Subviews
+  // MARK: - Laying out Subviews
   
+  /// Lays out subviews
   public override func layoutSubviews() {
     super.layoutSubviews()
     
