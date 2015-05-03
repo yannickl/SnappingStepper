@@ -87,7 +87,7 @@ import UIKit
   
   The default value of this property is 100.
   */
-  @IBInspectable var maximumValue: Double = 100
+  @IBInspectable public var maximumValue: Double = 100
   
   /**
   The step, or increment, value for the stepper.
@@ -97,7 +97,7 @@ import UIKit
   
   The default value for this property is 1.
   */
-  @IBInspectable var stepValue: Double = 1
+  @IBInspectable public var stepValue: Double = 1
   
   // MARK: - Accessing the Stepper’s Value
   
