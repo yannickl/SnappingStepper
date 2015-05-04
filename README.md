@@ -55,6 +55,15 @@ let stepper = SnappingStepper(frame: CGRectMake(0, 0, 100, 40))
 override func viewDidLoad() {
   super.viewDidLoad()
   
+  // Configure the stepper like an UIStepper. For example:
+  //
+  // stepper.continuous   = true
+  // stepper.autorepeat   = true
+  // stepper.wraps        = false
+  // stepper.minimumValue = 0
+  // stepper.maximumValue = 100
+  // stepper.stepValue    = 1
+
   snappingStepper.addTarget(self, action: "stepperValueChangedAction:", forControlEvents: .ValueChanged)
   
   view.addSubview(snappingStepper)
