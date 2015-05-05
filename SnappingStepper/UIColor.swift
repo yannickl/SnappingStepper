@@ -28,7 +28,7 @@ import Foundation
 import UIKit
 
 /// Extension to manage hexa-decimal colors.
-private extension UIColor {
+internal extension UIColor {
   /**
   Creates a color from an hex string.
   

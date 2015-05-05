@@ -12,6 +12,12 @@ class ViewController: UIViewController {
   @IBOutlet weak var snappingStepper: SnappingStepper!
   @IBOutlet weak var valueLabel: UILabel!
 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    snappingStepper.thumbColor = UIColor.orangeColor()
+  }
+  
   @IBAction func stepperValueChangedAction(sender: AnyObject) {
     valueLabel.text = "\(snappingStepper.value)"
   }

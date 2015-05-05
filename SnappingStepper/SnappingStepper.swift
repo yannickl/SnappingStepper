@@ -30,7 +30,7 @@ import UIKit
 @IBDesignable public final class SnappingStepper: UIControl {
   let minusLabel = UILabel()
   let plusLabel  = UILabel()
-  let sliderView = UIView()
+  let thumbView  = UIView()
   
   var timer: NSTimer?
   
@@ -136,7 +136,17 @@ import UIKit
     didSet {
       minusLabel.backgroundColor = backgroundColor
       plusLabel.backgroundColor  = backgroundColor
-      sliderView.backgroundColor = backgroundColor?.lighterColor()
+      
+      if thumbColor == nil {
+        thumbView.backgroundColor = backgroundColor?.lighterColor()
+      }
+    }
+  }
+  
+  /// The thumb's color
+  @IBInspectable public var thumbColor: UIColor? {
+    didSet {
+      thumbView.backgroundColor = thumbColor
     }
   }
   
@@ -190,13 +200,13 @@ import UIKit
     plusLabel.userInteractionEnabled = true
     addSubview(plusLabel)
     
-    sliderView.userInteractionEnabled = true
-    addSubview(sliderView)
+    thumbView.userInteractionEnabled = true
+    addSubview(thumbView)
   }
   
   func setupGestures() {
     let panGesture = UIPanGestureRecognizer(target: self, action: "sliderPanned:")
-    sliderView.addGestureRecognizer(panGesture)
+    thumbView.addGestureRecognizer(panGesture)
     
     let touchGesture = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
     touchGesture.requireGestureRecognizerToFail(panGesture)
@@ -206,9 +216,9 @@ import UIKit
   func layoutComponents() {
     minusLabel.frame = CGRectMake(0, 0, bounds.width / 3, bounds.height)
     plusLabel.frame  = CGRectMake(bounds.width / 3 * 2, 0, bounds.width / 3, bounds.height)
-    sliderView.frame = CGRectMake(bounds.width / 3, 0, bounds.width / 3, bounds.height)
+    thumbView.frame = CGRectMake(bounds.width / 3, 0, bounds.width / 3, bounds.height)
     
-    snappingBehavior = SnappingStepperBehavior(item: sliderView, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
+    snappingBehavior = SnappingStepperBehavior(item: thumbView, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
   }
   
   // MARK: - Responding to Gesture Events
@@ -256,21 +266,21 @@ import UIKit
   func sliderPanned(sender: UIPanGestureRecognizer) {
     switch sender.state {
     case .Began:
-      touchesBeganPoint = sender.translationInView(sliderView)
+      touchesBeganPoint = sender.translationInView(thumbView)
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
-      sender.view?.backgroundColor = backgroundColor?.lighterColor()
+      sender.view?.backgroundColor = thumbColor?.lighterColor()
       
       if autorepeat {
         startAutorepeat()
       }
     case .Changed:
-      let translationInView = sender.translationInView(sliderView)
+      let translationInView = sender.translationInView(thumbView)
       
       var centerX = (bounds.width * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.35)
-      centerX     = max(sliderView.bounds.width / 2, min(centerX, bounds.width - sliderView.bounds.width / 2))
+      centerX     = max(thumbView.bounds.width / 2, min(centerX, bounds.width - thumbView.bounds.width / 2))
       
-      sliderView.center = CGPointMake(centerX, sliderView.center.y);
+      thumbView.center = CGPointMake(centerX, thumbView.center.y);
       
       if centerX < bounds.width / 2 - 5 {
         _factorValue = -1
@@ -284,7 +294,7 @@ import UIKit
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
       
-      sender.view?.backgroundColor = backgroundColor?.lighterColor()
+      sender.view?.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
       
       stopAutorepeat()
     case .Possible:
