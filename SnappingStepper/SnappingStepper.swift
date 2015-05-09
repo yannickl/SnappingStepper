@@ -26,7 +26,7 @@
 
 import UIKit
 
-/// Alternative to `UIStepper` to allow the user to change the value by sliding the thumb in the middle in the left to decrement the value, or in the right side to increment the value.
+/// A stepper control provides a user interface for incrementing or decrementing a value. The `SnappingStepper` addings a thumb in the middle to allow the user to update the value by sliding it either to the left or the right side.
 @IBDesignable public final class SnappingStepper: UIControl {
   let minusLabel = UILabel()
   let plusLabel  = UILabel()
@@ -269,7 +269,7 @@ import UIKit
       touchesBeganPoint = sender.translationInView(thumbView)
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
-      sender.view?.backgroundColor = thumbColor?.lighterColor()
+      thumbView.backgroundColor = thumbColor?.lighterColor()
       
       if autorepeat {
         startAutorepeat()
@@ -294,7 +294,7 @@ import UIKit
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
       
-      sender.view?.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
+      thumbView.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
       
       stopAutorepeat()
     case .Possible:
