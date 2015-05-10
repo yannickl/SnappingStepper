@@ -186,8 +186,6 @@ import UIKit
   // MARK: - Managing the Components
   
   func initComponents() {
-    backgroundColor = UIColor(hex: 0xe74c3c)
-    
     minusLabel.text                   = "-"
     minusLabel.font                   = font
     minusLabel.textAlignment          = .Center
