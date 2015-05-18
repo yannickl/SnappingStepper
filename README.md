@@ -26,7 +26,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 use_frameworks!
-pod 'SnappingStepper', '~> 1.0.1'
+pod 'SnappingStepper', '~> 1.0.2'
 ```
 
 Install into your project:
