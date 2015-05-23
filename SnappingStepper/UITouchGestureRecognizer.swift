@@ -30,37 +30,37 @@ import UIKit.UIGestureRecognizerSubclass
 /// Gesture to know whether the touch is inside the view
 final internal class UITouchGestureRecognizer: UIGestureRecognizer {
   var isTouchInside = true
-  
+
   override func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
     if state == .Possible {
       state = .Began
     }
   }
-  
+
   override func touchesMoved(touches: Set<NSObject>!, withEvent event: UIEvent!) {
     if let touch = touches.first as? UITouch, let view = view {
       let touchLocation = touch.locationInView(view)
-      
+
       let touchAreaRect = CGRectInset(view.bounds, -10, -10)
       let isInside      = CGRectContainsPoint(touchAreaRect, touchLocation)
 
       if !isTouchInside && isInside {
         isTouchInside = true
-        
+
         state = .Changed
       }
       else if isTouchInside && !isInside  {
         isTouchInside = false
-        
+
         state = .Changed
       }
     }
   }
-  
+
   override func touchesEnded(touches: Set<NSObject>!, withEvent event: UIEvent!) {
     state = .Failed
   }
-  
+
   override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
     state = .Failed
   }

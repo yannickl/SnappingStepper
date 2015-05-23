@@ -31,69 +31,69 @@ import UIKit
 internal extension UIColor {
   /**
   Creates a color from an hex string.
-  
+
   :param: hexString A hexa-decimal color string representation.
   */
   convenience init(hexString: String) {
     let hexString = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     let scanner            = NSScanner(string: hexString)
-    
+
     if (hexString.hasPrefix("#")) {
       scanner.scanLocation = 1
     }
-    
+
     var color:UInt32 = 0
     scanner.scanHexInt(&color)
-    
+
     self.init(hex: color)
   }
-  
+
   /**
   Creates a color from an hex int.
-  
+
   :param: hexString A hexa-decimal color number representation.
   */
   convenience init(hex: UInt32) {
     let mask = 0x000000FF
-    
+
     let r = Int(hex >> 16) & mask
     let g = Int(hex >> 8) & mask
     let b = Int(hex) & mask
-    
+
     let red   = CGFloat(r) / 255.0
     let green = CGFloat(g) / 255.0
     let blue  = CGFloat(b) / 255.0
-    
+
     self.init(red:red, green:green, blue:blue, alpha:1)
   }
-  
+
   // MARK: - Lighter/Darker Colors
-  
+
   /// Returns a lighter a color from the current one
   func lighterColor() -> UIColor {
     var h: CGFloat = 0
     var s: CGFloat = 0
     var b: CGFloat = 0
     var a: CGFloat = 0
-    
+
     if getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
       return UIColor(hue: h, saturation: s, brightness: min(b * 1.3, 1.0), alpha: a)
     }
-    
+
     return self
   }
-  
+
   /// Returns a darker a color from the current one
   func darkerColor() -> UIColor {
     var h: CGFloat = 0
     var s: CGFloat = 0
     var b: CGFloat = 0
     var a: CGFloat = 0
-    
+
     if getHue(&h, saturation: &s, brightness: &b, alpha: &a) {
       return UIColor(hue: h, saturation: s, brightness: b * 0.75, alpha: a)
     }
-    
+
     return self
   }
 }

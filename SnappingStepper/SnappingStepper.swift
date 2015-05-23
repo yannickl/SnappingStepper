@@ -31,82 +31,82 @@ import UIKit
   let minusLabel = UILabel()
   let plusLabel  = UILabel()
   let thumbView  = UIView()
-  
+
   var timer: NSTimer?
-  
+
   let dynamicButtonAnimator = UIDynamicAnimator()
   var snappingBehavior: SnappingStepperBehavior?
-  
+
   // MARK: - Configuring the Stepper
-  
+
   /**
   The continuous vs. noncontinuous state of the stepper.
-  
+
   :discussion:
   If true, value change events are sent immediately when the value changes during user interaction. If false, a value change event is sent when user interaction ends.
-  
+
   The default value for this property is true.
   */
   @IBInspectable public var continuous: Bool = true
-  
+
   /**
   The automatic vs. nonautomatic repeat state of the stepper.
-  
+
   :discussion:
   If true, the user pressing and holding on the stepper repeatedly alters value.
-  
+
   The default value for this property is true.
   */
   @IBInspectable public var autorepeat: Bool = true
-  
+
   /**
   The wrap vs. no-wrap state of the stepper.
-  
+
   :discussion:
   If true, incrementing beyond maximumValue sets value to minimumValue; likewise, decrementing below minimumValue sets value to maximumValue. If false, the stepper does not increment beyond maximumValue nor does it decrement below minimumValue but rather holds at those values.
-  
+
   The default value for this property is false.
   */
   @IBInspectable public var wraps: Bool = false
-  
+
   /**
   The lowest possible numeric value for the stepper.
-  
+
   :discussion:
   Must be numerically less than maximumValue. If you attempt to set a value equal to or greater than maximumValue, the system raises an NSInvalidArgumentException exception.
-  
+
   The default value for this property is 0.
   */
   @IBInspectable public var minimumValue: Double = 0
-  
+
   /**
   The highest possible numeric value for the stepper.
-  
+
   :discussion:
   Must be numerically greater than minimumValue. If you attempt to set a value equal to or lower than minimumValue, the system raises an NSInvalidArgumentException exception.
-  
+
   The default value of this property is 100.
   */
   @IBInspectable public var maximumValue: Double = 100
-  
+
   /**
   The step, or increment, value for the stepper.
-  
+
   :discussion:
   Must be numerically greater than 0. If you attempt to set this property’s value to 0 or to a negative number, the system raises an NSInvalidArgumentException exception.
-  
+
   The default value for this property is 1.
   */
   @IBInspectable public var stepValue: Double = 1
-  
+
   // MARK: - Accessing the Stepper’s Value
-  
+
   /**
   The numeric value of the snapping stepper.
-  
+
   :discussion:
   When the value changes, the stepper sends the UIControlEventValueChanged flag to its target (see addTarget:action:forControlEvents:). Refer to the description of the continuous property for information about whether value change events are sent continuously or when user interaction ends.
-  
+
   The default value for this property is 0. This property is clamped at its lower extreme to minimumValue and is clamped at its upper extreme to maximumValue.
   */
   @IBInspectable public var value: Double {
@@ -115,14 +115,14 @@ import UIKit
     }
     set (newValue) {
       _value = newValue
-      
+
       sendActionsForControlEvents(.ValueChanged)
     }
   }
   var _value: Double = 0
-  
+
   // MARK: - Configuring the Stepper Visual Appearance
-  
+
   /// The font of the texts (`minus` and `plus` labels)
   @IBInspectable public var font = UIFont(name: "TrebuchetMS-Bold", size: 20) {
     didSet {
@@ -130,103 +130,103 @@ import UIKit
       plusLabel.font  = font
     }
   }
-  
+
   /// The view’s background color.
   override public var backgroundColor: UIColor? {
     didSet {
       minusLabel.backgroundColor = backgroundColor
       plusLabel.backgroundColor  = backgroundColor
-      
+
       if thumbColor == nil {
         thumbView.backgroundColor = backgroundColor?.lighterColor()
       }
     }
   }
-  
+
   /// The thumb's color
   @IBInspectable public var thumbColor: UIColor? {
     didSet {
       thumbView.backgroundColor = thumbColor
     }
   }
-  
+
   // MARK: - Deallocating Snappinf Stepper
-  
+
   deinit {
     timer?.invalidate()
   }
-  
+
   // MARK: - Initializing a Snapping Stepper
-  
+
   /// Initializes and returns a newly allocated view object with the specified frame rectangle.
   override public init(frame: CGRect) {
     super.init(frame: frame)
-    
+
     initComponents()
     setupGestures()
   }
-  
+
   /// Returns an object initialized from data in a given unarchiver.
   required public init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    
+
     initComponents()
     setupGestures()
   }
-  
+
   // MARK: - Laying out Subviews
-  
+
   /// Lays out subviews
   public override func layoutSubviews() {
     super.layoutSubviews()
-    
+
     layoutComponents()
   }
-  
+
   // MARK: - Managing the Components
-  
+
   func initComponents() {
     minusLabel.text                   = "-"
     minusLabel.font                   = font
     minusLabel.textAlignment          = .Center
     minusLabel.userInteractionEnabled = true
     addSubview(minusLabel)
-    
+
     plusLabel.text                   = "+"
     plusLabel.font                   = font
     plusLabel.textAlignment          = .Center
     plusLabel.userInteractionEnabled = true
     addSubview(plusLabel)
-    
+
     thumbView.userInteractionEnabled = true
     addSubview(thumbView)
   }
-  
+
   func setupGestures() {
     let panGesture = UIPanGestureRecognizer(target: self, action: "sliderPanned:")
     thumbView.addGestureRecognizer(panGesture)
-    
+
     let touchGesture = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
     touchGesture.requireGestureRecognizerToFail(panGesture)
     addGestureRecognizer(touchGesture)
   }
-  
+
   func layoutComponents() {
     minusLabel.frame = CGRectMake(0, 0, bounds.width / 3, bounds.height)
     plusLabel.frame  = CGRectMake(bounds.width / 3 * 2, 0, bounds.width / 3, bounds.height)
     thumbView.frame = CGRectMake(bounds.width / 3, 0, bounds.width / 3, bounds.height)
-    
+
     snappingBehavior = SnappingStepperBehavior(item: thumbView, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
   }
-  
+
   // MARK: - Responding to Gesture Events
-  
+
   func stepperTouched(sender: UITouchGestureRecognizer) {
     let touchLocation = sender.locationInView(self)
     let hitView       = hitTest(touchLocation, withEvent: nil)
-    
+
     _factorValue = hitView == minusLabel ? -1 : 1
-    
+
     switch (sender.state, hitView) {
     case (.Began, let v) where v == minusLabel || v == plusLabel:
       if autorepeat {
@@ -235,12 +235,12 @@ import UIKit
       else {
         updateValue(nil)
       }
-      
+
       v!.backgroundColor = backgroundColor?.darkerColor()
     case (.Changed, let v):
       if v == minusLabel || v == plusLabel {
         v!.backgroundColor = backgroundColor?.darkerColor()
-        
+
         if autorepeat {
           startAutorepeat()
         }
@@ -248,19 +248,19 @@ import UIKit
       else {
         minusLabel.backgroundColor = backgroundColor
         plusLabel.backgroundColor  = backgroundColor
-        
+
         stopAutorepeat()
       }
     default:
       minusLabel.backgroundColor = backgroundColor
       plusLabel.backgroundColor  = backgroundColor
-      
+
       stopAutorepeat()
     }
   }
-  
+
   var touchesBeganPoint = CGPointZero
-  
+
   func sliderPanned(sender: UIPanGestureRecognizer) {
     switch sender.state {
     case .Began:
@@ -268,18 +268,18 @@ import UIKit
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
       thumbView.backgroundColor = thumbColor?.lighterColor()
-      
+
       if autorepeat {
         startAutorepeat()
       }
     case .Changed:
       let translationInView = sender.translationInView(thumbView)
-      
+
       var centerX = (bounds.width * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.35)
       centerX     = max(thumbView.bounds.width / 2, min(centerX, bounds.width - thumbView.bounds.width / 2))
-      
+
       thumbView.center = CGPointMake(centerX, thumbView.center.y);
-      
+
       if centerX < bounds.width / 2 - 5 {
         _factorValue = -1
       }
@@ -291,42 +291,42 @@ import UIKit
       }
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
-      
+
       thumbView.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
-      
+
       stopAutorepeat()
     case .Possible:
       break
     }
   }
-  
+
   // MARK: - Updating the Value
-  
+
   var _autorepeatCount: Int = 0
   var _factorValue: Double  = 0
-  
+
   func startAutorepeat() {
     if let _timer = timer where _timer.valid {
       return
     }
-    
+
     _autorepeatCount = 0
-    
+
     updateValue(nil)
-    
+
     let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: "updateValue:", userInfo: nil, repeats: true)
     timer        = newTimer
-    
+
     NSRunLoop.currentRunLoop().addTimer(newTimer, forMode: NSRunLoopCommonModes)
   }
-  
+
   func stopAutorepeat() {
     timer?.invalidate()
   }
-  
+
   func updateValue(sender: AnyObject?) {
     let needsIncrement: Bool
-    
+
     if _autorepeatCount < 10 {
       needsIncrement = _autorepeatCount % 5 == 0
     }
@@ -345,12 +345,12 @@ import UIKit
     else {
       needsIncrement = true
     }
-    
+
     _autorepeatCount++
-    
+
     if needsIncrement {
       _value = _value + stepValue * _factorValue
-      
+
       if !wraps {
         _value = max(minimumValue, min(_value, maximumValue))
       }
@@ -362,7 +362,7 @@ import UIKit
           value = minimumValue
         }
       }
-      
+
       if continuous {
         sendActionsForControlEvents(.ValueChanged)
       }
@@ -373,13 +373,13 @@ import UIKit
 final class SnappingStepperBehavior: UIDynamicBehavior {
   init(item: UIDynamicItem, snapToPoint point: CGPoint) {
     super.init()
-    
+
     let dynamicItemBehavior            = UIDynamicItemBehavior(items: [item])
     dynamicItemBehavior.allowsRotation = false
-    
+
     let snapBehavior     = UISnapBehavior(item: item, snapToPoint: point)
     snapBehavior.damping = 0.25
-    
+
     addChildBehavior(dynamicItemBehavior)
     addChildBehavior(snapBehavior)
   }

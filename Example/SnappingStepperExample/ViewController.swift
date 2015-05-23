@@ -14,11 +14,11 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     snappingStepper.backgroundColor = UIColor(hex: 0xe74c3c)
     snappingStepper.thumbColor      = UIColor.orangeColor()
   }
-  
+
   @IBAction func stepperValueChangedAction(sender: AnyObject) {
     valueLabel.text = "\(snappingStepper.value)"
   }
