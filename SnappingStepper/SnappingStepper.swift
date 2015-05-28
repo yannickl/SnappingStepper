@@ -369,18 +369,3 @@ import UIKit
     }
   }
 }
-
-final class SnappingStepperBehavior: UIDynamicBehavior {
-  init(item: UIDynamicItem, snapToPoint point: CGPoint) {
-    super.init()
-
-    let dynamicItemBehavior            = UIDynamicItemBehavior(items: [item])
-    dynamicItemBehavior.allowsRotation = false
-
-    let snapBehavior     = UISnapBehavior(item: item, snapToPoint: point)
-    snapBehavior.damping = 0.25
-
-    addChildBehavior(dynamicItemBehavior)
-    addChildBehavior(snapBehavior)
-  }
-}

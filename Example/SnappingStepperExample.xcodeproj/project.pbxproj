@@ -16,6 +16,7 @@
 		CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
 		CE6F72621AF513AB0019CB55 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725F1AF513AB0019CB55 /* UIColor.swift */; };
 		CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
+		CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepper.swift; sourceTree = "<group>"; };
 		CE6F725F1AF513AB0019CB55 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITouchGestureRecognizer.swift; sourceTree = "<group>"; };
+		CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepperBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */,
 				CE6F725F1AF513AB0019CB55 /* UIColor.swift */,
 				CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */,
+				CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */,
 			);
 			name = SnappingStepper;
 			path = ../SnappingStepper;
@@ -233,6 +236,7 @@
 				CE6F72401AF513810019CB55 /* ViewController.swift in Sources */,
 				CE6F72621AF513AB0019CB55 /* UIColor.swift in Sources */,
 				CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */,
+				CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */,
 				CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */,
 				CE6F723E1AF513810019CB55 /* AppDelegate.swift in Sources */,
 			);
