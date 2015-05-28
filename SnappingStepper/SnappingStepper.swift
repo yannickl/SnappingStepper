@@ -1,28 +1,28 @@
 /*
- * SnappingStepper
- *
- * Copyright 2015-present Yannick Loriot.
- * http://yannickloriot.com
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- */
+* SnappingStepper
+*
+* Copyright 2015-present Yannick Loriot.
+* http://yannickloriot.com
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*
+*/
 
 import UIKit
 
@@ -233,7 +233,9 @@ import UIKit
         startAutorepeat()
       }
       else {
-        updateValue(nil)
+        let value = _value + stepValue * _factorValue
+
+        updateValue(value, finished: true)
       }
 
       v!.backgroundColor = backgroundColor?.darkerColor()
@@ -255,10 +257,17 @@ import UIKit
       minusLabel.backgroundColor = backgroundColor
       plusLabel.backgroundColor  = backgroundColor
 
-      stopAutorepeat()
+      if autorepeat {
+        stopAutorepeat()
+
+        _factorValue = 0
+
+        updateValue(_value, finished: true)
+      }
     }
   }
 
+  /// Initial touch location
   var touchesBeganPoint = CGPointZero
 
   func sliderPanned(sender: UIPanGestureRecognizer) {
@@ -294,7 +303,13 @@ import UIKit
 
       thumbView.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
 
-      stopAutorepeat()
+      if autorepeat {
+        stopAutorepeat()
+
+        _factorValue = 0
+
+        updateValue(_value, finished: true)
+      }
     case .Possible:
       break
     }
@@ -312,9 +327,9 @@ import UIKit
 
     _autorepeatCount = 0
 
-    updateValue(nil)
+    repeatTick(nil)
 
-    let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: "updateValue:", userInfo: nil, repeats: true)
+    let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: "repeatTick:", userInfo: nil, repeats: true)
     timer        = newTimer
 
     NSRunLoop.currentRunLoop().addTimer(newTimer, forMode: NSRunLoopCommonModes)
@@ -324,7 +339,7 @@ import UIKit
     timer?.invalidate()
   }
 
-  func updateValue(sender: AnyObject?) {
+  func repeatTick(sender: AnyObject?) {
     let needsIncrement: Bool
 
     if _autorepeatCount < 10 {
@@ -349,23 +364,27 @@ import UIKit
     _autorepeatCount++
 
     if needsIncrement {
-      _value = _value + stepValue * _factorValue
+      let value = _value + stepValue * _factorValue
 
-      if !wraps {
-        _value = max(minimumValue, min(_value, maximumValue))
-      }
-      else {
-        if value < minimumValue {
-          value = maximumValue
-        }
-        else if value > maximumValue {
-          value = minimumValue
-        }
-      }
+      updateValue(value, finished: false)
+    }
+  }
 
-      if continuous {
-        sendActionsForControlEvents(.ValueChanged)
+  func updateValue(value: Double, finished: Bool = true) {
+    if !wraps {
+      _value = max(minimumValue, min(value, maximumValue))
+    }
+    else {
+      if value < minimumValue {
+        _value = maximumValue
       }
+      else if value > maximumValue {
+        _value = minimumValue
+      }
+    }
+
+    if continuous || finished {
+      sendActionsForControlEvents(.ValueChanged)
     }
   }
 }
