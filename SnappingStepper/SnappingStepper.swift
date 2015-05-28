@@ -268,7 +268,8 @@ import UIKit
   }
 
   /// Initial touch location
-  var touchesBeganPoint = CGPointZero
+  var touchesBeganPoint    = CGPointZero
+  var initialValue: Double = -1
 
   func sliderPanned(sender: UIPanGestureRecognizer) {
     switch sender.state {
@@ -281,6 +282,9 @@ import UIKit
       if autorepeat {
         startAutorepeat()
       }
+      else {
+        initialValue = _value
+      }
     case .Changed:
       let translationInView = sender.translationInView(thumbView)
 
@@ -289,14 +293,21 @@ import UIKit
 
       thumbView.center = CGPointMake(centerX, thumbView.center.y);
 
-      if centerX < bounds.width / 2 - 5 {
-        _factorValue = -1
-      }
-      else if centerX > bounds.width / 2 + 5 {
-        _factorValue = 1
+      if autorepeat {
+        if centerX < bounds.width / 2 - 5 {
+          _factorValue = -1
+        }
+        else if centerX > bounds.width / 2 + 5 {
+          _factorValue = 1
+        }
+        else {
+          _factorValue = 0
+        }
       }
       else {
-        _factorValue = 0
+        _value = initialValue + stepValue * Double(Int((thumbView.center.x - CGRectGetMidX(bounds)) * 0.35))
+
+        updateValue(_value, finished: true)
       }
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
