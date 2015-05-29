@@ -2,7 +2,7 @@
 
 [![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Build Status](https://travis-ci.org/yannickl/SnappingStepper.png?branch=master)](https://travis-ci.org/yannickl/SnappingStepper)
 
-A beautiful alternative to the `UIStepper` with a snapping slider in the middle written in Swift.
+An elegant alternative to the `UIStepper` enhanced with a thumb slider to control the value update with more flexibility.
 
 <p align="center">
   <img src="http://yannickloriot.com/resources/snappingstepper.gif" alt=screenshot" />
@@ -28,7 +28,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 use_frameworks!
-pod 'SnappingStepper', '~> 1.0.5'
+pod 'SnappingStepper', '~> 1.1.0'
 ```
 
 Install into your project:
