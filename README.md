@@ -1,5 +1,7 @@
 ![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-header.png)
 
+[![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Build Status](https://travis-ci.org/yannickl/SnappingStepper.png?branch=master)](https://travis-ci.org/yannickl/SnappingStepper)
+
 A beautiful alternative to the `UIStepper` with a snapping slider in the middle written in Swift.
 
 <p align="center">
