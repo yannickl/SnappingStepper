@@ -64,20 +64,22 @@ override func viewDidLoad() {
   // stepper.maximumValue = 100
   // stepper.stepValue    = 1
 
-  snappingStepper.font            = UIFont(name: "TrebuchetMS-Bold", size: 20)
-  snappingStepper.fontColor       = UIColor.blackColor()
-  snappingStepper.backgroundColor = UIColor.redColor()
-  snappingStepper.thumbColor      = UIColor.orangeColor()
+  stepper.font            = UIFont(name: "TrebuchetMS-Bold", size: 20)
+  stepper.fontColor       = UIColor.blackColor()
+  stepper.backgroundColor = UIColor.redColor()
+  stepper.thumbColor      = UIColor.orangeColor()
 
-  snappingStepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
+  stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
   
-  view.addSubview(snappingStepper)
+  view.addSubview(stepper)
 }
   
 func valueChanged(sender: AnyObject) {
-  // Retrieve the value: snappingStepper.value
+  // Retrieve the value: stepper.value
 }
 ```
+
+To go further you can take a look at the example project. 
     
 ## Contact
 
