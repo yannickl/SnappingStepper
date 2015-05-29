@@ -6,7 +6,7 @@ A beautiful alternative to the `UIStepper` with a snapping slider in the middle 
   <img src="http://yannickloriot.com/resources/snappingstepper.gif" alt=screenshot" />
 </p>
 
-*Note: the control is inspired by a very beautiful control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
+*Note: the control is inspired by this control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
 
 #### CocoaPods
 
@@ -79,7 +79,7 @@ func valueChanged(sender: AnyObject) {
 }
 ```
 
-To go further you can take a look at the example project. 
+To go further, take a look at the example project. 
     
 ## Contact
 

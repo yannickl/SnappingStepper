@@ -290,7 +290,7 @@ import UIKit
       thumbView.backgroundColor = thumbColor?.lighterColor()
 
       if autorepeat {
-        startAutorepeat()
+        startAutorepeat(autorepeatCount: Int.max)
       }
       else {
         initialValue = _value
@@ -298,24 +298,20 @@ import UIKit
     case .Changed:
       let translationInView = sender.translationInView(thumbView)
 
-      var centerX = (bounds.width * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.35)
+      var centerX = (bounds.width * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.4)
       centerX     = max(thumbView.bounds.width / 2, min(centerX, bounds.width - thumbView.bounds.width / 2))
 
       thumbView.center = CGPointMake(centerX, thumbView.center.y);
 
+      let locationRatio = (thumbView.center.x - CGRectGetMidX(bounds)) / ((CGRectGetWidth(bounds) - CGRectGetWidth(thumbView.bounds)) / 2)
+      let ratio         = Double(Int(locationRatio * 10)) / 10
+      let factorValue   = ((maximumValue - minimumValue) / 100) * ratio
+
       if autorepeat {
-        if centerX < bounds.width / 2 - 5 {
-          _factorValue = -1
-        }
-        else if centerX > bounds.width / 2 + 5 {
-          _factorValue = 1
-        }
-        else {
-          _factorValue = 0
-        }
+        _factorValue = factorValue
       }
       else {
-        _value = initialValue + stepValue * Double(Int((thumbView.center.x - CGRectGetMidX(bounds)) * 0.35))
+        _value = initialValue + stepValue * factorValue
 
         updateValue(_value, finished: true)
       }
@@ -341,12 +337,12 @@ import UIKit
   var _autorepeatCount: Int = 0
   var _factorValue: Double  = 0
 
-  func startAutorepeat() {
+  func startAutorepeat(autorepeatCount count: Int = 0) {
     if let _timer = timer where _timer.valid {
       return
     }
 
-    _autorepeatCount = 0
+    _autorepeatCount = count
 
     repeatTick(nil)
 
@@ -363,26 +359,28 @@ import UIKit
   func repeatTick(sender: AnyObject?) {
     let needsIncrement: Bool
 
-    if _autorepeatCount < 10 {
-      needsIncrement = _autorepeatCount % 5 == 0
-    }
-    else if _autorepeatCount < 20 {
-      needsIncrement = _autorepeatCount % 4 == 0
-    }
-    else if _autorepeatCount < 25 {
-      needsIncrement = _autorepeatCount % 3 == 0
-    }
-    else if _autorepeatCount < 30 {
-      needsIncrement = _autorepeatCount % 2 == 0
-    }
-    else if _autorepeatCount < 35 {
-      needsIncrement = _autorepeatCount % 1 == 0
+    if _autorepeatCount < 35 {
+      if _autorepeatCount < 10 {
+        needsIncrement = _autorepeatCount % 5 == 0
+      }
+      else if _autorepeatCount < 20 {
+        needsIncrement = _autorepeatCount % 4 == 0
+      }
+      else if _autorepeatCount < 25 {
+        needsIncrement = _autorepeatCount % 3 == 0
+      }
+      else if _autorepeatCount < 30 {
+        needsIncrement = _autorepeatCount % 2 == 0
+      }
+      else {
+        needsIncrement = _autorepeatCount % 1 == 0
+      }
+
+      _autorepeatCount++
     }
     else {
       needsIncrement = true
     }
-
-    _autorepeatCount++
 
     if needsIncrement {
       let value = _value + stepValue * _factorValue

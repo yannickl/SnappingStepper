@@ -15,11 +15,17 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-
     snappingStepper.font            = UIFont(name: "TrebuchetMS-Bold", size: 20)
     snappingStepper.fontColor       = UIColor.blackColor()
     snappingStepper.backgroundColor = UIColor(hex: 0xc0392b)
     snappingStepper.thumbColor      = UIColor(hex: 0xe74c3c)
+
+    snappingStepper.continuous   = true
+    snappingStepper.autorepeat   = true
+    snappingStepper.wraps        = false
+    snappingStepper.minimumValue = 0
+    snappingStepper.maximumValue = 1000
+    snappingStepper.stepValue    = 1
   }
 
   @IBAction func stepperValueChangedAction(sender: AnyObject) {
