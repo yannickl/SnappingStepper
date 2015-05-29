@@ -15,6 +15,9 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+
+    snappingStepper.font            = UIFont(name: "TrebuchetMS-Bold", size: 20)
+    snappingStepper.fontColor       = UIColor.blackColor()
     snappingStepper.backgroundColor = UIColor(hex: 0xc0392b)
     snappingStepper.thumbColor      = UIColor(hex: 0xe74c3c)
   }

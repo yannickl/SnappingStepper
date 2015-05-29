@@ -36,6 +36,11 @@
                                             <constraint firstAttribute="width" constant="120" id="Qgk-We-eVe"/>
                                             <constraint firstAttribute="height" constant="40" id="vys-bF-8tL"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ap5-lW-Ovi"/>
                                         </connections>

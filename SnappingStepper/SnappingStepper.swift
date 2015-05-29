@@ -123,11 +123,19 @@ import UIKit
 
   // MARK: - Configuring the Stepper Visual Appearance
 
-  /// The font of the texts (`minus` and `plus` labels)
+  /// The font of the text symbols (`minus` and `plus`).
   @IBInspectable public var font = UIFont(name: "TrebuchetMS-Bold", size: 20) {
     didSet {
       minusLabel.font = font
       plusLabel.font  = font
+    }
+  }
+
+  /// The color of the text symbols (`minus` and `plus`).
+  @IBInspectable public var fontColor: UIColor = UIColor.blackColor() {
+    didSet {
+      minusLabel.textColor = fontColor
+      plusLabel.textColor  = fontColor
     }
   }
 
@@ -188,12 +196,14 @@ import UIKit
   func initComponents() {
     minusLabel.text                   = "-"
     minusLabel.font                   = font
+    minusLabel.textColor              = fontColor
     minusLabel.textAlignment          = .Center
     minusLabel.userInteractionEnabled = true
     addSubview(minusLabel)
 
     plusLabel.text                   = "+"
     plusLabel.font                   = font
+    plusLabel.textColor              = fontColor
     plusLabel.textAlignment          = .Center
     plusLabel.userInteractionEnabled = true
     addSubview(plusLabel)
