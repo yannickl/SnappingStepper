@@ -77,7 +77,13 @@ import UIKit
 
   The default value for this property is 0.
   */
-  @IBInspectable public var minimumValue: Double = 0
+  @IBInspectable public var minimumValue: Double = 0 {
+    didSet {
+      if minimumValue > maximumValue {
+        maximumValue = minimumValue
+      }
+    }
+  }
 
   /**
   The highest possible numeric value for the stepper.
@@ -87,7 +93,13 @@ import UIKit
 
   The default value of this property is 100.
   */
-  @IBInspectable public var maximumValue: Double = 100
+  @IBInspectable public var maximumValue: Double = 100 {
+    didSet {
+      if maximumValue < minimumValue {
+        minimumValue = maximumValue
+      }
+    }
+  }
 
   /**
   The step, or increment, value for the stepper.
