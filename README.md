@@ -1,4 +1,4 @@
-![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-logo2.png)
+![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-header.png)
 
 A beautiful alternative to the `UIStepper` with a snapping slider in the middle written in Swift.
 
