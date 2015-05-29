@@ -12,22 +12,16 @@
 		CE6F72431AF513810019CB55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72411AF513810019CB55 /* Main.storyboard */; };
 		CE6F72451AF513810019CB55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72441AF513810019CB55 /* Images.xcassets */; };
 		CE6F72481AF513810019CB55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72461AF513810019CB55 /* LaunchScreen.xib */; };
-		CE6F72541AF513810019CB55 /* SnappingStepperExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72531AF513810019CB55 /* SnappingStepperExampleTests.swift */; };
 		CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
 		CE6F72621AF513AB0019CB55 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725F1AF513AB0019CB55 /* UIColor.swift */; };
 		CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
 		CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
+		CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */; };
+		CEB21D6A1B18C1C8003E9EEC /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
+		CEB21D6B1B18C1C8003E9EEC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725F1AF513AB0019CB55 /* UIColor.swift */; };
+		CEB21D6C1B18C1C8003E9EEC /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
+		CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CE6F724E1AF513810019CB55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE6F72301AF513810019CB55 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CE6F72371AF513810019CB55;
-			remoteInfo = SnappingStepperExample;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CE6F72381AF513810019CB55 /* SnappingStepperExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnappingStepperExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,13 +31,13 @@
 		CE6F72421AF513810019CB55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE6F72441AF513810019CB55 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE6F72471AF513810019CB55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CE6F724D1AF513810019CB55 /* SnappingStepperExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnappingStepperExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE6F72521AF513810019CB55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE6F72531AF513810019CB55 /* SnappingStepperExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingStepperExampleTests.swift; sourceTree = "<group>"; };
 		CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepper.swift; sourceTree = "<group>"; };
 		CE6F725F1AF513AB0019CB55 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepperBehavior.swift; sourceTree = "<group>"; };
+		CEB21D5F1B18C169003E9EEC /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEB21D621B18C169003E9EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingStepperTests.swift; path = ../../Tests/SnappingStepperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +48,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE6F724A1AF513810019CB55 /* Frameworks */ = {
+		CEB21D5C1B18C169003E9EEC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -69,7 +63,7 @@
 			children = (
 				CE6F725D1AF513AB0019CB55 /* SnappingStepper */,
 				CE6F723A1AF513810019CB55 /* SnappingStepperExample */,
-				CE6F72501AF513810019CB55 /* SnappingStepperExampleTests */,
+				CEB21D601B18C169003E9EEC /* Tests */,
 				CE6F72391AF513810019CB55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6F72381AF513810019CB55 /* SnappingStepperExample.app */,
-				CE6F724D1AF513810019CB55 /* SnappingStepperExampleTests.xctest */,
+				CEB21D5F1B18C169003E9EEC /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,23 +98,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CE6F72501AF513810019CB55 /* SnappingStepperExampleTests */ = {
-			isa = PBXGroup;
-			children = (
-				CE6F72531AF513810019CB55 /* SnappingStepperExampleTests.swift */,
-				CE6F72511AF513810019CB55 /* Supporting Files */,
-			);
-			path = SnappingStepperExampleTests;
-			sourceTree = "<group>";
-		};
-		CE6F72511AF513810019CB55 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CE6F72521AF513810019CB55 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		CE6F725D1AF513AB0019CB55 /* SnappingStepper */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +108,23 @@
 			);
 			name = SnappingStepper;
 			path = ../SnappingStepper;
+			sourceTree = "<group>";
+		};
+		CEB21D601B18C169003E9EEC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */,
+				CEB21D611B18C169003E9EEC /* Supporting Files */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		CEB21D611B18C169003E9EEC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEB21D621B18C169003E9EEC /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,22 +147,21 @@
 			productReference = CE6F72381AF513810019CB55 /* SnappingStepperExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CE6F724C1AF513810019CB55 /* SnappingStepperExampleTests */ = {
+		CEB21D5E1B18C169003E9EEC /* Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CE6F725A1AF513810019CB55 /* Build configuration list for PBXNativeTarget "SnappingStepperExampleTests" */;
+			buildConfigurationList = CEB21D651B18C169003E9EEC /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
-				CE6F72491AF513810019CB55 /* Sources */,
-				CE6F724A1AF513810019CB55 /* Frameworks */,
-				CE6F724B1AF513810019CB55 /* Resources */,
+				CEB21D5B1B18C169003E9EEC /* Sources */,
+				CEB21D5C1B18C169003E9EEC /* Frameworks */,
+				CEB21D5D1B18C169003E9EEC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CE6F724F1AF513810019CB55 /* PBXTargetDependency */,
 			);
-			name = SnappingStepperExampleTests;
-			productName = SnappingStepperExampleTests;
-			productReference = CE6F724D1AF513810019CB55 /* SnappingStepperExampleTests.xctest */;
+			name = Tests;
+			productName = Tests;
+			productReference = CEB21D5F1B18C169003E9EEC /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -183,9 +176,8 @@
 					CE6F72371AF513810019CB55 = {
 						CreatedOnToolsVersion = 6.3;
 					};
-					CE6F724C1AF513810019CB55 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = CE6F72371AF513810019CB55;
+					CEB21D5E1B18C169003E9EEC = {
+						CreatedOnToolsVersion = 6.3.2;
 					};
 				};
 			};
@@ -203,7 +195,7 @@
 			projectRoot = "";
 			targets = (
 				CE6F72371AF513810019CB55 /* SnappingStepperExample */,
-				CE6F724C1AF513810019CB55 /* SnappingStepperExampleTests */,
+				CEB21D5E1B18C169003E9EEC /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -219,7 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE6F724B1AF513810019CB55 /* Resources */ = {
+		CEB21D5D1B18C169003E9EEC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -242,23 +234,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CE6F72491AF513810019CB55 /* Sources */ = {
+		CEB21D5B1B18C169003E9EEC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6F72541AF513810019CB55 /* SnappingStepperExampleTests.swift in Sources */,
+				CEB21D6A1B18C1C8003E9EEC /* SnappingStepper.swift in Sources */,
+				CEB21D6B1B18C1C8003E9EEC /* UIColor.swift in Sources */,
+				CEB21D6C1B18C1C8003E9EEC /* UITouchGestureRecognizer.swift in Sources */,
+				CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */,
+				CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CE6F724F1AF513810019CB55 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CE6F72371AF513810019CB55 /* SnappingStepperExample */;
-			targetProxy = CE6F724E1AF513810019CB55 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE6F72411AF513810019CB55 /* Main.storyboard */ = {
@@ -383,10 +371,9 @@
 			};
 			name = Release;
 		};
-		CE6F725B1AF513810019CB55 /* Debug */ = {
+		CEB21D661B18C169003E9EEC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -395,25 +382,24 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SnappingStepperExampleTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnappingStepperExample.app/SnappingStepperExample";
 			};
 			name = Debug;
 		};
-		CE6F725C1AF513810019CB55 /* Release */ = {
+		CEB21D671B18C169003E9EEC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SnappingStepperExampleTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnappingStepperExample.app/SnappingStepperExample";
 			};
 			name = Release;
 		};
@@ -438,14 +424,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CE6F725A1AF513810019CB55 /* Build configuration list for PBXNativeTarget "SnappingStepperExampleTests" */ = {
+		CEB21D651B18C169003E9EEC /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CE6F725B1AF513810019CB55 /* Debug */,
-				CE6F725C1AF513810019CB55 /* Release */,
+				CEB21D661B18C169003E9EEC /* Debug */,
+				CEB21D671B18C169003E9EEC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
