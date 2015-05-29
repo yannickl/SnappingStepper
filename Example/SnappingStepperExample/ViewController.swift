@@ -15,8 +15,8 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    snappingStepper.backgroundColor = UIColor(hex: 0xe74c3c)
-    snappingStepper.thumbColor      = UIColor.orangeColor()
+    snappingStepper.backgroundColor = UIColor(hex: 0xc0392b)
+    snappingStepper.thumbColor      = UIColor(hex: 0xe74c3c)
   }
 
   @IBAction func stepperValueChangedAction(sender: AnyObject) {

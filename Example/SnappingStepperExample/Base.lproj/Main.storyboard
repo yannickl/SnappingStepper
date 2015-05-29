@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,34 +16,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4I-GE-yJd" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
-                                <rect key="frame" x="240" y="251" width="120" height="40"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix2-NP-H0n">
+                                <rect key="frame" x="220" y="231" width="160" height="138"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-3t-c5V">
+                                        <rect key="frame" x="20" y="78" width="120" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ad0-m7-UQg"/>
+                                            <constraint firstAttribute="width" constant="120" id="nWk-ft-6Nw"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4I-GE-yJd" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="Qgk-We-eVe"/>
+                                            <constraint firstAttribute="height" constant="40" id="vys-bF-8tL"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ap5-lW-Ovi"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="bkO-Ah-XlI"/>
-                                    <constraint firstAttribute="height" constant="40" id="vp7-Ir-2Pf"/>
+                                    <constraint firstAttribute="centerX" secondItem="p4I-GE-yJd" secondAttribute="centerX" id="6BB-Vm-jjs"/>
+                                    <constraint firstItem="p4I-GE-yJd" firstAttribute="top" secondItem="Ix2-NP-H0n" secondAttribute="top" constant="20" id="8O0-F9-1cp"/>
+                                    <constraint firstAttribute="bottom" secondItem="QWu-3t-c5V" secondAttribute="bottom" constant="20" id="8sl-sc-PlX"/>
+                                    <constraint firstAttribute="height" constant="138" id="C6f-z6-2Bc"/>
+                                    <constraint firstAttribute="width" constant="160" id="Vk5-e3-rCF"/>
+                                    <constraint firstAttribute="centerX" secondItem="QWu-3t-c5V" secondAttribute="centerX" id="fuF-Hb-mu4"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ap5-lW-Ovi"/>
-                                </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-3t-c5V">
-                                <rect key="frame" x="240" y="309" width="120" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="VAb-5U-ZKp"/>
-                                    <constraint firstAttribute="height" constant="40" id="w4M-j3-ozV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="p4I-GE-yJd" secondAttribute="centerX" id="3gA-oA-1v0"/>
-                            <constraint firstItem="p4I-GE-yJd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="231" id="UfG-ox-klT"/>
-                            <constraint firstItem="QWu-3t-c5V" firstAttribute="top" secondItem="p4I-GE-yJd" secondAttribute="bottom" constant="18" id="ehN-0E-xFM"/>
-                            <constraint firstAttribute="centerX" secondItem="QWu-3t-c5V" secondAttribute="centerX" id="pUh-cf-C8u"/>
+                            <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qgh-XQ-L0f"/>
+                            <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iHm-Zb-8D0"/>
                         </constraints>
                     </view>
                     <connections>

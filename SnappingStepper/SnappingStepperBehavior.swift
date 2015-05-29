@@ -27,7 +27,7 @@
 import UIKit
 
 /// The snapping dynamic behavic.
-final class SnappingStepperBehavior: UIDynamicBehavior {
+final internal class SnappingStepperBehavior: UIDynamicBehavior {
   init(item: UIDynamicItem, snapToPoint point: CGPoint) {
     super.init()
 

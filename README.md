@@ -64,6 +64,9 @@ override func viewDidLoad() {
   // stepper.maximumValue = 100
   // stepper.stepValue    = 1
 
+  snappingStepper.backgroundColor = UIColor.redColor()
+  snappingStepper.thumbColor      = UIColor.orangeColor()
+
   snappingStepper.addTarget(self, action: "stepperValueChangedAction:", forControlEvents: .ValueChanged)
   
   view.addSubview(snappingStepper)
