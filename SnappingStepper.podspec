@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SnappingStepper'
   s.module_name      = 'SnappingStepper'
-  s.version          = '1.0.4'
+  s.version          = '1.0.5'
   s.license          = 'MIT'
   s.summary          = 'An alternative to UIStepper with a snapping slider in the middle written in Swift'
   s.homepage         = 'https://github.com/yannickl/SnappingStepper.git'
