@@ -126,9 +126,7 @@ import UIKit
       return _value
     }
     set (newValue) {
-      _value = newValue
-
-      sendActionsForControlEvents(.ValueChanged)
+      updateValue(newValue, finished: true)
     }
   }
   var _value: Double = 0
