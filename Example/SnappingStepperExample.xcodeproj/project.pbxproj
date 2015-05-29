@@ -23,6 +23,16 @@
 		CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		CEB21D6E1B18E480003E9EEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE6F72301AF513810019CB55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE6F72371AF513810019CB55;
+			remoteInfo = SnappingStepperExample;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		CE6F72381AF513810019CB55 /* SnappingStepperExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnappingStepperExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6F723C1AF513810019CB55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +168,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CEB21D6F1B18E480003E9EEC /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -178,6 +189,7 @@
 					};
 					CEB21D5E1B18C169003E9EEC = {
 						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = CE6F72371AF513810019CB55;
 					};
 				};
 			};
@@ -247,6 +259,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEB21D6F1B18E480003E9EEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE6F72371AF513810019CB55 /* SnappingStepperExample */;
+			targetProxy = CEB21D6E1B18E480003E9EEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE6F72411AF513810019CB55 /* Main.storyboard */ = {
@@ -386,6 +406,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnappingStepperExample.app/SnappingStepperExample";
 			};
 			name = Debug;
 		};
@@ -400,6 +421,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnappingStepperExample.app/SnappingStepperExample";
 			};
 			name = Release;
 		};
