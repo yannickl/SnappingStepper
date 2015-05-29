@@ -1,9 +1,9 @@
-# SnappingStepper
+![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-logo.png)
 
 A beautiful alternative to the `UIStepper` with a snapping slider in the middle written in Swift.
 
 <p align="center">
-  <img src="http://yannickloriot.com/resources/snappingstepper-screenshot.png" alt=screenshot" />
+  <img src="http://yannickloriot.com/resources/snappingstepper.gif" alt=screenshot" />
 </p>
 
 *Note: the control is inspired by a very beautiful control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
@@ -55,7 +55,7 @@ let stepper = SnappingStepper(frame: CGRectMake(0, 0, 100, 40))
 override func viewDidLoad() {
   super.viewDidLoad()
   
-  // Configure the stepper like an UIStepper. For example:
+  // Configure the stepper like any other UIStepper. For example:
   //
   // stepper.continuous   = true
   // stepper.autorepeat   = true
