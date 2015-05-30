@@ -37,6 +37,16 @@ import UIKit
   let dynamicButtonAnimator = UIDynamicAnimator()
   var snappingBehavior: SnappingStepperBehavior?
 
+  // MARK: - Preparing and Sending Messages using Blocks
+
+  /**
+  Block to be notify when the value of the stepper change.
+
+  :discussion:
+  This is a convenient alternative to the `addTarget:Action:forControlEvents:` method of the `UIControl`.
+  */
+  public var valueChangedBlock: ((value: Double) -> Void)?
+
   // MARK: - Configuring the Stepper
 
   /**
@@ -400,6 +410,8 @@ import UIKit
   }
 
   func updateValue(value: Double, finished: Bool = true) {
+    let oldValue = _value
+
     if !wraps {
       _value = max(minimumValue, min(value, maximumValue))
     }
@@ -411,9 +423,13 @@ import UIKit
         _value = minimumValue
       }
     }
-
-    if continuous || finished {
+    
+    if (continuous || finished) && oldValue != _value {
       sendActionsForControlEvents(.ValueChanged)
+      
+      if let _valueChangedBlock = valueChangedBlock {
+        _valueChangedBlock(value: _value)
+      }
     }
   }
 }

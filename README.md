@@ -73,6 +73,12 @@ override func viewDidLoad() {
 
   stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
   
+  // If you don't want using the traditional `addTarget:action:` pattern you can use
+  // the `valueChangedBlock`
+  // snappingStepper.valueChangeBlock = { (value: Double) in
+  //    println("value: \(value)")
+  // }
+
   view.addSubview(stepper)
 }
   
