@@ -92,6 +92,8 @@ import UIKit
       if minimumValue > maximumValue {
         maximumValue = minimumValue
       }
+
+      updateValue(max(_value, minimumValue), finished: true)
     }
   }
 
@@ -108,6 +110,8 @@ import UIKit
       if maximumValue < minimumValue {
         minimumValue = maximumValue
       }
+
+      updateValue(min(_value, maximumValue), finished: true)
     }
   }
 
@@ -409,9 +413,9 @@ import UIKit
     }
   }
 
-  func updateValue(value: Double, finished: Bool = true) {
-    let oldValue = _value
+  var oldValue = Double.infinity * -1
 
+  func updateValue(value: Double, finished: Bool = true) {
     if !wraps {
       _value = max(minimumValue, min(value, maximumValue))
     }
@@ -425,6 +429,8 @@ import UIKit
     }
     
     if (continuous || finished) && oldValue != _value {
+      oldValue = _value
+
       sendActionsForControlEvents(.ValueChanged)
       
       if let _valueChangedBlock = valueChangedBlock {
