@@ -10,6 +10,8 @@ An elegant alternative to the `UIStepper` enhanced with a thumb slider to contro
 
 *Note: the control is inspired by this control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
 
+## Installation
+
 #### CocoaPods
 
 Install CocoaPods if not already available:
