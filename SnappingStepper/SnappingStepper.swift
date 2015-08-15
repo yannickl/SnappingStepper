@@ -199,7 +199,7 @@ import UIKit
   }
 
   /// Returns an object initialized from data in a given unarchiver.
-  required public init(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
 
     initComponents()
@@ -309,7 +309,8 @@ import UIKit
     switch sender.state {
     case .Began:
       touchesBeganPoint = sender.translationInView(thumbView)
-      dynamicButtonAnimator.removeBehavior(snappingBehavior)
+      
+      dynamicButtonAnimator.removeBehavior(snappingBehavior!)
 
       thumbView.backgroundColor = thumbColor?.lighterColor()
 
@@ -340,7 +341,7 @@ import UIKit
         updateValue(_value, finished: true)
       }
     case .Ended, .Failed, .Cancelled:
-      dynamicButtonAnimator.addBehavior(snappingBehavior)
+      dynamicButtonAnimator.addBehavior(snappingBehavior!)
 
       thumbView.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
 
