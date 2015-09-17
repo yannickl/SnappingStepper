@@ -1,6 +1,7 @@
 ![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-header.png)
 
-[![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Build Status](https://travis-ci.org/yannickl/SnappingStepper.png?branch=master)](https://travis-ci.org/yannickl/SnappingStepper)
+[![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/yannickl/SnappingStepper.png?branch=master)](https://travis-ci.org/yannickl/SnappingStepper)
 
 An elegant alternative to the `UIStepper` enhanced with a thumb slider to control the value update with more flexibility.
 
@@ -47,6 +48,23 @@ $ open MyProject.xcworkspace
 
 You can now `import SnappingStepper` framework into your files.
 
+#### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate `SnappingStepper` into your Xcode project using Carthage, specify it in your `Cartfile` file:
+
+```ogdl
+github "yannickl/SnappingStepper" >= 2.0.0
+```
+
 #### Manually
 
 [Download](https://github.com/YannickL/SnappingStepper/archive/master.zip) the project and copy the `SnappingStepper` folder into your project to use it in.
@@ -58,7 +76,7 @@ let stepper = SnappingStepper(frame: CGRectMake(0, 0, 100, 40))
 
 override func viewDidLoad() {
   super.viewDidLoad()
-  
+
   // Configure the stepper like any other UIStepper. For example:
   //
   // stepper.continuous   = true
@@ -74,7 +92,7 @@ override func viewDidLoad() {
   stepper.thumbColor      = UIColor.orangeColor()
 
   stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
-  
+
   // If you don't want using the traditional `addTarget:action:` pattern you can use
   // the `valueChangedBlock`
   // snappingStepper.valueChangeBlock = { (value: Double) in
@@ -83,14 +101,14 @@ override func viewDidLoad() {
 
   view.addSubview(stepper)
 }
-  
+
 func valueChanged(sender: AnyObject) {
   // Retrieve the value: stepper.value
 }
 ```
 
-To go further, take a look at the example project. 
-    
+To go further, take a look at the example project.
+
 ## Contact
 
 Yannick Loriot
