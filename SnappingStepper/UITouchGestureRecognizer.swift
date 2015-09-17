@@ -31,14 +31,14 @@ import UIKit.UIGestureRecognizerSubclass
 final internal class UITouchGestureRecognizer: UIGestureRecognizer {
   var isTouchInside = true
 
-  override func touchesBegan(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
     if state == .Possible {
       state = .Began
     }
   }
 
-  override func touchesMoved(touches: Set<NSObject>!, withEvent event: UIEvent!) {
-    if let touch = touches.first as? UITouch, let view = view {
+  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
+    if let touch = touches.first, let view = view {
       let touchLocation = touch.locationInView(view)
 
       let touchAreaRect = CGRectInset(view.bounds, -10, -10)
@@ -57,11 +57,11 @@ final internal class UITouchGestureRecognizer: UIGestureRecognizer {
     }
   }
 
-  override func touchesEnded(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
     state = .Failed
   }
 
-  override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+  override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent) {
     state = .Failed
   }
 }

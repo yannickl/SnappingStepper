@@ -35,7 +35,7 @@ import UIKit
   var timer: NSTimer?
 
   let dynamicButtonAnimator = UIDynamicAnimator()
-  var snappingBehavior: SnappingStepperBehavior?
+  var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPointZero)
 
   // MARK: - Preparing and Sending Messages using Blocks
 
@@ -199,7 +199,7 @@ import UIKit
   }
 
   /// Returns an object initialized from data in a given unarchiver.
-  required public init(coder aDecoder: NSCoder) {
+  required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
 
     initComponents()
