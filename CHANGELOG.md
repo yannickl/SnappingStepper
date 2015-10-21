@@ -1,5 +1,16 @@
 # Change log
 
+## [Version 2.1.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.1.0)
+*Released on 2015-10-21.*
+
+- [REFACTORIGNG] `fontColor` to `symbolFontColor`
+- [REFACTORIGNG] `font` to `symbolFont`
+- [REFACTORING] `thumbColor` to `thumbBackgroundColor`
+- [ADD] `thumbWidthRatio` property
+- [ADD] `thumbText` property
+- [ADD] `thumbTextColor` property
+- [ADD] `thumbFont` property
+
 ## [Version 2.0.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.0.0)
 *Released on 2015-09-17.*
 
@@ -53,4 +64,5 @@
 - `stepValue` property
 - `value` property
 - `font` property
+- `fontColor` property
 - Cocoapods support

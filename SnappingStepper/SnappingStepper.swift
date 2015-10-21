@@ -26,11 +26,34 @@
 
 import UIKit
 
-/// A stepper control provides a user interface for incrementing or decrementing a value. The `SnappingStepper` addings a thumb in the middle to allow the user to update the value by sliding it either to the left or the right side.
+/// A stepper control provides a user interface for incrementing or decrementing a value. The `SnappingStepper` addings a thumb in the middle to allow the user to update the value by sliding it either to the left or the right side. It can also be customizable to display the current value or custom text.
 @IBDesignable public final class SnappingStepper: UIControl {
-  let minusLabel = UILabel()
-  let plusLabel  = UILabel()
-  let thumbView  = UIView()
+  /// The value label that represents the thumb button
+  lazy var thumbLabel: UILabel = {
+    let label                    = UILabel()
+    label.textAlignment          = .Center
+    label.userInteractionEnabled = true
+
+    return label
+  }()
+
+  /// The minus label
+  let minusSymbolLabel: UILabel = {
+    let label                    = UILabel()
+    label.textAlignment          = .Center
+    label.userInteractionEnabled = true
+
+    return label
+  }()
+
+  /// The plus label
+  let plusSymbolLabel: UILabel = {
+    let label                    = UILabel()
+    label.textAlignment          = .Center
+    label.userInteractionEnabled = true
+
+    return label
+    }()
 
   var timer: NSTimer?
 
@@ -145,40 +168,75 @@ import UIKit
   }
   var _value: Double = 0
 
-  // MARK: - Configuring the Stepper Visual Appearance
+  // MARK: - Setting the Stepper Visual Appearance
 
   /// The font of the text symbols (`minus` and `plus`).
-  @IBInspectable public var font = UIFont(name: "TrebuchetMS-Bold", size: 20) {
+  @IBInspectable public var symbolFont = UIFont(name: "TrebuchetMS-Bold", size: 20) {
     didSet {
-      minusLabel.font = font
-      plusLabel.font  = font
+      minusSymbolLabel.font = symbolFont
+      plusSymbolLabel.font  = symbolFont
     }
   }
 
   /// The color of the text symbols (`minus` and `plus`).
-  @IBInspectable public var fontColor: UIColor = UIColor.blackColor() {
+  @IBInspectable public var symbolFontColor: UIColor = UIColor.blackColor() {
     didSet {
-      minusLabel.textColor = fontColor
-      plusLabel.textColor  = fontColor
+      minusSymbolLabel.textColor = symbolFontColor
+      plusSymbolLabel.textColor  = symbolFontColor
+    }
+  }
+
+  /// The thumb width represented as a ratio of the component width. For example if the width of the stepper is 30px and the ratio is 0.5, the thumb width will be equal to 15px. Defaults to 0.5.
+  @IBInspectable public var thumbWidthRatio: CGFloat = 0.5 {
+    didSet {
+      layoutComponents()
+    }
+  }
+
+  /// The font of the thumb label.
+  @IBInspectable public var thumbFont = UIFont(name: "TrebuchetMS-Bold", size: 20) {
+    didSet {
+      thumbLabel.font = thumbFont
+    }
+  }
+
+  /// The thumb's background color. If nil the thumb color will be lighter than the background color. Defaults to nil.
+  @IBInspectable public var thumbBackgroundColor: UIColor? {
+    didSet {
+      thumbLabel.backgroundColor = thumbBackgroundColor
+    }
+  }
+
+  /// The thumb's text color. Default's to black
+  @IBInspectable public var thumbTextColor: UIColor = UIColor.blackColor() {
+    didSet {
+      thumbLabel.textColor = thumbTextColor
     }
   }
 
   /// The view’s background color.
   override public var backgroundColor: UIColor? {
     didSet {
-      minusLabel.backgroundColor = backgroundColor
-      plusLabel.backgroundColor  = backgroundColor
+      minusSymbolLabel.backgroundColor = backgroundColor
+      plusSymbolLabel.backgroundColor  = backgroundColor
 
-      if thumbColor == nil {
-        thumbView.backgroundColor = backgroundColor?.lighterColor()
+      if thumbBackgroundColor == nil {
+        thumbLabel.backgroundColor = backgroundColor?.lighterColor()
       }
     }
   }
 
-  /// The thumb's color
-  @IBInspectable public var thumbColor: UIColor? {
+  // MARK: - Displaying Thumb Text
+
+  /// The thumb text to display. If the text is nil it will display the current value of the stepper. Defaults with empty string.
+  @IBInspectable public var thumbText: String? = "" {
     didSet {
-      thumbView.backgroundColor = thumbColor
+      if thumbText == nil {
+        thumbLabel.text = "\(value)"
+      }
+      else {
+        thumbLabel.text = thumbText
+      }
     }
   }
 
@@ -218,27 +276,24 @@ import UIKit
   // MARK: - Managing the Components
 
   func initComponents() {
-    minusLabel.text                   = "-"
-    minusLabel.font                   = font
-    minusLabel.textColor              = fontColor
-    minusLabel.textAlignment          = .Center
-    minusLabel.userInteractionEnabled = true
-    addSubview(minusLabel)
+    minusSymbolLabel.text      = "-"
+    minusSymbolLabel.font      = symbolFont
+    minusSymbolLabel.textColor = symbolFontColor
+    addSubview(minusSymbolLabel)
 
-    plusLabel.text                   = "+"
-    plusLabel.font                   = font
-    plusLabel.textColor              = fontColor
-    plusLabel.textAlignment          = .Center
-    plusLabel.userInteractionEnabled = true
-    addSubview(plusLabel)
+    plusSymbolLabel.text      = "+"
+    plusSymbolLabel.font      = symbolFont
+    plusSymbolLabel.textColor = symbolFontColor
+    addSubview(plusSymbolLabel)
 
-    thumbView.userInteractionEnabled = true
-    addSubview(thumbView)
+    thumbLabel.font      = thumbFont
+    thumbLabel.textColor = thumbTextColor
+    addSubview(thumbLabel)
   }
 
   func setupGestures() {
     let panGesture = UIPanGestureRecognizer(target: self, action: "sliderPanned:")
-    thumbView.addGestureRecognizer(panGesture)
+    thumbLabel.addGestureRecognizer(panGesture)
 
     let touchGesture = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
     touchGesture.requireGestureRecognizerToFail(panGesture)
@@ -246,11 +301,14 @@ import UIKit
   }
 
   func layoutComponents() {
-    minusLabel.frame = CGRectMake(0, 0, bounds.width / 3, bounds.height)
-    plusLabel.frame  = CGRectMake(bounds.width / 3 * 2, 0, bounds.width / 3, bounds.height)
-    thumbView.frame = CGRectMake(bounds.width / 3, 0, bounds.width / 3, bounds.height)
+    let thumbWidth  = bounds.width * thumbWidthRatio
+    let symbolWidth = (bounds.width - thumbWidth) / 2
 
-    snappingBehavior = SnappingStepperBehavior(item: thumbView, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
+    minusSymbolLabel.frame = CGRectMake(0, 0, symbolWidth, bounds.height)
+    plusSymbolLabel.frame  = CGRectMake(symbolWidth + thumbWidth, 0, symbolWidth, bounds.height)
+    thumbLabel.frame       = CGRectMake(symbolWidth, 0, thumbWidth, bounds.height)
+
+    snappingBehavior = SnappingStepperBehavior(item: thumbLabel, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
   }
 
   // MARK: - Responding to Gesture Events
@@ -259,10 +317,10 @@ import UIKit
     let touchLocation = sender.locationInView(self)
     let hitView       = hitTest(touchLocation, withEvent: nil)
 
-    _factorValue = hitView == minusLabel ? -1 : 1
+    _factorValue = hitView == minusSymbolLabel ? -1 : 1
 
     switch (sender.state, hitView) {
-    case (.Began, let v) where v == minusLabel || v == plusLabel:
+    case (.Began, let v) where v == minusSymbolLabel || v == plusSymbolLabel:
       if autorepeat {
         startAutorepeat()
       }
@@ -274,7 +332,7 @@ import UIKit
 
       v!.backgroundColor = backgroundColor?.darkerColor()
     case (.Changed, let v):
-      if v == minusLabel || v == plusLabel {
+      if v == minusSymbolLabel || v == plusSymbolLabel {
         v!.backgroundColor = backgroundColor?.darkerColor()
 
         if autorepeat {
@@ -282,14 +340,14 @@ import UIKit
         }
       }
       else {
-        minusLabel.backgroundColor = backgroundColor
-        plusLabel.backgroundColor  = backgroundColor
+        minusSymbolLabel.backgroundColor = backgroundColor
+        plusSymbolLabel.backgroundColor  = backgroundColor
 
         stopAutorepeat()
       }
     default:
-      minusLabel.backgroundColor = backgroundColor
-      plusLabel.backgroundColor  = backgroundColor
+      minusSymbolLabel.backgroundColor = backgroundColor
+      plusSymbolLabel.backgroundColor  = backgroundColor
 
       if autorepeat {
         stopAutorepeat()
@@ -308,10 +366,10 @@ import UIKit
   func sliderPanned(sender: UIPanGestureRecognizer) {
     switch sender.state {
     case .Began:
-      touchesBeganPoint = sender.translationInView(thumbView)
+      touchesBeganPoint = sender.translationInView(thumbLabel)
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
-      thumbView.backgroundColor = thumbColor?.lighterColor()
+      thumbLabel.backgroundColor = thumbBackgroundColor?.lighterColor()
 
       if autorepeat {
         startAutorepeat(autorepeatCount: Int.max)
@@ -320,14 +378,14 @@ import UIKit
         initialValue = _value
       }
     case .Changed:
-      let translationInView = sender.translationInView(thumbView)
+      let translationInView = sender.translationInView(thumbLabel)
 
       var centerX = (bounds.width * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.4)
-      centerX     = max(thumbView.bounds.width / 2, min(centerX, bounds.width - thumbView.bounds.width / 2))
+      centerX     = max(thumbLabel.bounds.width / 2, min(centerX, bounds.width - thumbLabel.bounds.width / 2))
 
-      thumbView.center = CGPointMake(centerX, thumbView.center.y);
+      thumbLabel.center = CGPointMake(centerX, thumbLabel.center.y);
 
-      let locationRatio = (thumbView.center.x - CGRectGetMidX(bounds)) / ((CGRectGetWidth(bounds) - CGRectGetWidth(thumbView.bounds)) / 2)
+      let locationRatio = (thumbLabel.center.x - CGRectGetMidX(bounds)) / ((CGRectGetWidth(bounds) - CGRectGetWidth(thumbLabel.bounds)) / 2)
       let ratio         = Double(Int(locationRatio * 10)) / 10
       let factorValue   = ((maximumValue - minimumValue) / 100) * ratio
 
@@ -342,7 +400,7 @@ import UIKit
     case .Ended, .Failed, .Cancelled:
       dynamicButtonAnimator.addBehavior(snappingBehavior)
 
-      thumbView.backgroundColor = thumbColor ?? backgroundColor?.lighterColor()
+      thumbLabel.backgroundColor = thumbBackgroundColor ?? backgroundColor?.lighterColor()
 
       if autorepeat {
         stopAutorepeat()
@@ -430,6 +488,10 @@ import UIKit
     
     if (continuous || finished) && oldValue != _value {
       oldValue = _value
+
+      if thumbText == nil {
+        thumbLabel.text = "\(_value)"
+      }
 
       sendActionsForControlEvents(.ValueChanged)
       
