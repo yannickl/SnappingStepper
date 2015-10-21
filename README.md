@@ -11,65 +11,7 @@ An elegant alternative to the `UIStepper` enhanced with a thumb slider to contro
 
 *Note: the control is inspired by this control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
 
-## Installation
-
-#### CocoaPods
-
-Install CocoaPods if not already available:
-
-``` bash
-$ [sudo] gem install cocoapods
-$ pod setup
-```
-Go to the directory of your Xcode project, and Create and Edit your Podfile and add _SnappingStepper_:
-
-``` bash
-$ cd /path/to/MyProject
-$ touch Podfile
-$ edit Podfile
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-
-use_frameworks!
-pod 'SnappingStepper', '~> 2.0.0'
-```
-
-Install into your project:
-
-``` bash
-$ pod install
-```
-
-Open your project in Xcode from the .xcworkspace file (not the usual project file):
-
-``` bash
-$ open MyProject.xcworkspace
-```
-
-You can now `import SnappingStepper` framework into your files.
-
-#### Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
-
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate `SnappingStepper` into your Xcode project using Carthage, specify it in your `Cartfile` file:
-
-```ogdl
-github "yannickl/SnappingStepper" >= 2.0.0
-```
-
-#### Manually
-
-[Download](https://github.com/YannickL/SnappingStepper/archive/master.zip) the project and copy the `SnappingStepper` folder into your project to use it in.
-
-## Usage
+# Usage
 
 ```swift
 let stepper = SnappingStepper(frame: CGRectMake(0, 0, 100, 40))
@@ -86,10 +28,14 @@ override func viewDidLoad() {
   // stepper.maximumValue = 100
   // stepper.stepValue    = 1
 
-  stepper.font            = UIFont(name: "TrebuchetMS-Bold", size: 20)
-  stepper.fontColor       = UIColor.blackColor()
-  stepper.backgroundColor = UIColor.redColor()
-  stepper.thumbColor      = UIColor.orangeColor()
+  stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 20)
+  stepper.symbolFontColor      = UIColor.blackColor()
+  stepper.backgroundColor      = UIColor(hex: 0xc0392b)
+  stepper.thumbWidthRatio      = 0.5
+  stepper.thumbText            = ""
+  stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 20)
+  stepper.thumbBackgroundColor = UIColor(hex: 0xe74c3c)
+  stepper.thumbTextColor       = UIColor.blackColor()
 
   stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
 
@@ -109,14 +55,72 @@ func valueChanged(sender: AnyObject) {
 
 To go further, take a look at the example project.
 
-## Contact
+# Installation
+
+## CocoaPods
+
+Install CocoaPods if not already available:
+
+``` bash
+$ [sudo] gem install cocoapods
+$ pod setup
+```
+Go to the directory of your Xcode project, and Create and Edit your Podfile and add _SnappingStepper_:
+
+``` bash
+$ cd /path/to/MyProject
+$ touch Podfile
+$ edit Podfile
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+use_frameworks!
+pod 'SnappingStepper', '~> 2.1.0'
+```
+
+Install into your project:
+
+``` bash
+$ pod install
+```
+
+Open your project in Xcode from the .xcworkspace file (not the usual project file):
+
+``` bash
+$ open MyProject.xcworkspace
+```
+
+You can now `import SnappingStepper` framework into your files.
+
+## Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate `SnappingStepper` into your Xcode project using Carthage, specify it in your `Cartfile` file:
+
+```ogdl
+github "yannickl/SnappingStepper" >= 2.1.0
+```
+
+## Manually
+
+[Download](https://github.com/YannickL/SnappingStepper/archive/master.zip) the project and copy the `SnappingStepper` folder into your project to use it in.
+
+# Contact
 
 Yannick Loriot
  - [https://twitter.com/yannickloriot](https://twitter.com/yannickloriot)
  - [contact@yannickloriot.com](mailto:contact@yannickloriot.com)
 
 
-## License (MIT)
+# License (MIT)
 
 Copyright (c) 2015-present - Yannick Loriot
 

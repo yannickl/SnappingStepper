@@ -611,6 +611,7 @@
 				CE8FFEC81BAB22C100D43F38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEB21D651B18C169003E9EEC /* Build configuration list for PBXNativeTarget "Tests" */ = {
 			isa = XCConfigurationList;
