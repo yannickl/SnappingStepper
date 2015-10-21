@@ -158,6 +158,12 @@ class SnappingStepperTests: XCTestCase {
     stepper.value = 50
     XCTAssert(stepper.thumbLabel.text == "50", "'thumbLabel.text' should be equal to \"50\"")
 
+    stepper.value = 50.0
+    XCTAssert(stepper.thumbLabel.text == "50", "'thumbLabel.text' should be equal to \"50\"")
+
+    stepper.value = 50.2
+    XCTAssert(stepper.thumbLabel.text == "50.2", "'thumbLabel.text' should be equal to \"50.2\"")
+
     stepper.value = 150
     XCTAssert(stepper.thumbLabel.text == "100", "'thumbLabel.text' should be equal to \"100\"")
 

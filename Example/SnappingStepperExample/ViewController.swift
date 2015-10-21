@@ -35,5 +35,18 @@ class ViewController: UIViewController {
   @IBAction func stepperValueChangedAction(sender: AnyObject) {
     valueLabel.text = "\(snappingStepper.value)"
   }
+
+  @IBAction func segmentedValueChangedAction(sender: UISegmentedControl) {
+    switch sender.selectedSegmentIndex {
+    case 1:
+      snappingStepper.thumbText = ""
+    case 2:
+      snappingStepper.thumbText = "Move Me"
+      snappingStepper.thumbFont = UIFont(name: "TrebuchetMS-Bold", size: 12)
+    default:
+      snappingStepper.thumbText = nil
+      snappingStepper.thumbFont = UIFont(name: "TrebuchetMS-Bold", size: 20)
+    }
+  }
 }
 

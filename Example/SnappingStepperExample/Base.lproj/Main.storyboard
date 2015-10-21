@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix2-NP-H0n">
-                                <rect key="frame" x="220" y="231" width="160" height="138"/>
+                                <rect key="frame" x="175" y="200" width="250" height="200"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-3t-c5V">
-                                        <rect key="frame" x="20" y="78" width="120" height="40"/>
+                                        <rect key="frame" x="65" y="80" width="120" height="40"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ad0-m7-UQg"/>
@@ -32,7 +32,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4I-GE-yJd" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="20" width="120" height="40"/>
+                                        <rect key="frame" x="65" y="20" width="120" height="40"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
@@ -48,24 +48,55 @@
                                             <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ap5-lW-Ovi"/>
                                         </connections>
                                     </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ziz-Bb-wQ4">
+                                        <rect key="frame" x="21" y="128" width="209" height="29"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="6yV-rm-FDw"/>
+                                            <constraint firstAttribute="width" constant="209" id="wcW-bI-hBy"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Auto"/>
+                                            <segment title="Empty"/>
+                                            <segment title="Move Me"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="segmentedValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="bUt-IX-Jyi"/>
+                                        </connections>
+                                    </segmentedControl>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ziz-Bb-wQ4" firstAttribute="top" secondItem="QWu-3t-c5V" secondAttribute="bottom" constant="8" id="3LE-9o-hSi"/>
                                     <constraint firstAttribute="centerX" secondItem="p4I-GE-yJd" secondAttribute="centerX" id="6BB-Vm-jjs"/>
+                                    <constraint firstItem="ziz-Bb-wQ4" firstAttribute="centerX" secondItem="p4I-GE-yJd" secondAttribute="centerX" id="8Gj-az-6Ie"/>
                                     <constraint firstItem="p4I-GE-yJd" firstAttribute="top" secondItem="Ix2-NP-H0n" secondAttribute="top" constant="20" id="8O0-F9-1cp"/>
-                                    <constraint firstAttribute="bottom" secondItem="QWu-3t-c5V" secondAttribute="bottom" constant="20" id="8sl-sc-PlX"/>
-                                    <constraint firstAttribute="height" constant="138" id="C6f-z6-2Bc"/>
-                                    <constraint firstAttribute="width" constant="160" id="Vk5-e3-rCF"/>
+                                    <constraint firstAttribute="height" constant="200" id="C6f-z6-2Bc"/>
+                                    <constraint firstItem="QWu-3t-c5V" firstAttribute="top" secondItem="p4I-GE-yJd" secondAttribute="bottom" constant="20" id="EqF-k7-6JJ"/>
+                                    <constraint firstAttribute="width" constant="250" id="Vk5-e3-rCF"/>
                                     <constraint firstAttribute="centerX" secondItem="QWu-3t-c5V" secondAttribute="centerX" id="fuF-Hb-mu4"/>
                                 </constraints>
                             </view>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbl-la-odc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vQ2-5k-C4k"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="SnappingStepper" id="Cp1-OJ-8hg"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Jbl-la-odc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3DN-kZ-lDZ"/>
                             <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qgh-XQ-L0f"/>
+                            <constraint firstAttribute="trailing" secondItem="Jbl-la-odc" secondAttribute="trailing" id="Rb6-jq-9xn"/>
                             <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iHm-Zb-8D0"/>
+                            <constraint firstItem="Jbl-la-odc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mCA-y4-uKy"/>
                         </constraints>
                     </view>
                     <connections>
@@ -75,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352" y="409"/>
+            <point key="canvasLocation" x="340" y="430"/>
         </scene>
     </scenes>
 </document>
