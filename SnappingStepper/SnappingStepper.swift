@@ -33,6 +33,7 @@ import UIKit
     let label                    = UILabel()
     label.textAlignment          = .Center
     label.userInteractionEnabled = true
+    label.text                   = ""
 
     return label
   }()
@@ -166,7 +167,14 @@ import UIKit
       updateValue(newValue, finished: true)
     }
   }
-  var _value: Double = 0
+
+  var _value: Double = 0 {
+    didSet {
+      if thumbText == nil {
+        updateThumbTextWithValue()
+      }
+    }
+  }
 
   // MARK: - Setting the Stepper Visual Appearance
 
@@ -232,7 +240,7 @@ import UIKit
   @IBInspectable public var thumbText: String? = "" {
     didSet {
       if thumbText == nil {
-        thumbLabel.text = "\(value)"
+        updateThumbTextWithValue()
       }
       else {
         thumbLabel.text = thumbText
@@ -485,19 +493,24 @@ import UIKit
         _value = minimumValue
       }
     }
-    
+
     if (continuous || finished) && oldValue != _value {
       oldValue = _value
-
-      if thumbText == nil {
-        thumbLabel.text = "\(_value)"
-      }
 
       sendActionsForControlEvents(.ValueChanged)
       
       if let _valueChangedBlock = valueChangedBlock {
         _valueChangedBlock(value: _value)
       }
+    }
+  }
+
+  func updateThumbTextWithValue() {
+    if value % 1 == 0 {
+      thumbLabel.text = "\(Int(value))"
+    }
+    else {
+      thumbLabel.text = "\(value)"
     }
   }
 }

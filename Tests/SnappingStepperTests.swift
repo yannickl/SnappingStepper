@@ -144,4 +144,27 @@ class SnappingStepperTests: XCTestCase {
     
     waitForExpectationsWithTimeout(0.1) { (error) in }
   }
+
+  func testThumbLabelTextValue() {
+    let stepper   = SnappingStepper()
+    stepper.value = 100
+
+    XCTAssert(stepper.value == 100, "'value' should be equal to the 'maximum' value")
+    XCTAssert(stepper.thumbLabel.text == "", "'thumbLabel.text' should be equal to empty string")
+    
+    stepper.thumbText = nil
+    XCTAssert(stepper.thumbLabel.text == "100", "'thumbLabel.text' should be equal to \"100\"")
+
+    stepper.value = 50
+    XCTAssert(stepper.thumbLabel.text == "50", "'thumbLabel.text' should be equal to \"50\"")
+
+    stepper.value = 150
+    XCTAssert(stepper.thumbLabel.text == "100", "'thumbLabel.text' should be equal to \"100\"")
+
+    stepper.thumbText = "Move Me!"
+    XCTAssert(stepper.thumbLabel.text == "Move Me!", "'thumbLabel.text' should be equal to \"Move Me!\"")
+
+    stepper.value = 50
+    XCTAssert(stepper.thumbLabel.text == "Move Me!", "'thumbLabel.text' should be equal to \"Move Me!\"")
+  }
 }
