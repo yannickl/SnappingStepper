@@ -6,7 +6,7 @@
 An elegant alternative to the `UIStepper` enhanced with a thumb slider to control the value update with more flexibility.
 
 <p align="center">
-  <img src="http://yannickloriot.com/resources/snappingstepper.gif" alt=screenshot" />
+  <img src="http://yannickloriot.com/resources/snappingstepper-animate.gif" alt=screenshot" />
 </p>
 
 *Note: the control is inspired by this control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
