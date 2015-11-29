@@ -1,7 +1,7 @@
 ![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-header.png)
 
 [![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Build Status](https://travis-ci.org/yannickl/SnappingStepper.png?branch=master)](https://travis-ci.org/yannickl/SnappingStepper)
+[![Build Status](https://travis-ci.org/yannickl/SnappingStepper.svg?branch=master)](https://travis-ci.org/yannickl/SnappingStepper)
 
 An elegant alternative to the `UIStepper` enhanced with a thumb slider to control the value update with more flexibility.
 
