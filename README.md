@@ -1,12 +1,12 @@
 ![SnappingStepper](http://yannickloriot.com/resources/snappingstepper-header.png)
 
 [![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Build Status](https://travis-ci.org/yannickl/SnappingStepper.png?branch=master)](https://travis-ci.org/yannickl/SnappingStepper) [![codecov.io](http://codecov.io/github/yannickl/SnappingStepper/coverage.svg?branch=master)](http://codecov.io/github/yannickl/SnappingStepper?branch=master)
+[![Build Status](https://travis-ci.org/yannickl/SnappingStepper.svg?branch=master)](https://travis-ci.org/yannickl/SnappingStepper) [![codecov.io](http://codecov.io/github/yannickl/SnappingStepper/coverage.svg?branch=master)](http://codecov.io/github/yannickl/SnappingStepper?branch=master)
 
 An elegant alternative to the `UIStepper` enhanced with a thumb slider to control the value update with more flexibility.
 
 <p align="center">
-  <img src="http://yannickloriot.com/resources/snappingstepper.gif" alt=screenshot" />
+  <img src="http://yannickloriot.com/resources/snappingstepper-animate.gif" alt=screenshot" />
 </p>
 
 *Note: the control is inspired by this control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
