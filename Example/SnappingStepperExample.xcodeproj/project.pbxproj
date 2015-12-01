@@ -13,21 +13,22 @@
 		CE6F72451AF513810019CB55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72441AF513810019CB55 /* Images.xcassets */; };
 		CE6F72481AF513810019CB55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72461AF513810019CB55 /* LaunchScreen.xib */; };
 		CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
-		CE6F72621AF513AB0019CB55 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725F1AF513AB0019CB55 /* UIColor.swift */; };
 		CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
 		CE8FFEB21BAB22C100D43F38 /* SnappingStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE8FFEB11BAB22C100D43F38 /* SnappingStepper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE8FFEC41BAB22C100D43F38 /* SnappingStepper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */; };
 		CE8FFEC51BAB22C100D43F38 /* SnappingStepper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE8FFECD1BAB22DC00D43F38 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
-		CE8FFECE1BAB22DC00D43F38 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725F1AF513AB0019CB55 /* UIColor.swift */; };
 		CE8FFECF1BAB22DC00D43F38 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
 		CE8FFED01BAB22DC00D43F38 /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
 		CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
 		CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */; };
 		CEB21D6A1B18C1C8003E9EEC /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
-		CEB21D6B1B18C1C8003E9EEC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725F1AF513AB0019CB55 /* UIColor.swift */; };
 		CEB21D6C1B18C1C8003E9EEC /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
 		CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
+		CECF53661C0E409A00DF6B92 /* XCTTestCaseTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53651C0E409A00DF6B92 /* XCTTestCaseTemplate.swift */; };
+		CECF536A1C0E440F00DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
+		CECF536B1C0E441500DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
+		CECF536C1C0E441600DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,6 @@
 		CE6F72441AF513810019CB55 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE6F72471AF513810019CB55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepper.swift; sourceTree = "<group>"; };
-		CE6F725F1AF513AB0019CB55 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnappingStepper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8FFEB11BAB22C100D43F38 /* SnappingStepper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnappingStepper.h; sourceTree = "<group>"; };
@@ -79,6 +79,8 @@
 		CEB21D5F1B18C169003E9EEC /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB21D621B18C169003E9EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingStepperTests.swift; path = ../../Tests/SnappingStepperTests.swift; sourceTree = "<group>"; };
+		CECF53651C0E409A00DF6B92 /* XCTTestCaseTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTTestCaseTemplate.swift; path = ../../Tests/XCTTestCaseTemplate.swift; sourceTree = "<group>"; };
+		CECF53691C0E440F00DF6B92 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */,
-				CE6F725F1AF513AB0019CB55 /* UIColor.swift */,
+				CECF53691C0E440F00DF6B92 /* UIColor.swift */,
 				CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */,
 				CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */,
 			);
@@ -173,6 +175,7 @@
 		CEB21D601B18C169003E9EEC /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CECF53651C0E409A00DF6B92 /* XCTTestCaseTemplate.swift */,
 				CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */,
 				CEB21D611B18C169003E9EEC /* Supporting Files */,
 			);
@@ -332,7 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6F72401AF513810019CB55 /* ViewController.swift in Sources */,
-				CE6F72621AF513AB0019CB55 /* UIColor.swift in Sources */,
+				CECF536A1C0E440F00DF6B92 /* UIColor.swift in Sources */,
 				CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */,
 				CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */,
 				CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */,
@@ -345,7 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8FFECD1BAB22DC00D43F38 /* SnappingStepper.swift in Sources */,
-				CE8FFECE1BAB22DC00D43F38 /* UIColor.swift in Sources */,
+				CECF536B1C0E441500DF6B92 /* UIColor.swift in Sources */,
 				CE8FFECF1BAB22DC00D43F38 /* UITouchGestureRecognizer.swift in Sources */,
 				CE8FFED01BAB22DC00D43F38 /* SnappingStepperBehavior.swift in Sources */,
 			);
@@ -356,8 +359,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB21D6A1B18C1C8003E9EEC /* SnappingStepper.swift in Sources */,
-				CEB21D6B1B18C1C8003E9EEC /* UIColor.swift in Sources */,
+				CECF536C1C0E441600DF6B92 /* UIColor.swift in Sources */,
 				CEB21D6C1B18C1C8003E9EEC /* UITouchGestureRecognizer.swift in Sources */,
+				CECF53661C0E409A00DF6B92 /* XCTTestCaseTemplate.swift in Sources */,
 				CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */,
 				CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */,
 			);
@@ -554,6 +558,8 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -574,6 +580,8 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class SnappingStepperTests: XCTestCase {
+class SnappingStepperTests: XCTTestCaseTemplate {
   func testDefaultValues() {
     let stepper = SnappingStepper()
 
