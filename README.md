@@ -11,8 +11,6 @@ An elegant alternative to the `UIStepper` enhanced with a thumb slider to contro
   <img src="http://yannickloriot.com/resources/snappingstepper-animate.gif" alt="screenshot" />
 </p>
 
-*Note: the control is inspired by this control: [SnappingSlider](https://github.com/rehatkathuria/SnappingSlider)*
-
 # Usage
 
 ```swift
