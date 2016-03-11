@@ -284,7 +284,7 @@ import UIKit
   // MARK: - Managing the Components
 
   func initComponents() {
-    minusSymbolLabel.text      = "-"
+    minusSymbolLabel.text      = "−"
     minusSymbolLabel.font      = symbolFont
     minusSymbolLabel.textColor = symbolFontColor
     addSubview(minusSymbolLabel)
