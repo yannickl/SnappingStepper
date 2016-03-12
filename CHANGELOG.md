@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 2.1.1](https://github.com/yannickl/SnappingStepper/releases/tag/2.1.1)
+*Released on 2016-03-12.*
+
+- [REFACTORIGNG] minus symbol with the unicode one.
+
 ## [Version 2.1.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.1.0)
 *Released on 2015-10-21.*
 

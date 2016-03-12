@@ -740,6 +740,7 @@
 				CECF537C1C0E4A1500DF6B92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
