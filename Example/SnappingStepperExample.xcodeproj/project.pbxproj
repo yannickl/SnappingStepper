@@ -29,6 +29,7 @@
 		CECF536A1C0E440F00DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
 		CECF536B1C0E441500DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
 		CECF536C1C0E441600DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
+		CECF53761C0E4A1500DF6B92 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53751C0E4A1500DF6B92 /* UITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,13 @@
 			remoteInfo = SnappingStepper;
 		};
 		CEB21D6E1B18E480003E9EEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE6F72301AF513810019CB55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE6F72371AF513810019CB55;
+			remoteInfo = SnappingStepperExample;
+		};
+		CECF53781C0E4A1500DF6B92 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CE6F72301AF513810019CB55 /* Project object */;
 			proxyType = 1;
@@ -81,6 +89,9 @@
 		CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingStepperTests.swift; path = ../../Tests/SnappingStepperTests.swift; sourceTree = "<group>"; };
 		CECF53651C0E409A00DF6B92 /* XCTTestCaseTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTTestCaseTemplate.swift; path = ../../Tests/XCTTestCaseTemplate.swift; sourceTree = "<group>"; };
 		CECF53691C0E440F00DF6B92 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		CECF53731C0E4A1500DF6B92 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECF53751C0E4A1500DF6B92 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		CECF53771C0E4A1500DF6B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +117,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CECF53701C0E4A1500DF6B92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -116,6 +134,7 @@
 				CE6F723A1AF513810019CB55 /* SnappingStepperExample */,
 				CEB21D601B18C169003E9EEC /* Tests */,
 				CE8FFEB01BAB22C100D43F38 /* SnappingStepper */,
+				CECF53741C0E4A1500DF6B92 /* UITests */,
 				CE6F72391AF513810019CB55 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +145,7 @@
 				CE6F72381AF513810019CB55 /* SnappingStepperExample.app */,
 				CEB21D5F1B18C169003E9EEC /* Tests.xctest */,
 				CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */,
+				CECF53731C0E4A1500DF6B92 /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +208,15 @@
 				CEB21D621B18C169003E9EEC /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CECF53741C0E4A1500DF6B92 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				CECF53751C0E4A1500DF6B92 /* UITests.swift */,
+				CECF53771C0E4A1500DF6B92 /* Info.plist */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +288,24 @@
 			productReference = CEB21D5F1B18C169003E9EEC /* Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		CECF53721C0E4A1500DF6B92 /* UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CECF537A1C0E4A1500DF6B92 /* Build configuration list for PBXNativeTarget "UITests" */;
+			buildPhases = (
+				CECF536F1C0E4A1500DF6B92 /* Sources */,
+				CECF53701C0E4A1500DF6B92 /* Frameworks */,
+				CECF53711C0E4A1500DF6B92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CECF53791C0E4A1500DF6B92 /* PBXTargetDependency */,
+			);
+			name = UITests;
+			productName = UITests;
+			productReference = CECF53731C0E4A1500DF6B92 /* UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -266,7 +313,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Yannick Loriot";
 				TargetAttributes = {
@@ -278,6 +325,10 @@
 					};
 					CEB21D5E1B18C169003E9EEC = {
 						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = CE6F72371AF513810019CB55;
+					};
+					CECF53721C0E4A1500DF6B92 = {
+						CreatedOnToolsVersion = 7.1.1;
 						TestTargetID = CE6F72371AF513810019CB55;
 					};
 				};
@@ -298,6 +349,7 @@
 				CE6F72371AF513810019CB55 /* SnappingStepperExample */,
 				CE8FFEAE1BAB22C100D43F38 /* SnappingStepper */,
 				CEB21D5E1B18C169003E9EEC /* Tests */,
+				CECF53721C0E4A1500DF6B92 /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -321,6 +373,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CEB21D5D1B18C169003E9EEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CECF53711C0E4A1500DF6B92 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,6 +426,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CECF536F1C0E4A1500DF6B92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CECF53761C0E4A1500DF6B92 /* UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -379,6 +446,11 @@
 			isa = PBXTargetDependency;
 			target = CE6F72371AF513810019CB55 /* SnappingStepperExample */;
 			targetProxy = CEB21D6E1B18E480003E9EEC /* PBXContainerItemProxy */;
+		};
+		CECF53791C0E4A1500DF6B92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE6F72371AF513810019CB55 /* SnappingStepperExample */;
+			targetProxy = CECF53781C0E4A1500DF6B92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -591,6 +663,37 @@
 			};
 			name = Release;
 		};
+		CECF537B1C0E4A1500DF6B92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yannickloriot.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SnappingStepperExample;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		CECF537C1C0E4A1500DF6B92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
+				INFOPLIST_FILE = UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yannickloriot.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SnappingStepperExample;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -629,6 +732,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		CECF537A1C0E4A1500DF6B92 /* Build configuration list for PBXNativeTarget "UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CECF537B1C0E4A1500DF6B92 /* Debug */,
+				CECF537C1C0E4A1500DF6B92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
