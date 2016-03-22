@@ -300,10 +300,10 @@ import UIKit
   }
 
   func setupGestures() {
-    let panGesture = UIPanGestureRecognizer(target: self, action: "sliderPanned:")
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(sliderPanned))
     thumbLabel.addGestureRecognizer(panGesture)
 
-    let touchGesture = UITouchGestureRecognizer(target: self, action: "stepperTouched:")
+    let touchGesture = UITouchGestureRecognizer(target: self, action: #selector(stepperTouched))
     touchGesture.requireGestureRecognizerToFail(panGesture)
     addGestureRecognizer(touchGesture)
   }
@@ -436,7 +436,7 @@ import UIKit
 
     repeatTick(nil)
 
-    let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: "repeatTick:", userInfo: nil, repeats: true)
+    let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: #selector(repeatTick), userInfo: nil, repeats: true)
     timer        = newTimer
 
     NSRunLoop.currentRunLoop().addTimer(newTimer, forMode: NSRunLoopCommonModes)
@@ -466,7 +466,7 @@ import UIKit
         needsIncrement = _autorepeatCount % 1 == 0
       }
 
-      _autorepeatCount++
+      _autorepeatCount += 1
     }
     else {
       needsIncrement = true

@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 2.2.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.2.0)
+*Released on 2016-03-22.*
+
+- Swift 2.2 supports
+
 ## [Version 2.1.1](https://github.com/yannickl/SnappingStepper/releases/tag/2.1.1)
 *Released on 2016-03-12.*
 
