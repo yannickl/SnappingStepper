@@ -54,13 +54,31 @@ import UIKit
     label.userInteractionEnabled = true
 
     return label
-    }()
+  }()
+
+  /// The plus label
+  let hintLabel: UILabel = {
+    let label                    = UILabel()
+    label.textAlignment          = .Center
+    label.userInteractionEnabled = false
+    label.text                   = ""
+    
+    return label
+  }()
 
   var timer: NSTimer?
 
   let dynamicButtonAnimator = UIDynamicAnimator()
   var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPointZero)
 
+  /**
+  Show hint label above the component when sliding the stepper.
+     
+  :discussion:
+  If true, the hint will show
+  */
+  public var showHint = false
+    
   // MARK: - Preparing and Sending Messages using Blocks
 
   /**
@@ -173,6 +191,7 @@ import UIKit
       if thumbText == nil {
         updateThumbTextWithValue()
       }
+      updateHintLabelWithValue()
     }
   }
 
@@ -245,6 +264,7 @@ import UIKit
       else {
         thumbLabel.text = thumbText
       }
+      updateHintLabelWithValue()
     }
   }
 
@@ -297,6 +317,11 @@ import UIKit
     thumbLabel.font      = thumbFont
     thumbLabel.textColor = thumbTextColor
     addSubview(thumbLabel)
+
+    hintLabel.font      = thumbFont
+    hintLabel.textColor = thumbTextColor
+    addSubview(hintLabel)
+    hintLabel.hidden = true
   }
 
   func setupGestures() {
@@ -315,10 +340,31 @@ import UIKit
     minusSymbolLabel.frame = CGRectMake(0, 0, symbolWidth, bounds.height)
     plusSymbolLabel.frame  = CGRectMake(symbolWidth + thumbWidth, 0, symbolWidth, bounds.height)
     thumbLabel.frame       = CGRectMake(symbolWidth, 0, thumbWidth, bounds.height)
+    hintLabel.frame        = CGRectMake(symbolWidth, -bounds.height * 1.5, thumbWidth, bounds.height)
 
     snappingBehavior = SnappingStepperBehavior(item: thumbLabel, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
+    
+    hintLabel.layer.sublayers?.removeAll()
+    self.createHintShapeLayer(hintLabel)
   }
 
+  func createHintShapeLayer(label: UILabel) {
+    let shape = CAShapeLayer()
+    let cp1 = CGPoint(x: label.bounds.width * 0.25, y: label.bounds.height)
+    let cp2 = CGPoint(x: label.bounds.width * 0.75, y: label.bounds.height)
+    let cpc = CGPoint(x: label.bounds.width / 2.0, y: label.bounds.height * 1.25)
+    let sp = CGPoint(x: label.bounds.width / 2.0, y: label.bounds.height * 1.5)
+    let myBezier = UIBezierPath()
+    myBezier.moveToPoint(sp)
+    myBezier.addCurveToPoint(CGPoint(x: 0, y: label.bounds.height), controlPoint1: cpc, controlPoint2: cp1)
+    myBezier.addLineToPoint(CGPoint(x: label.bounds.width, y: label.bounds.height))
+    myBezier.addCurveToPoint(sp, controlPoint1: cp2, controlPoint2: cpc)
+    myBezier.closePath()
+    shape.path = myBezier.CGPath
+    shape.fillColor = thumbBackgroundColor?.lighterColor().CGColor
+    label.layer.addSublayer(shape)
+  }
+    
   // MARK: - Responding to Gesture Events
 
   func stepperTouched(sender: UITouchGestureRecognizer) {
@@ -374,10 +420,18 @@ import UIKit
   func sliderPanned(sender: UIPanGestureRecognizer) {
     switch sender.state {
     case .Began:
+      hintLabel.alpha = 0
+      hintLabel.hidden = !showHint
+      if showHint {
+        UIView.animateWithDuration(0.2, animations: {
+            self.hintLabel.alpha = 1.0
+        })
+      }
       touchesBeganPoint = sender.translationInView(thumbLabel)
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
       thumbLabel.backgroundColor = thumbBackgroundColor?.lighterColor()
+      hintLabel.backgroundColor = thumbBackgroundColor?.lighterColor()
 
       if autorepeat {
         startAutorepeat(autorepeatCount: Int.max)
@@ -406,6 +460,12 @@ import UIKit
         updateValue(_value, finished: true)
       }
     case .Ended, .Failed, .Cancelled:
+      if showHint {
+        UIView.animateWithDuration(0.2, animations: {
+                self.hintLabel.alpha = 0.0
+        })
+      }
+
       dynamicButtonAnimator.addBehavior(snappingBehavior)
 
       thumbLabel.backgroundColor = thumbBackgroundColor ?? backgroundColor?.lighterColor()
@@ -513,4 +573,14 @@ import UIKit
       thumbLabel.text = "\(value)"
     }
   }
+    
+  func updateHintLabelWithValue() {
+    if value % 1 == 0 {
+      hintLabel.text = "\(Int(value))"
+    }
+    else {
+      hintLabel.text = "\(value)"
+    }
+  }
+
 }

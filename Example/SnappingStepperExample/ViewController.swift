@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     snappingStepper.thumbBackgroundColor = UIColor(hex: 0xe74c3c)
     snappingStepper.thumbTextColor       = UIColor.blackColor()
 
+    snappingStepper.showHint = true
+    
     snappingStepper.continuous   = true
     snappingStepper.autorepeat   = true
     snappingStepper.wraps        = false
