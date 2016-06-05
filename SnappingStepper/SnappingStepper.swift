@@ -29,8 +29,8 @@ import UIKit
 /// A stepper control provides a user interface for incrementing or decrementing a value. The `SnappingStepper` addings a thumb in the middle to allow the user to update the value by sliding it either to the left or the right side. It can also be customizable to display the current value or custom text.
 @IBDesignable public final class SnappingStepper: UIControl {
   /// The value label that represents the thumb button
-  lazy var thumbLabel: UILabel = {
-    let label                    = UILabel()
+  lazy var thumbLabel: StyledLabel = {
+    let label                    = StyledLabel()
     label.textAlignment          = .Center
     label.userInteractionEnabled = true
     label.text                   = ""
@@ -56,9 +56,9 @@ import UIKit
     return label
   }()
 
-  /// The plus label
-  let hintLabel: UILabel = {
-    let label                    = UILabel()
+  /// The hint label
+  let hintLabel: StyledLabel = {
+    let label                    = StyledLabel()
     label.textAlignment          = .Center
     label.userInteractionEnabled = false
     label.text                   = ""
@@ -71,6 +71,9 @@ import UIKit
   let dynamicButtonAnimator = UIDynamicAnimator()
   var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPointZero)
 
+  var styleLayer = CAShapeLayer()
+  var styleColor: UIColor? = UIColor.clearColor()
+    
   /**
   Show hint label above the component when sliding the stepper.
      
@@ -241,18 +244,70 @@ import UIKit
     }
   }
 
+  /// The thumb's style. Default's to box
+  @IBInspectable public var thumbStyle: CustomShapeStyle = .Box {
+    didSet {
+      self.applyThumbStyle(thumbStyle)
+    }
+  }
+
+  /// The view's style. Default's to box
+  @IBInspectable public var style: CustomShapeStyle = .Box {
+    didSet {
+      self.applyStyle(style)
+    }
+  }
+
+  /// The hint's style. Default's to box
+  @IBInspectable public var hintStyle: CustomShapeStyle = .Box {
+    didSet {
+      self.applyHintStyle(hintStyle)
+    }
+  }
+    
+  /// The view's border color.
+  @IBInspectable public var borderColor: UIColor? {
+    didSet {
+      self.applyStyle(style)
+    }
+  }
+
+  /// The thumbs's border color.
+  @IBInspectable public var thumbBorderColor: UIColor? {
+    didSet {
+      self.applyThumbStyle(thumbStyle)
+    }
+  }
+   
+  /// The view's border width. Default's to 1.0
+  @IBInspectable public var borderWidth: CGFloat = 1.0 {
+    didSet {
+      self.applyStyle(style)
+    }
+  }
+    
+  /// The thumbs's border width. Default's to 1.0
+  @IBInspectable public var thumbBorderWidth: CGFloat = 1.0 {
+    didSet {
+      self.applyThumbStyle(thumbStyle)
+    }
+  }
+    
   /// The view’s background color.
   override public var backgroundColor: UIColor? {
-    didSet {
-      minusSymbolLabel.backgroundColor = backgroundColor
-      plusSymbolLabel.backgroundColor  = backgroundColor
-
+    set {
+      self.styleColor = newValue
+      self.applyStyle(self.style)
+        
       if thumbBackgroundColor == nil {
         thumbLabel.backgroundColor = backgroundColor?.lighterColor()
       }
     }
+    get {
+      return .clearColor()
+    }
   }
-
+    
   // MARK: - Displaying Thumb Text
 
   /// The thumb text to display. If the text is nil it will display the current value of the stepper. Defaults with empty string.
@@ -304,6 +359,8 @@ import UIKit
   // MARK: - Managing the Components
 
   func initComponents() {
+    self.layer.addSublayer(self.styleLayer)
+    
     minusSymbolLabel.text      = "−"
     minusSymbolLabel.font      = symbolFont
     minusSymbolLabel.textColor = symbolFontColor
@@ -344,20 +401,48 @@ import UIKit
 
     snappingBehavior = SnappingStepperBehavior(item: thumbLabel, snapToPoint: CGPointMake(bounds.size.width * 0.5, bounds.size.height * 0.5))
     
-    hintLabel.layer.sublayers?.removeAll()
     self.createHintShapeLayer(hintLabel)
+    
+    self.applyThumbStyle(self.thumbStyle)
+    self.applyStyle(self.style)
+    self.applyHintStyle(self.hintStyle)
   }
 
-  func createHintShapeLayer(label: UILabel) {
+  func applyThumbStyle(style: CustomShapeStyle) {
+    thumbLabel.style = style
+    thumbLabel.borderColor = self.thumbBorderColor
+    thumbLabel.borderWidth = self.thumbBorderWidth
+  }
+
+  func applyHintStyle(style: CustomShapeStyle) {
+    hintLabel.style = style
+  }
+    
+  func applyStyle(style: CustomShapeStyle) {
+    let bgColor = self.styleColor ?? UIColor.clearColor()
+    let sLayer: CAShapeLayer
+    if let borderColor = self.borderColor {
+        sLayer = CustomShapeLayer.createShape(style, bounds: self.bounds, color: bgColor, borderColor: borderColor, borderWidth: self.borderWidth)
+    }
+    else {
+        sLayer = CustomShapeLayer.createShape(style, bounds: self.bounds, color: bgColor)
+    }
+    if self.styleLayer.superlayer != nil {
+        self.layer.replaceSublayer(self.styleLayer, with: sLayer)
+    }
+    self.styleLayer = sLayer
+  }
+    
+  func createHintShapeLayer(label: StyledLabel) {
     let shape = CAShapeLayer()
-    let cp1 = CGPoint(x: label.bounds.width * 0.25, y: label.bounds.height)
-    let cp2 = CGPoint(x: label.bounds.width * 0.75, y: label.bounds.height)
+    let cp1 = CGPoint(x: label.bounds.width * 0.35, y: label.bounds.height)
+    let cp2 = CGPoint(x: label.bounds.width * 0.65, y: label.bounds.height)
     let cpc = CGPoint(x: label.bounds.width / 2.0, y: label.bounds.height * 1.25)
     let sp = CGPoint(x: label.bounds.width / 2.0, y: label.bounds.height * 1.5)
     let myBezier = UIBezierPath()
     myBezier.moveToPoint(sp)
-    myBezier.addCurveToPoint(CGPoint(x: 0, y: label.bounds.height), controlPoint1: cpc, controlPoint2: cp1)
-    myBezier.addLineToPoint(CGPoint(x: label.bounds.width, y: label.bounds.height))
+    myBezier.addCurveToPoint(CGPoint(x: label.bounds.width * 0.2, y: label.bounds.height), controlPoint1: cpc, controlPoint2: cp1)
+    myBezier.addLineToPoint(CGPoint(x: label.bounds.width * 0.8, y: label.bounds.height))
     myBezier.addCurveToPoint(sp, controlPoint1: cp2, controlPoint2: cpc)
     myBezier.closePath()
     shape.path = myBezier.CGPath
