@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B142C621D02E92700994657 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B142C611D02E92700994657 /* CustomShapeLayer.swift */; };
+		5B142C631D02E92B00994657 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B142C611D02E92700994657 /* CustomShapeLayer.swift */; };
+		5B3B1B3F1D02F5BC0090B80E /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */; };
+		5B3B1B401D02F5BC0090B80E /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */; };
 		CE6F723E1AF513810019CB55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F723D1AF513810019CB55 /* AppDelegate.swift */; };
 		CE6F72401AF513810019CB55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F723F1AF513810019CB55 /* ViewController.swift */; };
 		CE6F72431AF513810019CB55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72411AF513810019CB55 /* Main.storyboard */; };
@@ -71,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B142C611D02E92700994657 /* CustomShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeLayer.swift; sourceTree = "<group>"; };
+		5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
 		CE6F72381AF513810019CB55 /* SnappingStepperExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnappingStepperExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6F723C1AF513810019CB55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6F723D1AF513810019CB55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +184,8 @@
 				CECF53691C0E440F00DF6B92 /* UIColor.swift */,
 				CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */,
 				CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */,
+				5B142C611D02E92700994657 /* CustomShapeLayer.swift */,
+				5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */,
 			);
 			name = SnappingStepper;
 			path = ../SnappingStepper;
@@ -394,9 +402,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6F72401AF513810019CB55 /* ViewController.swift in Sources */,
+				5B3B1B3F1D02F5BC0090B80E /* StyledLabel.swift in Sources */,
 				CECF536A1C0E440F00DF6B92 /* UIColor.swift in Sources */,
 				CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */,
 				CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */,
+				5B142C621D02E92700994657 /* CustomShapeLayer.swift in Sources */,
 				CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */,
 				CE6F723E1AF513810019CB55 /* AppDelegate.swift in Sources */,
 			);
@@ -406,6 +416,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B142C631D02E92B00994657 /* CustomShapeLayer.swift in Sources */,
+				5B3B1B401D02F5BC0090B80E /* StyledLabel.swift in Sources */,
 				CE8FFECD1BAB22DC00D43F38 /* SnappingStepper.swift in Sources */,
 				CECF536B1C0E441500DF6B92 /* UIColor.swift in Sources */,
 				CE8FFECF1BAB22DC00D43F38 /* UITouchGestureRecognizer.swift in Sources */,

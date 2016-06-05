@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,12 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbl-la-odc">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="vQ2-5k-C4k"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="SnappingStepper" id="Cp1-OJ-8hg"/>
+                                </items>
+                            </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix2-NP-H0n">
-                                <rect key="frame" x="175" y="200" width="250" height="200"/>
+                                <rect key="frame" x="175" y="132" width="250" height="336"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-3t-c5V">
-                                        <rect key="frame" x="65" y="80" width="120" height="40"/>
-                                        <animations/>
+                                        <rect key="frame" x="65" y="216" width="120" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ad0-m7-UQg"/>
                                             <constraint firstAttribute="width" constant="120" id="nWk-ft-6Nw"/>
@@ -32,8 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4I-GE-yJd" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="20" width="120" height="40"/>
-                                        <animations/>
+                                        <rect key="frame" x="65" y="156" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="Qgk-We-eVe"/>
@@ -48,9 +55,40 @@
                                             <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ap5-lW-Ovi"/>
                                         </connections>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yv1-gG-72y" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
+                                        <rect key="frame" x="65" y="108" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="VHN-xI-jqu"/>
+                                            <constraint firstAttribute="height" constant="40" id="dFm-bb-A27"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="symbolFontColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="fc8-mQ-ddj"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCK-qc-iIc" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
+                                        <rect key="frame" x="65" y="60" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="8Df-Qg-Ajn"/>
+                                            <constraint firstAttribute="height" constant="40" id="lDF-7o-LxK"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="symbolFontColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="fee-9q-xVk"/>
+                                        </connections>
+                                    </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ziz-Bb-wQ4">
-                                        <rect key="frame" x="21" y="128" width="209" height="29"/>
-                                        <animations/>
+                                        <rect key="frame" x="21" y="264" width="209" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28" id="6yV-rm-FDw"/>
                                             <constraint firstAttribute="width" constant="209" id="wcW-bI-hBy"/>
@@ -64,32 +102,42 @@
                                             <action selector="segmentedValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="bUt-IX-Jyi"/>
                                         </connections>
                                     </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-aN-ZzV" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
+                                        <rect key="frame" x="65" y="12" width="120" height="40"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="UAx-iJ-Fey"/>
+                                            <constraint firstAttribute="height" constant="40" id="iX3-pt-Zhj"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="symbolFontColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="stepperValueChangedAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="QAl-kp-giM"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ziz-Bb-wQ4" firstAttribute="top" secondItem="QWu-3t-c5V" secondAttribute="bottom" constant="8" id="3LE-9o-hSi"/>
+                                    <constraint firstItem="PCK-qc-iIc" firstAttribute="leading" secondItem="Yv1-gG-72y" secondAttribute="leading" id="3Vh-aQ-Iih"/>
                                     <constraint firstAttribute="centerX" secondItem="p4I-GE-yJd" secondAttribute="centerX" id="6BB-Vm-jjs"/>
                                     <constraint firstItem="ziz-Bb-wQ4" firstAttribute="centerX" secondItem="p4I-GE-yJd" secondAttribute="centerX" id="8Gj-az-6Ie"/>
-                                    <constraint firstItem="p4I-GE-yJd" firstAttribute="top" secondItem="Ix2-NP-H0n" secondAttribute="top" constant="20" id="8O0-F9-1cp"/>
-                                    <constraint firstAttribute="height" constant="200" id="C6f-z6-2Bc"/>
+                                    <constraint firstItem="p4I-GE-yJd" firstAttribute="top" secondItem="Ix2-NP-H0n" secondAttribute="top" constant="156" id="8O0-F9-1cp"/>
+                                    <constraint firstAttribute="height" constant="336" id="C6f-z6-2Bc"/>
                                     <constraint firstItem="QWu-3t-c5V" firstAttribute="top" secondItem="p4I-GE-yJd" secondAttribute="bottom" constant="20" id="EqF-k7-6JJ"/>
+                                    <constraint firstItem="Yv1-gG-72y" firstAttribute="top" secondItem="PCK-qc-iIc" secondAttribute="bottom" constant="8" symbolic="YES" id="JE8-Di-P9i"/>
+                                    <constraint firstItem="Yv1-gG-72y" firstAttribute="leading" secondItem="p4I-GE-yJd" secondAttribute="leading" id="Kfw-HD-HFg"/>
+                                    <constraint firstItem="vQ2-aN-ZzV" firstAttribute="leading" secondItem="PCK-qc-iIc" secondAttribute="leading" id="PAX-Gh-QU6"/>
                                     <constraint firstAttribute="width" constant="250" id="Vk5-e3-rCF"/>
+                                    <constraint firstItem="PCK-qc-iIc" firstAttribute="top" secondItem="vQ2-aN-ZzV" secondAttribute="bottom" constant="8" symbolic="YES" id="fgN-jL-3Pr"/>
                                     <constraint firstAttribute="centerX" secondItem="QWu-3t-c5V" secondAttribute="centerX" id="fuF-Hb-mu4"/>
+                                    <constraint firstItem="p4I-GE-yJd" firstAttribute="top" secondItem="Yv1-gG-72y" secondAttribute="bottom" constant="8" symbolic="YES" id="laf-Fb-y6M"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbl-la-odc">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="vQ2-5k-C4k"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="SnappingStepper" id="Cp1-OJ-8hg"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Jbl-la-odc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3DN-kZ-lDZ"/>
@@ -100,13 +148,16 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="snappingStepper" destination="p4I-GE-yJd" id="rWd-yZ-JDb"/>
+                        <outlet property="classicStepper" destination="p4I-GE-yJd" id="L9h-wH-Tx2"/>
+                        <outlet property="customStepper" destination="vQ2-aN-ZzV" id="WaI-EV-TLe"/>
+                        <outlet property="roundedStepper" destination="PCK-qc-iIc" id="ncp-uI-Unr"/>
+                        <outlet property="tubeStepper" destination="Yv1-gG-72y" id="ObT-4Z-2io"/>
                         <outlet property="valueLabel" destination="QWu-3t-c5V" id="adl-kG-xnR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="430"/>
+            <point key="canvasLocation" x="537" y="371"/>
         </scene>
     </scenes>
 </document>
