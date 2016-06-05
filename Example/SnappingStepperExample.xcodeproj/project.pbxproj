@@ -7,32 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B142C621D02E92700994657 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B142C611D02E92700994657 /* CustomShapeLayer.swift */; };
-		5B142C631D02E92B00994657 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B142C611D02E92700994657 /* CustomShapeLayer.swift */; };
-		5B3B1B3F1D02F5BC0090B80E /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */; };
-		5B3B1B401D02F5BC0090B80E /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */; };
+		01AA9210AD07C825DAE1F607 /* Pods_SnappingStepperExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449D06ECFFEC0DD8C4DA6EF2 /* Pods_SnappingStepperExample.framework */; };
+		0D1DA54DFA51DA8D2A48E14A /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E3430E9EA28A5D0C4ED262 /* Pods_Tests.framework */; };
+		5E1F7E9CB92461FE26B43DF2 /* Pods_SnappingStepper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921B58F6F24292F873D6FE4A /* Pods_SnappingStepper.framework */; };
+		92C99D36F2701F2848B16C4A /* Pods_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B63928ED40BD6C1AAE23668 /* Pods_UITests.framework */; };
 		CE6F723E1AF513810019CB55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F723D1AF513810019CB55 /* AppDelegate.swift */; };
 		CE6F72401AF513810019CB55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F723F1AF513810019CB55 /* ViewController.swift */; };
 		CE6F72431AF513810019CB55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72411AF513810019CB55 /* Main.storyboard */; };
 		CE6F72451AF513810019CB55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72441AF513810019CB55 /* Images.xcassets */; };
 		CE6F72481AF513810019CB55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE6F72461AF513810019CB55 /* LaunchScreen.xib */; };
-		CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
-		CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
 		CE8FFEB21BAB22C100D43F38 /* SnappingStepper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE8FFEB11BAB22C100D43F38 /* SnappingStepper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE8FFEC41BAB22C100D43F38 /* SnappingStepper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */; };
 		CE8FFEC51BAB22C100D43F38 /* SnappingStepper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CE8FFECD1BAB22DC00D43F38 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
-		CE8FFECF1BAB22DC00D43F38 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
-		CE8FFED01BAB22DC00D43F38 /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
-		CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
+		CE972EEE1D044B7E00EDE4A7 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE71D044B7E00EDE4A7 /* CustomShapeLayer.swift */; };
+		CE972EEF1D044B7E00EDE4A7 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE71D044B7E00EDE4A7 /* CustomShapeLayer.swift */; };
+		CE972EF01D044B7E00EDE4A7 /* ShapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE81D044B7E00EDE4A7 /* ShapeStyle.swift */; };
+		CE972EF11D044B7E00EDE4A7 /* ShapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE81D044B7E00EDE4A7 /* ShapeStyle.swift */; };
+		CE972EF21D044B7E00EDE4A7 /* SnappingStepper+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE91D044B7E00EDE4A7 /* SnappingStepper+Internal.swift */; };
+		CE972EF31D044B7E00EDE4A7 /* SnappingStepper+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE91D044B7E00EDE4A7 /* SnappingStepper+Internal.swift */; };
+		CE972EF41D044B7E00EDE4A7 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEA1D044B7E00EDE4A7 /* SnappingStepper.swift */; };
+		CE972EF51D044B7E00EDE4A7 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEA1D044B7E00EDE4A7 /* SnappingStepper.swift */; };
+		CE972EF61D044B7E00EDE4A7 /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEB1D044B7E00EDE4A7 /* SnappingStepperBehavior.swift */; };
+		CE972EF71D044B7E00EDE4A7 /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEB1D044B7E00EDE4A7 /* SnappingStepperBehavior.swift */; };
+		CE972EF81D044B7E00EDE4A7 /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEC1D044B7E00EDE4A7 /* StyledLabel.swift */; };
+		CE972EF91D044B7E00EDE4A7 /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEC1D044B7E00EDE4A7 /* StyledLabel.swift */; };
+		CE972EFA1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EED1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift */; };
+		CE972EFB1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EED1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift */; };
+		CE972EFC1D044B8200EDE4A7 /* CustomShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE71D044B7E00EDE4A7 /* CustomShapeLayer.swift */; };
+		CE972EFD1D044B8200EDE4A7 /* ShapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE81D044B7E00EDE4A7 /* ShapeStyle.swift */; };
+		CE972EFE1D044B8200EDE4A7 /* SnappingStepper+Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EE91D044B7E00EDE4A7 /* SnappingStepper+Internal.swift */; };
+		CE972EFF1D044B8200EDE4A7 /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEA1D044B7E00EDE4A7 /* SnappingStepper.swift */; };
+		CE972F001D044B8200EDE4A7 /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEB1D044B7E00EDE4A7 /* SnappingStepperBehavior.swift */; };
+		CE972F011D044B8200EDE4A7 /* StyledLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EEC1D044B7E00EDE4A7 /* StyledLabel.swift */; };
+		CE972F021D044B8200EDE4A7 /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972EED1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift */; };
+		CE972F041D0453D800EDE4A7 /* AutoRepeatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972F031D0453D800EDE4A7 /* AutoRepeatHelper.swift */; };
+		CE972F051D0453D800EDE4A7 /* AutoRepeatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972F031D0453D800EDE4A7 /* AutoRepeatHelper.swift */; };
+		CE972F061D0453D800EDE4A7 /* AutoRepeatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972F031D0453D800EDE4A7 /* AutoRepeatHelper.swift */; };
 		CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */; };
-		CEB21D6A1B18C1C8003E9EEC /* SnappingStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */; };
-		CEB21D6C1B18C1C8003E9EEC /* UITouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */; };
-		CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */; };
 		CECF53661C0E409A00DF6B92 /* XCTTestCaseTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53651C0E409A00DF6B92 /* XCTTestCaseTemplate.swift */; };
-		CECF536A1C0E440F00DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
-		CECF536B1C0E441500DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
-		CECF536C1C0E441600DF6B92 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53691C0E440F00DF6B92 /* UIColor.swift */; };
 		CECF53761C0E4A1500DF6B92 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF53751C0E4A1500DF6B92 /* UITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +87,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5B142C611D02E92700994657 /* CustomShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeLayer.swift; sourceTree = "<group>"; };
-		5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
+		09E3430E9EA28A5D0C4ED262 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A86CA36861DC1B40F3285CB /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		2A294B6EB380547FE0499EAC /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3B63928ED40BD6C1AAE23668 /* Pods_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		449D06ECFFEC0DD8C4DA6EF2 /* Pods_SnappingStepperExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnappingStepperExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C4C30B228B621354D490313 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		8B6D05BEEE35E75A880B7639 /* Pods-SnappingStepperExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnappingStepperExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnappingStepperExample/Pods-SnappingStepperExample.release.xcconfig"; sourceTree = "<group>"; };
+		921B58F6F24292F873D6FE4A /* Pods_SnappingStepper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnappingStepper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA5888D5090F31444D20DBDA /* Pods-SnappingStepper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnappingStepper.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnappingStepper/Pods-SnappingStepper.release.xcconfig"; sourceTree = "<group>"; };
+		B096075174A29C2DEC848639 /* Pods-SnappingStepper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnappingStepper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnappingStepper/Pods-SnappingStepper.debug.xcconfig"; sourceTree = "<group>"; };
+		B2E3DBDEDC6BE1779FC7B5FA /* Pods-SnappingStepperExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnappingStepperExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnappingStepperExample/Pods-SnappingStepperExample.debug.xcconfig"; sourceTree = "<group>"; };
 		CE6F72381AF513810019CB55 /* SnappingStepperExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnappingStepperExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6F723C1AF513810019CB55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE6F723D1AF513810019CB55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,20 +105,25 @@
 		CE6F72421AF513810019CB55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE6F72441AF513810019CB55 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE6F72471AF513810019CB55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepper.swift; sourceTree = "<group>"; };
-		CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITouchGestureRecognizer.swift; sourceTree = "<group>"; };
 		CE8FFEAF1BAB22C100D43F38 /* SnappingStepper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnappingStepper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8FFEB11BAB22C100D43F38 /* SnappingStepper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SnappingStepper.h; sourceTree = "<group>"; };
 		CE8FFEB31BAB22C100D43F38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepperBehavior.swift; sourceTree = "<group>"; };
+		CE972EE71D044B7E00EDE4A7 /* CustomShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShapeLayer.swift; sourceTree = "<group>"; };
+		CE972EE81D044B7E00EDE4A7 /* ShapeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeStyle.swift; sourceTree = "<group>"; };
+		CE972EE91D044B7E00EDE4A7 /* SnappingStepper+Internal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SnappingStepper+Internal.swift"; sourceTree = "<group>"; };
+		CE972EEA1D044B7E00EDE4A7 /* SnappingStepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepper.swift; sourceTree = "<group>"; };
+		CE972EEB1D044B7E00EDE4A7 /* SnappingStepperBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnappingStepperBehavior.swift; sourceTree = "<group>"; };
+		CE972EEC1D044B7E00EDE4A7 /* StyledLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledLabel.swift; sourceTree = "<group>"; };
+		CE972EED1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITouchGestureRecognizer.swift; sourceTree = "<group>"; };
+		CE972F031D0453D800EDE4A7 /* AutoRepeatHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoRepeatHelper.swift; sourceTree = "<group>"; };
 		CEB21D5F1B18C169003E9EEC /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB21D621B18C169003E9EEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEB21D681B18C18A003E9EEC /* SnappingStepperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnappingStepperTests.swift; path = ../../Tests/SnappingStepperTests.swift; sourceTree = "<group>"; };
 		CECF53651C0E409A00DF6B92 /* XCTTestCaseTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = XCTTestCaseTemplate.swift; path = ../../Tests/XCTTestCaseTemplate.swift; sourceTree = "<group>"; };
-		CECF53691C0E440F00DF6B92 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CECF53731C0E4A1500DF6B92 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECF53751C0E4A1500DF6B92 /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		CECF53771C0E4A1500DF6B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA07CA8AF812FD143261A66A /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8FFEC41BAB22C100D43F38 /* SnappingStepper.framework in Frameworks */,
+				01AA9210AD07C825DAE1F607 /* Pods_SnappingStepperExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E1F7E9CB92461FE26B43DF2 /* Pods_SnappingStepper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1DA54DFA51DA8D2A48E14A /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,21 +156,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92C99D36F2701F2848B16C4A /* Pods_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B7F47D86834F3F549B39F8F8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2E3DBDEDC6BE1779FC7B5FA /* Pods-SnappingStepperExample.debug.xcconfig */,
+				8B6D05BEEE35E75A880B7639 /* Pods-SnappingStepperExample.release.xcconfig */,
+				FA07CA8AF812FD143261A66A /* Pods-Tests.debug.xcconfig */,
+				7C4C30B228B621354D490313 /* Pods-Tests.release.xcconfig */,
+				2A294B6EB380547FE0499EAC /* Pods-UITests.debug.xcconfig */,
+				1A86CA36861DC1B40F3285CB /* Pods-UITests.release.xcconfig */,
+				B096075174A29C2DEC848639 /* Pods-SnappingStepper.debug.xcconfig */,
+				AA5888D5090F31444D20DBDA /* Pods-SnappingStepper.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE6F722F1AF513810019CB55 = {
 			isa = PBXGroup;
 			children = (
-				CE6F725D1AF513AB0019CB55 /* SnappingStepper */,
+				CE972EE61D044B7E00EDE4A7 /* Sources */,
 				CE6F723A1AF513810019CB55 /* SnappingStepperExample */,
 				CEB21D601B18C169003E9EEC /* Tests */,
 				CE8FFEB01BAB22C100D43F38 /* SnappingStepper */,
 				CECF53741C0E4A1500DF6B92 /* UITests */,
 				CE6F72391AF513810019CB55 /* Products */,
+				B7F47D86834F3F549B39F8F8 /* Pods */,
+				FE410316A4FAC960A0982048 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,20 +224,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CE6F725D1AF513AB0019CB55 /* SnappingStepper */ = {
-			isa = PBXGroup;
-			children = (
-				CE6F725E1AF513AB0019CB55 /* SnappingStepper.swift */,
-				CECF53691C0E440F00DF6B92 /* UIColor.swift */,
-				CE6F72601AF513AB0019CB55 /* UITouchGestureRecognizer.swift */,
-				CEB21D161B17A109003E9EEC /* SnappingStepperBehavior.swift */,
-				5B142C611D02E92700994657 /* CustomShapeLayer.swift */,
-				5B3B1B3E1D02F5BC0090B80E /* StyledLabel.swift */,
-			);
-			name = SnappingStepper;
-			path = ../SnappingStepper;
-			sourceTree = "<group>";
-		};
 		CE8FFEB01BAB22C100D43F38 /* SnappingStepper */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +231,22 @@
 				CE8FFEB31BAB22C100D43F38 /* Info.plist */,
 			);
 			path = SnappingStepper;
+			sourceTree = "<group>";
+		};
+		CE972EE61D044B7E00EDE4A7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CE972F031D0453D800EDE4A7 /* AutoRepeatHelper.swift */,
+				CE972EE71D044B7E00EDE4A7 /* CustomShapeLayer.swift */,
+				CE972EE81D044B7E00EDE4A7 /* ShapeStyle.swift */,
+				CE972EE91D044B7E00EDE4A7 /* SnappingStepper+Internal.swift */,
+				CE972EEA1D044B7E00EDE4A7 /* SnappingStepper.swift */,
+				CE972EEB1D044B7E00EDE4A7 /* SnappingStepperBehavior.swift */,
+				CE972EEC1D044B7E00EDE4A7 /* StyledLabel.swift */,
+				CE972EED1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift */,
+			);
+			name = Sources;
+			path = ../Sources;
 			sourceTree = "<group>";
 		};
 		CEB21D601B18C169003E9EEC /* Tests */ = {
@@ -227,6 +276,17 @@
 			path = UITests;
 			sourceTree = "<group>";
 		};
+		FE410316A4FAC960A0982048 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				449D06ECFFEC0DD8C4DA6EF2 /* Pods_SnappingStepperExample.framework */,
+				09E3430E9EA28A5D0C4ED262 /* Pods_Tests.framework */,
+				3B63928ED40BD6C1AAE23668 /* Pods_UITests.framework */,
+				921B58F6F24292F873D6FE4A /* Pods_SnappingStepper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -245,10 +305,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE6F72571AF513810019CB55 /* Build configuration list for PBXNativeTarget "SnappingStepperExample" */;
 			buildPhases = (
+				7CA4F1F5B55B4EA73B14C706 /* [CP] Check Pods Manifest.lock */,
 				CE6F72341AF513810019CB55 /* Sources */,
 				CE6F72351AF513810019CB55 /* Frameworks */,
 				CE6F72361AF513810019CB55 /* Resources */,
 				CE8FFEC91BAB22C100D43F38 /* Embed Frameworks */,
+				100D5242A835D0DF21B997AB /* [CP] Embed Pods Frameworks */,
+				30734BDB24EB5F1386758B14 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,10 +327,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8FFEC61BAB22C100D43F38 /* Build configuration list for PBXNativeTarget "SnappingStepper" */;
 			buildPhases = (
+				5A8FDD7C7C23F1CB73E73FAD /* [CP] Check Pods Manifest.lock */,
 				CE8FFEAA1BAB22C100D43F38 /* Sources */,
 				CE8FFEAB1BAB22C100D43F38 /* Frameworks */,
 				CE8FFEAC1BAB22C100D43F38 /* Headers */,
 				CE8FFEAD1BAB22C100D43F38 /* Resources */,
+				666D2E74D033AC04D04D82D1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,9 +347,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEB21D651B18C169003E9EEC /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
+				AEABFEC876ECB92809E6C351 /* [CP] Check Pods Manifest.lock */,
 				CEB21D5B1B18C169003E9EEC /* Sources */,
 				CEB21D5C1B18C169003E9EEC /* Frameworks */,
 				CEB21D5D1B18C169003E9EEC /* Resources */,
+				57B8D188DD6B7CA8FF787373 /* [CP] Embed Pods Frameworks */,
+				E7EF272C918D680CE186A483 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -300,9 +368,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CECF537A1C0E4A1500DF6B92 /* Build configuration list for PBXNativeTarget "UITests" */;
 			buildPhases = (
+				B27246CC4E9F32FC5B1E4A51 /* [CP] Check Pods Manifest.lock */,
 				CECF536F1C0E4A1500DF6B92 /* Sources */,
 				CECF53701C0E4A1500DF6B92 /* Frameworks */,
 				CECF53711C0E4A1500DF6B92 /* Resources */,
+				7AAEF8890F58D055023E7BCA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -396,19 +466,174 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		100D5242A835D0DF21B997AB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnappingStepperExample/Pods-SnappingStepperExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30734BDB24EB5F1386758B14 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnappingStepperExample/Pods-SnappingStepperExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		57B8D188DD6B7CA8FF787373 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A8FDD7C7C23F1CB73E73FAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		666D2E74D033AC04D04D82D1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnappingStepper/Pods-SnappingStepper-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7AAEF8890F58D055023E7BCA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UITests/Pods-UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CA4F1F5B55B4EA73B14C706 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AEABFEC876ECB92809E6C351 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B27246CC4E9F32FC5B1E4A51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E7EF272C918D680CE186A483 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CE6F72341AF513810019CB55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CE6F72401AF513810019CB55 /* ViewController.swift in Sources */,
-				5B3B1B3F1D02F5BC0090B80E /* StyledLabel.swift in Sources */,
-				CECF536A1C0E440F00DF6B92 /* UIColor.swift in Sources */,
-				CE6F72631AF513AB0019CB55 /* UITouchGestureRecognizer.swift in Sources */,
-				CEB21D171B17A109003E9EEC /* SnappingStepperBehavior.swift in Sources */,
-				5B142C621D02E92700994657 /* CustomShapeLayer.swift in Sources */,
-				CE6F72611AF513AB0019CB55 /* SnappingStepper.swift in Sources */,
+				CE972EF81D044B7E00EDE4A7 /* StyledLabel.swift in Sources */,
+				CE972EF41D044B7E00EDE4A7 /* SnappingStepper.swift in Sources */,
+				CE972EF01D044B7E00EDE4A7 /* ShapeStyle.swift in Sources */,
+				CE972EEE1D044B7E00EDE4A7 /* CustomShapeLayer.swift in Sources */,
 				CE6F723E1AF513810019CB55 /* AppDelegate.swift in Sources */,
+				CE972EFA1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift in Sources */,
+				CE972F041D0453D800EDE4A7 /* AutoRepeatHelper.swift in Sources */,
+				CE972EF61D044B7E00EDE4A7 /* SnappingStepperBehavior.swift in Sources */,
+				CE972EF21D044B7E00EDE4A7 /* SnappingStepper+Internal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,12 +641,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B142C631D02E92B00994657 /* CustomShapeLayer.swift in Sources */,
-				5B3B1B401D02F5BC0090B80E /* StyledLabel.swift in Sources */,
-				CE8FFECD1BAB22DC00D43F38 /* SnappingStepper.swift in Sources */,
-				CECF536B1C0E441500DF6B92 /* UIColor.swift in Sources */,
-				CE8FFECF1BAB22DC00D43F38 /* UITouchGestureRecognizer.swift in Sources */,
-				CE8FFED01BAB22DC00D43F38 /* SnappingStepperBehavior.swift in Sources */,
+				CE972EEF1D044B7E00EDE4A7 /* CustomShapeLayer.swift in Sources */,
+				CE972EF91D044B7E00EDE4A7 /* StyledLabel.swift in Sources */,
+				CE972EF31D044B7E00EDE4A7 /* SnappingStepper+Internal.swift in Sources */,
+				CE972EF11D044B7E00EDE4A7 /* ShapeStyle.swift in Sources */,
+				CE972EFB1D044B7E00EDE4A7 /* UITouchGestureRecognizer.swift in Sources */,
+				CE972F051D0453D800EDE4A7 /* AutoRepeatHelper.swift in Sources */,
+				CE972EF51D044B7E00EDE4A7 /* SnappingStepper.swift in Sources */,
+				CE972EF71D044B7E00EDE4A7 /* SnappingStepperBehavior.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,12 +656,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEB21D6A1B18C1C8003E9EEC /* SnappingStepper.swift in Sources */,
-				CECF536C1C0E441600DF6B92 /* UIColor.swift in Sources */,
-				CEB21D6C1B18C1C8003E9EEC /* UITouchGestureRecognizer.swift in Sources */,
 				CECF53661C0E409A00DF6B92 /* XCTTestCaseTemplate.swift in Sources */,
-				CEB21D6D1B18C1C8003E9EEC /* SnappingStepperBehavior.swift in Sources */,
+				CE972F011D044B8200EDE4A7 /* StyledLabel.swift in Sources */,
+				CE972EFF1D044B8200EDE4A7 /* SnappingStepper.swift in Sources */,
+				CE972EFD1D044B8200EDE4A7 /* ShapeStyle.swift in Sources */,
+				CE972EFC1D044B8200EDE4A7 /* CustomShapeLayer.swift in Sources */,
 				CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */,
+				CE972F021D044B8200EDE4A7 /* UITouchGestureRecognizer.swift in Sources */,
+				CE972F061D0453D800EDE4A7 /* AutoRepeatHelper.swift in Sources */,
+				CE972F001D044B8200EDE4A7 /* SnappingStepperBehavior.swift in Sources */,
+				CE972EFE1D044B8200EDE4A7 /* SnappingStepper+Internal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +803,7 @@
 		};
 		CE6F72581AF513810019CB55 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2E3DBDEDC6BE1779FC7B5FA /* Pods-SnappingStepperExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -584,6 +816,7 @@
 		};
 		CE6F72591AF513810019CB55 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B6D05BEEE35E75A880B7639 /* Pods-SnappingStepperExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -596,6 +829,7 @@
 		};
 		CE8FFEC71BAB22C100D43F38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B096075174A29C2DEC848639 /* Pods-SnappingStepper.debug.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -617,6 +851,7 @@
 		};
 		CE8FFEC81BAB22C100D43F38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA5888D5090F31444D20DBDA /* Pods-SnappingStepper.release.xcconfig */;
 			buildSettings = {
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -637,6 +872,7 @@
 		};
 		CEB21D661B18C169003E9EEC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA07CA8AF812FD143261A66A /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -659,6 +895,7 @@
 		};
 		CEB21D671B18C169003E9EEC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C4C30B228B621354D490313 /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -677,6 +914,7 @@
 		};
 		CECF537B1C0E4A1500DF6B92 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A294B6EB380547FE0499EAC /* Pods-UITests.debug.xcconfig */;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
@@ -693,6 +931,7 @@
 		};
 		CECF537C1C0E4A1500DF6B92 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A86CA36861DC1B40F3285CB /* Pods-UITests.release.xcconfig */;
 			buildSettings = {
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;

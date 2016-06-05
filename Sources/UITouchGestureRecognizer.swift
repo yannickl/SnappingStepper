@@ -28,7 +28,7 @@ import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
 /// Gesture to know whether the touch is inside the view
-final internal class UITouchGestureRecognizer: UIGestureRecognizer {
+final class UITouchGestureRecognizer: UIGestureRecognizer {
   var isTouchInside = true
 
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {

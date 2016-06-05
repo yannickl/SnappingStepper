@@ -106,7 +106,7 @@ class SnappingStepperTests: XCTTestCaseTemplate {
 
     stepper.continuous        = true
     stepper.valueChangedBlock = { (value) in
-      changeCount++
+      changeCount += 1
 
       if changeCount == 2 {
         expectation.fulfill()
@@ -128,7 +128,7 @@ class SnappingStepperTests: XCTTestCaseTemplate {
 
     stepper.continuous        = false
     stepper.valueChangedBlock = { (value) in
-      changeCount++
+      changeCount += 1
 
       if changeCount == 2 {
         expectation.fulfill()
