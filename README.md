@@ -14,39 +14,33 @@ An elegant alternative to the `UIStepper` with a thumb slider addition to contro
 # Usage
 
 ```swift
-let stepper = SnappingStepper(frame: CGRectMake(0, 0, 100, 40))
+let stepper = SnappingStepper(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
 
-override func viewDidLoad() {
-  super.viewDidLoad()
+// Configure the stepper like any other UIStepper. For example:
+//
+// stepper.continuous   = true
+// stepper.autorepeat   = true
+// stepper.wraps        = false
+// stepper.minimumValue = 0
+// stepper.maximumValue = 100
+// stepper.stepValue    = 1
 
-  // Configure the stepper like any other UIStepper. For example:
-  //
-  // stepper.continuous   = true
-  // stepper.autorepeat   = true
-  // stepper.wraps        = false
-  // stepper.minimumValue = 0
-  // stepper.maximumValue = 100
-  // stepper.stepValue    = 1
+stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 20)
+stepper.symbolFontColor      = .blackColor()
+stepper.backgroundColor      = UIColor(hex: 0xc0392b)
+stepper.thumbWidthRatio      = 0.5
+stepper.thumbText            = ""
+stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 20)
+stepper.thumbBackgroundColor = UIColor(hex: 0xe74c3c)
+stepper.thumbTextColor       = .blackColor()
 
-  stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 20)
-  stepper.symbolFontColor      = UIColor.blackColor()
-  stepper.backgroundColor      = UIColor(hex: 0xc0392b)
-  stepper.thumbWidthRatio      = 0.5
-  stepper.thumbText            = ""
-  stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 20)
-  stepper.thumbBackgroundColor = UIColor(hex: 0xe74c3c)
-  stepper.thumbTextColor       = UIColor.blackColor()
+stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
 
-  stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
-
-  // If you don't want using the traditional `addTarget:action:` pattern you can use
-  // the `valueChangedBlock`
-  // snappingStepper.valueChangeBlock = { (value: Double) in
-  //    println("value: \(value)")
-  // }
-
-  view.addSubview(stepper)
-}
+// If you don't want using the traditional `addTarget:action:` pattern you can use
+// the `valueChangedBlock`
+// snappingStepper.valueChangeBlock = { (value: Double) in
+//    println("value: \(value)")
+// }
 
 func valueChanged(sender: AnyObject) {
   // Retrieve the value: stepper.value

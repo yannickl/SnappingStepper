@@ -48,7 +48,7 @@ extension SnappingStepper {
   // MARK: - Managing the Components
 
   func initComponents() {
-    self.layer.addSublayer(self.styleLayer)
+    self.layer.addSublayer(styleLayer)
 
     hintLabel.font      = thumbFont
     hintLabel.textColor = thumbTextColor
@@ -96,7 +96,7 @@ extension SnappingStepper {
   }
 
   func applyThumbStyle(style: ShapeStyle) {
-    thumbLabel.style = style
+    thumbLabel.style       = style
     thumbLabel.borderColor = thumbBorderColor
     thumbLabel.borderWidth = thumbBorderWidth
   }
@@ -106,7 +106,7 @@ extension SnappingStepper {
   }
 
   func applyStyle(style: ShapeStyle) {
-    let bgColor = self.styleColor ?? UIColor.clearColor()
+    let bgColor =  UIColor.clearColor()
     let sLayer: CAShapeLayer
 
     if let borderColor = borderColor {
