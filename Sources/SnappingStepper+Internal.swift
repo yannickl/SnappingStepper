@@ -27,24 +27,6 @@
 import UIKit
 
 extension SnappingStepper {
-  // MARK: - Builders
-
-  func defaultLabel() -> UILabel {
-    let label                    = UILabel()
-    label.textAlignment          = .Center
-    label.userInteractionEnabled = true
-
-    return label
-  }
-
-  func defaultStyledLabel() -> StyledLabel {
-    let label           = StyledLabel()
-    label.textAlignment = .Center
-    label.text          = ""
-
-    return label
-  }
-
   // MARK: - Managing the Components
 
   func initComponents() {
@@ -56,6 +38,7 @@ extension SnappingStepper {
     minusSymbolLabel.text      = "−"
     minusSymbolLabel.font      = symbolFont
     minusSymbolLabel.textColor = symbolFontColor
+
     addSubview(minusSymbolLabel)
 
     plusSymbolLabel.text      = "+"
@@ -106,21 +89,21 @@ extension SnappingStepper {
   }
 
   func applyStyle(style: ShapeStyle) {
-    let bgColor =  UIColor.clearColor()
+    let bgColor: UIColor = .clearColor()
     let sLayer: CAShapeLayer
 
     if let borderColor = borderColor {
-      sLayer = CustomShapeLayer.createShape(style, bounds: self.bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
+      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
     }
     else {
-      sLayer = CustomShapeLayer.createShape(style, bounds: self.bounds, color: bgColor)
+      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor)
     }
 
-    if self.styleLayer.superlayer != nil {
-      self.layer.replaceSublayer(styleLayer, with: sLayer)
+    if styleLayer.superlayer != nil {
+      layer.replaceSublayer(styleLayer, with: sLayer)
     }
 
-    self.styleLayer = sLayer
+    styleLayer = sLayer
   }
 
   // MARK: - Responding to Gesture Events

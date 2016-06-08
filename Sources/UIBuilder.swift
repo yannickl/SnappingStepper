@@ -25,17 +25,21 @@
  */
 
 import UIKit
-import XCTest
 
-class MockAppDelegate: NSObject, UIApplicationDelegate {
+final class UIBuilder {
+  static func defaultLabel() -> UILabel {
+    let label                    = UILabel()
+    label.textAlignment          = .Center
+    label.userInteractionEnabled = true
 
-}
+    return label
+  }
 
+  static func defaultStyledLabel() -> StyledLabel {
+    let label           = StyledLabel()
+    label.textAlignment = .Center
+    label.text          = ""
 
-class XCTTestCaseTemplate: XCTestCase {
-  override func setUp() {
-    super.setUp()
-
-    UIApplication.sharedApplication().delegate = MockAppDelegate()
+    return label
   }
 }

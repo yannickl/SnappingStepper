@@ -20,6 +20,20 @@
                ReferencedContainer = "container:SnappingStepperExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CE6F72371AF513810019CB55"
+               BuildableName = "SnappingStepperExample.app"
+               BlueprintName = "SnappingStepperExample"
+               ReferencedContainer = "container:SnappingStepperExample.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -36,16 +50,6 @@
                BlueprintIdentifier = "CEB21D5E1B18C169003E9EEC"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
-               ReferencedContainer = "container:SnappingStepperExample.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CECF53721C0E4A1500DF6B92"
-               BuildableName = "UITests.xctest"
-               BlueprintName = "UITests"
                ReferencedContainer = "container:SnappingStepperExample.xcodeproj">
             </BuildableReference>
          </TestableReference>

@@ -301,16 +301,16 @@ import UIKit
   // MARK: - Internal Properties
 
   /// The value label that represents the thumb button
-  lazy var thumbLabel: StyledLabel = self.defaultStyledLabel()
+  lazy var thumbLabel: StyledLabel = UIBuilder.defaultStyledLabel()
 
   /// The hint label
-  lazy var hintLabel: StyledLabel = self.defaultStyledLabel()
+  lazy var hintLabel: StyledLabel = UIBuilder.defaultStyledLabel()
 
   /// The minus label
-  lazy var minusSymbolLabel: UILabel = self.defaultLabel()
+  lazy var minusSymbolLabel: UILabel = UIBuilder.defaultLabel()
 
   /// The plus label
-  lazy var plusSymbolLabel: UILabel = self.defaultLabel()
+  lazy var plusSymbolLabel: UILabel = UIBuilder.defaultLabel()
 
   let autorepeatHelper      = AutoRepeatHelper()
   let dynamicButtonAnimator = UIDynamicAnimator()

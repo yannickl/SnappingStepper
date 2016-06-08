@@ -18,7 +18,3 @@ end
 target 'Tests' do
   shared_pods
 end
-
-target 'UITests' do
-  shared_pods
-end
