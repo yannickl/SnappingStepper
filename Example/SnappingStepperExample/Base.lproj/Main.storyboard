@@ -27,7 +27,7 @@
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ix2-NP-H0n">
-                                <rect key="frame" x="175" y="132" width="250" height="336"/>
+                                <rect key="frame" x="175" y="172" width="250" height="336"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWu-3t-c5V">
                                         <rect key="frame" x="65" y="216" width="120" height="40"/>
@@ -42,9 +42,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4I-GE-yJd" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
                                         <rect key="frame" x="65" y="156" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="classic">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="Qgk-We-eVe"/>
                                             <constraint firstAttribute="height" constant="40" id="vys-bF-8tL"/>
@@ -61,9 +58,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yv1-gG-72y" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
                                         <rect key="frame" x="65" y="108" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="tube">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="VHN-xI-jqu"/>
                                             <constraint firstAttribute="height" constant="40" id="dFm-bb-A27"/>
@@ -80,9 +74,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCK-qc-iIc" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
                                         <rect key="frame" x="65" y="60" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="rounded">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="8Df-Qg-Ajn"/>
                                             <constraint firstAttribute="height" constant="40" id="lDF-7o-LxK"/>
@@ -114,9 +105,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-aN-ZzV" customClass="SnappingStepper" customModule="SnappingStepperExample" customModuleProvider="target">
                                         <rect key="frame" x="65" y="12" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.20392156859999999" green="0.59999999999999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="custom">
-                                            <bool key="isElement" value="YES"/>
-                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="UAx-iJ-Fey"/>
                                             <constraint firstAttribute="height" constant="40" id="iX3-pt-Zhj"/>
@@ -155,7 +143,7 @@
                             <constraint firstItem="Jbl-la-odc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="3DN-kZ-lDZ"/>
                             <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qgh-XQ-L0f"/>
                             <constraint firstAttribute="trailing" secondItem="Jbl-la-odc" secondAttribute="trailing" id="Rb6-jq-9xn"/>
-                            <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iHm-Zb-8D0"/>
+                            <constraint firstItem="Ix2-NP-H0n" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="40" id="iHm-Zb-8D0"/>
                             <constraint firstItem="Jbl-la-odc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mCA-y4-uKy"/>
                         </constraints>
                     </view>
