@@ -1,5 +1,12 @@
 # Change log
 
+## [Version 2.3.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.3.0)
+*Released on 2016-06-09.*
+
+- Swift Package Manager
+- [ADD] hint property
+- [ADD] Custom shape customization
+
 ## [Version 2.2.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.2.0)
 *Released on 2016-03-22.*
 
