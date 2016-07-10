@@ -30,7 +30,7 @@
 import UIKit
 
 /// The `StyledLabel` object is an `UILabel` with a custom shape.
-public final class StyledLabel: UIView {
+public class StyledLabel: UIView {
   var label                = UILabel()
   var styleColor: UIColor? = UIColor.clearColor()
   var shapeLayer           = CAShapeLayer()
