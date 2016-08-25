@@ -87,25 +87,33 @@ public class StyledLabel: UIView {
       label.textAlignment = textAlignment
     }
   }
-
+    
+  public var rotationInRadians: CGFloat = 0 {
+    didSet {
+      self.setNeedsLayout()
+    }
+  }
+    
   public init() {
     super.init(frame: CGRectZero)
-
+        
     self.layer.addSublayer(self.shapeLayer)
   }
-
+    
   required public init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
+    
   override public func layoutSubviews() {
     super.layoutSubviews()
-
+        
     self.applyStyle()
     label.removeFromSuperview()
+        
+    self.label.frame = bounds
+    self.label.transform = CGAffineTransformMakeRotation(self.rotationInRadians)
+    self.label.frame = bounds
     self.addSubview(label)
-
-    label.frame = bounds
   }
 
   func applyStyle() {
