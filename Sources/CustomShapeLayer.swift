@@ -60,6 +60,8 @@ final class CustomShapeLayer {
       path = UIBezierPath(rect: bounds)
     case .Rounded:
       path = UIBezierPath(roundedRect: bounds, cornerRadius: max(1.0, min(bounds.size.width, bounds.size.height) * 0.2))
+    case .RoundedFixed(let cornerRadius):
+      path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
     case .Thumb:
       let s    = min(bounds.size.width, bounds.size.height)
       let xOff = (bounds.size.width - s) * 0.5

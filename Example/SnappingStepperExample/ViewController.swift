@@ -16,7 +16,8 @@ class ViewController: UIViewController {
   @IBOutlet weak var tubeStepper: SnappingStepper!
   @IBOutlet weak var roundedStepper: SnappingStepper!
   @IBOutlet weak var customStepper: SnappingStepper!
-
+  @IBOutlet weak var verticalRoundedStepper: SnappingStepper!
+    
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -46,6 +47,16 @@ class ViewController: UIViewController {
     customStepper.thumbBackgroundColor = UIColor(hex: 0x607D8B)
     customStepper.borderWidth          = 0.5
     customStepper.hintStyle            = .Rounded
+    
+    assignStepperDefaultSettings(verticalRoundedStepper)
+    verticalRoundedStepper.style                = .Rounded
+    verticalRoundedStepper.thumbStyle           = .Rounded
+    verticalRoundedStepper.backgroundColor      = .clearColor()
+    verticalRoundedStepper.thumbBackgroundColor = UIColor(hex: 0xFFC107)
+    verticalRoundedStepper.borderColor          = UIColor(hex: 0xFFC107)
+    verticalRoundedStepper.borderWidth          = 0.5
+    verticalRoundedStepper.hintStyle            = .Thumb
+    verticalRoundedStepper.direction            = .Vertical
   }
 
   func assignStepperDefaultSettings(snappingStepper: SnappingStepper) {
@@ -99,7 +110,7 @@ class ViewController: UIViewController {
   }
 
   @IBAction func stepperValueChangedAction(sender: SnappingStepper) {
-    for stepper in [classicStepper, tubeStepper, roundedStepper, customStepper] {
+    for stepper in [classicStepper, tubeStepper, roundedStepper, verticalRoundedStepper, customStepper] {
       if stepper != sender {
         stepper.value = sender.value
       }
@@ -113,5 +124,6 @@ class ViewController: UIViewController {
     updateThumbAttributes(customStepper, index: sender.selectedSegmentIndex)
     updateThumbAttributes(tubeStepper, index: sender.selectedSegmentIndex)
     updateThumbAttributes(roundedStepper, index: sender.selectedSegmentIndex)
+    updateThumbAttributes(verticalRoundedStepper, index: sender.selectedSegmentIndex)
   }
 }
