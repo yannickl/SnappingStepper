@@ -37,6 +37,8 @@ public enum ShapeStyle {
   case Box
   /// A round shape.
   case Rounded
+  /// A round shape with given corner radius.
+  case RoundedFixed(cornerRadius: CGFloat)
   /// A thumb shape.
   case Thumb
   /// A tube shape.

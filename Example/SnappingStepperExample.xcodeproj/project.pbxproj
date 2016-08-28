@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		01AA9210AD07C825DAE1F607 /* Pods_SnappingStepperExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 449D06ECFFEC0DD8C4DA6EF2 /* Pods_SnappingStepperExample.framework */; };
 		0D1DA54DFA51DA8D2A48E14A /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E3430E9EA28A5D0C4ED262 /* Pods_Tests.framework */; };
+		5B1EFC7E1D71932E0040AD50 /* StyledControlDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1EFC7D1D71932E0040AD50 /* StyledControlDirection.swift */; };
+		5B1EFC7F1D71932E0040AD50 /* StyledControlDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1EFC7D1D71932E0040AD50 /* StyledControlDirection.swift */; };
+		5B1EFC801D71932E0040AD50 /* StyledControlDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1EFC7D1D71932E0040AD50 /* StyledControlDirection.swift */; };
 		5E1F7E9CB92461FE26B43DF2 /* Pods_SnappingStepper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 921B58F6F24292F873D6FE4A /* Pods_SnappingStepper.framework */; };
 		CE132D681D0880EB00CA6DB5 /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE132D671D0880EB00CA6DB5 /* UIBuilder.swift */; };
 		CE132D691D0880EB00CA6DB5 /* UIBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE132D671D0880EB00CA6DB5 /* UIBuilder.swift */; };
@@ -83,6 +86,7 @@
 		09E3430E9EA28A5D0C4ED262 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B63928ED40BD6C1AAE23668 /* Pods_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		449D06ECFFEC0DD8C4DA6EF2 /* Pods_SnappingStepperExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnappingStepperExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B1EFC7D1D71932E0040AD50 /* StyledControlDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledControlDirection.swift; sourceTree = "<group>"; };
 		7C4C30B228B621354D490313 /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		8B6D05BEEE35E75A880B7639 /* Pods-SnappingStepperExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnappingStepperExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnappingStepperExample/Pods-SnappingStepperExample.release.xcconfig"; sourceTree = "<group>"; };
 		921B58F6F24292F873D6FE4A /* Pods_SnappingStepper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnappingStepper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1EFC7C1D7192FE0040AD50 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				5B1EFC7D1D71932E0040AD50 /* StyledControlDirection.swift */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
 		B7F47D86834F3F549B39F8F8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +224,7 @@
 		CE972EE61D044B7E00EDE4A7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5B1EFC7C1D7192FE0040AD50 /* ThirdParty */,
 				CE972F031D0453D800EDE4A7 /* AutoRepeatHelper.swift */,
 				CE972EE71D044B7E00EDE4A7 /* CustomShapeLayer.swift */,
 				CE972EE81D044B7E00EDE4A7 /* ShapeStyle.swift */,
@@ -531,6 +544,7 @@
 			files = (
 				CE6F72401AF513810019CB55 /* ViewController.swift in Sources */,
 				CE972EF81D044B7E00EDE4A7 /* StyledLabel.swift in Sources */,
+				5B1EFC7E1D71932E0040AD50 /* StyledControlDirection.swift in Sources */,
 				CE972EF41D044B7E00EDE4A7 /* SnappingStepper.swift in Sources */,
 				CE972EF01D044B7E00EDE4A7 /* ShapeStyle.swift in Sources */,
 				CE972EEE1D044B7E00EDE4A7 /* CustomShapeLayer.swift in Sources */,
@@ -547,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B1EFC7F1D71932E0040AD50 /* StyledControlDirection.swift in Sources */,
 				CE972EEF1D044B7E00EDE4A7 /* CustomShapeLayer.swift in Sources */,
 				CE972EF91D044B7E00EDE4A7 /* StyledLabel.swift in Sources */,
 				CE972EF31D044B7E00EDE4A7 /* SnappingStepper+Internal.swift in Sources */,
@@ -567,6 +582,7 @@
 				CE972EFF1D044B8200EDE4A7 /* SnappingStepper.swift in Sources */,
 				CE972EFD1D044B8200EDE4A7 /* ShapeStyle.swift in Sources */,
 				CE972EFC1D044B8200EDE4A7 /* CustomShapeLayer.swift in Sources */,
+				5B1EFC801D71932E0040AD50 /* StyledControlDirection.swift in Sources */,
 				CEB21D691B18C18A003E9EEC /* SnappingStepperTests.swift in Sources */,
 				CE132D6A1D08810C00CA6DB5 /* UIBuilder.swift in Sources */,
 				CE972F021D044B8200EDE4A7 /* UITouchGestureRecognizer.swift in Sources */,
@@ -648,7 +664,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -687,7 +703,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -731,7 +747,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SnappingStepper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yannickloriot.SnappingStepper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -752,7 +768,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SnappingStepper/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yannickloriot.SnappingStepper;
 				PRODUCT_NAME = "$(TARGET_NAME)";

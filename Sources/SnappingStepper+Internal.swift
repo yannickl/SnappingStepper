@@ -61,13 +61,34 @@ extension SnappingStepper {
   }
 
   func layoutComponents() {
-    let thumbWidth  = bounds.width * thumbWidthRatio
-    let symbolWidth = (bounds.width - thumbWidth) / 2
+    let bw = self.direction.principalSize(bounds.size)
+    let bh = self.direction.nonPrincipalSize(bounds.size)
+    let thumbWidth  = bw * thumbWidthRatio
+    let symbolWidth = (bw - thumbWidth) / 2
 
-    minusSymbolLabel.frame = CGRect(x: 0, y: 0, width: symbolWidth, height: bounds.height)
-    plusSymbolLabel.frame  = CGRect(x: symbolWidth + thumbWidth, y: 0, width: symbolWidth, height: bounds.height)
-    thumbLabel.frame       = CGRect(x: symbolWidth, y: 0, width: thumbWidth, height: bounds.height)
-    hintLabel.frame        = CGRect(x: symbolWidth, y: -bounds.height * 1.5, width: thumbWidth, height: bounds.height)
+    // It makes most sense to have the + on the top of the view, when the direction is vertical
+    let mpPosM: CGFloat
+    let mpPosP: CGFloat
+    if self.direction == .Horizontal {
+        mpPosM = 0
+        mpPosP = symbolWidth + thumbWidth
+    }
+    else {
+        mpPosM = symbolWidth + thumbWidth
+        mpPosP = 0
+    }
+    
+    let minusSymbolLabelFrame = CGRect(x: mpPosM, y: 0, width: symbolWidth, height: bh)
+    let plusSymbolLabelFrame  = CGRect(x: mpPosP, y: 0, width: symbolWidth, height: bh)
+    let thumbLabelFrame       = CGRect(x: symbolWidth, y: 0, width: thumbWidth, height: bh)
+    let hintLabelFrame        = CGRect(x: symbolWidth, y: -bounds.height * 1.5, width: thumbWidth, height: bh)
+
+    minusSymbolLabel.frame = CGRect(origin: self.direction.getPosition(minusSymbolLabelFrame.origin), size: self.direction.getSize(minusSymbolLabelFrame.size))
+    plusSymbolLabel.frame  = CGRect(origin: self.direction.getPosition(plusSymbolLabelFrame.origin), size: self.direction.getSize(plusSymbolLabelFrame.size))
+    thumbLabel.frame       = CGRect(origin: self.direction.getPosition(thumbLabelFrame.origin), size: self.direction.getSize(thumbLabelFrame.size))
+    
+    // The hint label is not direction dependent
+    hintLabel.frame        = hintLabelFrame
 
     snappingBehavior = SnappingStepperBehavior(item: thumbLabel, snapToPoint: CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5))
 
@@ -159,7 +180,7 @@ extension SnappingStepper {
     case .Began:
       if case .None = hintStyle {} else {
         hintLabel.alpha  = 0
-        hintLabel.center = CGPoint(x: center.x, y: center.y - bounds.height - hintLabel.bounds.height / 2)
+        hintLabel.center = CGPoint(x: center.x, y: center.y - (bounds.size.height * 0.5 + hintLabel.bounds.height))
 
         superview?.addSubview(hintLabel)
 
@@ -168,7 +189,7 @@ extension SnappingStepper {
         }
       }
 
-      touchesBeganPoint = sender.translationInView(thumbLabel)
+      touchesBeganPoint = self.direction.getPosition(sender.translationInView(thumbLabel))
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
       thumbLabel.backgroundColor = thumbBackgroundColor?.lighterColor()
@@ -181,14 +202,25 @@ extension SnappingStepper {
         initialValue = _value
       }
     case .Changed:
-      let translationInView = sender.translationInView(thumbLabel)
+      let translationInView = self.direction.getPosition(sender.translationInView(thumbLabel))
+      let bw = self.direction.principalSize(bounds.size)
+      let tbw = self.direction.principalSize(thumbLabel.bounds.size)
+      let tcenter = self.direction.getPosition(thumbLabel.center)
+      
+      var centerX = (bw * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.4)
+      centerX     = max(tbw / 2, min(centerX, bw - tbw / 2))
 
-      var centerX = (bounds.width * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.4)
-      centerX     = max(thumbLabel.bounds.width / 2, min(centerX, bounds.width - thumbLabel.bounds.width / 2))
+      thumbLabel.center = self.direction.getPosition(CGPoint(x: centerX, y: tcenter.y))
 
-      thumbLabel.center = CGPoint(x: centerX, y: thumbLabel.center.y);
-
-      let locationRatio = (thumbLabel.center.x - CGRectGetMidX(bounds)) / ((CGRectGetWidth(bounds) - CGRectGetWidth(thumbLabel.bounds)) / 2)
+      let locationRatio: CGFloat
+      if self.direction == .Horizontal {
+        locationRatio = (tcenter.x - CGRectGetMidX(bounds)) / ((CGRectGetWidth(bounds) - CGRectGetWidth(thumbLabel.bounds)) / 2)
+      }
+      else {
+        // The + is on top of the control in vertical layout, so the locationRatio must be reversed!
+        locationRatio = (CGRectGetMidY(bounds) - tcenter.x) / ((CGRectGetHeight(bounds) - CGRectGetHeight(thumbLabel.bounds)) / 2)
+      }
+      
       let ratio         = Double(Int(locationRatio * 10)) / 10
       let factorValue   = ((maximumValue - minimumValue) / 100) * ratio
 

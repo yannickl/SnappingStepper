@@ -72,6 +72,17 @@ import UIKit
   @IBInspectable public var wraps: Bool = false
 
   /**
+   The direction of the control
+     
+   The default is horizontal
+  */
+  @IBInspectable public var direction: StyledControlDirection = .Horizontal {
+    didSet {
+      self.layoutComponents()
+    }
+  }
+    
+  /**
    The lowest possible numeric value for the stepper.
 
    Must be numerically less than maximumValue. If you attempt to set a value equal to or greater than maximumValue, the system raises an NSInvalidArgumentException exception.
