@@ -37,7 +37,7 @@ public enum StyledControlDirection {
     /**
      The principal size is the axis of the direction. Width when the direction is horizontal and height when the direction is vertical.
      */
-    public func principalSize(size: CGSize) -> CGFloat {
+    func principalSize(size: CGSize) -> CGFloat {
         switch self {
         case .Horizontal:
             return size.width
@@ -49,7 +49,7 @@ public enum StyledControlDirection {
     /**
      The non-principal size is the perpendicular axis of the direction. Height when the direction is horizontal and width when the direction is vertical.
      */
-    public func nonPrincipalSize(size: CGSize) -> CGFloat {
+    func nonPrincipalSize(size: CGSize) -> CGFloat {
         switch self {
         case .Horizontal:
             return size.height
@@ -59,33 +59,9 @@ public enum StyledControlDirection {
     }
     
     /**
-     The principal position is on the axis of the direction. X when the direction is horizontal and Y when the direction is vertical.
-     */
-    public func principalPosition(p: CGPoint) -> CGFloat {
-        switch self {
-        case .Horizontal:
-            return p.x
-        case .Vertical:
-            return p.y
-        }
-    }
-    
-    /**
-     The non-principal position is on the perpendicular axis of the direction. Y when the direction is horizontal and X when the direction is vertical.
-     */
-    public func nonPrincipalPosition(p: CGPoint) -> CGFloat {
-        switch self {
-        case .Horizontal:
-            return p.y
-        case .Vertical:
-            return p.x
-        }
-    }
-    
-    /**
      The principal size of the direction is applied. Vertical direction will flip the width and the height in the size.
      */
-    public func getSize(size: CGSize) -> CGSize {
+    func getSize(size: CGSize) -> CGSize {
         switch self {
         case .Horizontal:
             return size
@@ -97,7 +73,7 @@ public enum StyledControlDirection {
     /**
      The principal position of the direction is applied. Vertical direction will flip the X and the Y in the point.
      */
-    public func getPosition(p: CGPoint) -> CGPoint {
+    func getPosition(p: CGPoint) -> CGPoint {
         switch self {
         case .Horizontal:
             return p

@@ -30,30 +30,30 @@
 import UIKit
 
 /// The `StyledLabel` object is an `UILabel` with a custom shape.
-public class StyledLabel: UIView {
+class StyledLabel: UIView {
   var label                = UILabel()
-  var styleColor: UIColor? = UIColor.clearColor()
+  var styleColor: UIColor? = .clearColor()
   var shapeLayer           = CAShapeLayer()
 
-  public var style: ShapeStyle = .Box {
+  var style: ShapeStyle = .Box {
     didSet {
       applyStyle()
     }
   }
 
-  public var text: String? {
+  var text: String? {
     didSet {
       label.text = text
     }
   }
 
-  public var textColor: UIColor = .blackColor() {
+  var textColor: UIColor = .blackColor() {
     didSet {
       label.textColor = textColor
     }
   }
 
-  public override var backgroundColor: UIColor? {
+  override var backgroundColor: UIColor? {
     get {
       return .clearColor()
     }
@@ -64,47 +64,47 @@ public class StyledLabel: UIView {
     }
   }
 
-  public var borderColor: UIColor? {
+  var borderColor: UIColor? {
     didSet {
       applyStyle()
     }
   }
 
-  public var borderWidth: CGFloat = 1.0 {
+  var borderWidth: CGFloat = 1.0 {
     didSet {
       applyStyle()
     }
   }
 
-  public var font: UIFont? {
+  var font: UIFont? {
     didSet {
       label.font = font
     }
   }
 
-  public var textAlignment: NSTextAlignment = .Center {
+  var textAlignment: NSTextAlignment = .Center {
     didSet {
       label.textAlignment = textAlignment
     }
   }
     
-  public var rotationInRadians: CGFloat = 0 {
+  var rotationInRadians: CGFloat = 0 {
     didSet {
       self.setNeedsLayout()
     }
   }
     
-  public init() {
+  init() {
     super.init(frame: CGRectZero)
         
     self.layer.addSublayer(self.shapeLayer)
   }
     
-  required public init?(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
     
-  override public func layoutSubviews() {
+  override func layoutSubviews() {
     super.layoutSubviews()
         
     self.applyStyle()
