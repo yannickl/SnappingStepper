@@ -69,7 +69,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 use_frameworks!
-pod 'SnappingStepper', '~> 2.3.1'
+pod 'SnappingStepper', '~> 2.4.0'
 ```
 
 Install into your project:
@@ -100,8 +100,25 @@ $ brew install carthage
 To integrate `SnappingStepper` into your Xcode project using Carthage, specify it in your `Cartfile` file:
 
 ```ogdl
-github "yannickl/SnappingStepper" >= 2.3.1
+github "yannickl/SnappingStepper" >= 2.4.0
 ```
+
+## Swift Package Manager
+You can use [The Swift Package Manager](https://swift.org/package-manager) to install `SnappingStepper` by adding the proper description to your `Package.swift` file:
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .Package(url: "https://github.com/yannickl/SnappingStepper.git", versions: "2.4.0" ..< Version.max)
+    ]
+)
+```
+
+Note that the [Swift Package Manager](https://swift.org/package-manager) is still in early design and development, for more infomation checkout its [GitHub Page](https://github.com/apple/swift-package-manager).
 
 ## Manually
 

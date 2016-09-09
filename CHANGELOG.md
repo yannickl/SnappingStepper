@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 2.4.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.4.0)
+*Released on 2016-09-09.*
+
+- [ADD] Vertical Layout
+
 ## [Version 2.3.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.3.0)
 *Released on 2016-06-09.*
 
