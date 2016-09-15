@@ -27,9 +27,9 @@
 import Foundation
 
 final class AutoRepeatHelper {
-  private var timer: NSTimer?
-  private var autorepeatCount = 0
-  private var tickBlock: (() -> Void)?
+  fileprivate var timer: Timer?
+  fileprivate var autorepeatCount = 0
+  fileprivate var tickBlock: (() -> Void)?
 
   deinit {
     stop()
@@ -41,8 +41,8 @@ final class AutoRepeatHelper {
     timer?.invalidate()
   }
 
-  func start(autorepeatCount count: Int = 0, tickBlock block: () -> Void) {
-    if let _timer = timer where _timer.valid {
+  func start(autorepeatCount count: Int = 0, tickBlock block: @escaping () -> Void) {
+    if let _timer = timer , _timer.isValid {
       return
     }
 
@@ -51,13 +51,13 @@ final class AutoRepeatHelper {
 
     repeatTick(nil)
 
-    let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: #selector(AutoRepeatHelper.repeatTick), userInfo: nil, repeats: true)
+    let newTimer = Timer(timeInterval: 0.1, target: self, selector: #selector(AutoRepeatHelper.repeatTick), userInfo: nil, repeats: true)
     timer        = newTimer
 
-    NSRunLoop.currentRunLoop().addTimer(newTimer, forMode: NSRunLoopCommonModes)
+    RunLoop.current.add(newTimer, forMode: RunLoopMode.commonModes)
   }
 
-  @objc func repeatTick(sender: AnyObject?) {
+  @objc func repeatTick(_ sender: AnyObject?) {
     let needsIncrement: Bool
 
     if autorepeatCount < 35 {

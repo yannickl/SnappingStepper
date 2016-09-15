@@ -35,7 +35,7 @@ final internal class SnappingStepperBehavior: UIDynamicBehavior {
       let dynamicItemBehavior            = UIDynamicItemBehavior(items: [_item])
       dynamicItemBehavior.allowsRotation = false
 
-      let snapBehavior     = UISnapBehavior(item: _item, snapToPoint: point)
+      let snapBehavior     = UISnapBehavior(item: _item, snapTo: point)
       snapBehavior.damping = 0.25
 
       addChildBehavior(dynamicItemBehavior)

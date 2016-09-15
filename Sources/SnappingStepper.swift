@@ -40,7 +40,7 @@ import UIKit
 
    This is a convenient alternative to the `addTarget:Action:forControlEvents:` method of the `UIControl`.
    */
-  public var valueChangedBlock: ((value: Double) -> Void)?
+  public var valueChangedBlock: ((_ value: Double) -> Void)?
 
   // MARK: - Configuring the Stepper
 
@@ -76,7 +76,7 @@ import UIKit
      
    The default is horizontal
   */
-  @IBInspectable public var direction: StyledControlDirection = .Horizontal {
+  @IBInspectable public var direction: StyledControlDirection = .horizontal {
     didSet {
       self.layoutComponents()
     }
@@ -164,7 +164,7 @@ import UIKit
   }
 
   /// The color of the text symbols (`minus` and `plus`).
-  @IBInspectable public var symbolFontColor: UIColor = .blackColor() {
+  @IBInspectable public var symbolFontColor: UIColor = .black {
     didSet {
       minusSymbolLabel.textColor = symbolFontColor
       plusSymbolLabel.textColor  = symbolFontColor
@@ -193,28 +193,28 @@ import UIKit
   }
 
   /// The thumb's text color. Default's to black
-  @IBInspectable public var thumbTextColor: UIColor = .blackColor() {
+  @IBInspectable public var thumbTextColor: UIColor = .black {
     didSet {
       thumbLabel.textColor = thumbTextColor
     }
   }
 
   /// The thumb's style. Default's to box
-  @IBInspectable public var thumbStyle: ShapeStyle = .Box {
+  @IBInspectable public var thumbStyle: ShapeStyle = .box {
     didSet {
       self.applyThumbStyle(thumbStyle)
     }
   }
 
   /// The view's style. Default's to box.
-  @IBInspectable public var style: ShapeStyle = .Box {
+  @IBInspectable public var style: ShapeStyle = .box {
     didSet {
       self.applyStyle(style)
     }
   }
 
   /// The hint's style. Default's to none, so no hint will be displayed.
-  @IBInspectable public var hintStyle: ShapeStyle = .None {
+  @IBInspectable public var hintStyle: ShapeStyle = .none {
     didSet {
       self.applyHintStyle(hintStyle)
     }
@@ -255,7 +255,7 @@ import UIKit
       self.applyStyle(self.style)
 
       if thumbBackgroundColor == nil {
-        thumbLabel.backgroundColor = backgroundColor?.lighterColor()
+        thumbLabel.backgroundColor = backgroundColor?.lighter()
       }
     }
   }
@@ -325,12 +325,12 @@ import UIKit
 
   let autorepeatHelper      = AutoRepeatHelper()
   let dynamicButtonAnimator = UIDynamicAnimator()
-  var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPointZero)
+  var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPoint.zero)
 
   var styleLayer = CAShapeLayer()
-  var styleColor: UIColor? = .clearColor()
+  var styleColor: UIColor? = .clear
 
-  var touchesBeganPoint    = CGPointZero
+  var touchesBeganPoint    = CGPoint.zero
   var initialValue: Double = -1
   var factorValue: Double  = 0
   var oldValue = Double.infinity * -1

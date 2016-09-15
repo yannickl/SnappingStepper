@@ -29,15 +29,15 @@ import UIKit
 final class UIBuilder {
   static func defaultLabel() -> UILabel {
     let label                    = UILabel()
-    label.textAlignment          = .Center
-    label.userInteractionEnabled = true
+    label.textAlignment          = .center
+    label.isUserInteractionEnabled = true
 
     return label
   }
 
   static func defaultStyledLabel() -> StyledLabel {
     let label           = StyledLabel()
-    label.textAlignment = .Center
+    label.textAlignment = .center
     label.text          = ""
 
     return label

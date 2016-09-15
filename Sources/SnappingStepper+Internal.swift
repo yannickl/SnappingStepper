@@ -56,7 +56,7 @@ extension SnappingStepper {
     thumbLabel.addGestureRecognizer(panGesture)
 
     let touchGesture = UITouchGestureRecognizer(target: self, action: #selector(SnappingStepper.stepperTouched))
-    touchGesture.requireGestureRecognizerToFail(panGesture)
+    touchGesture.require(toFail: panGesture)
     addGestureRecognizer(touchGesture)
   }
 
@@ -69,7 +69,7 @@ extension SnappingStepper {
     // It makes most sense to have the + on the top of the view, when the direction is vertical
     let mpPosM: CGFloat
     let mpPosP: CGFloat
-    if self.direction == .Horizontal {
+    if self.direction == .horizontal {
         mpPosM = 0
         mpPosP = symbolWidth + thumbWidth
     }
@@ -92,25 +92,25 @@ extension SnappingStepper {
 
     snappingBehavior = SnappingStepperBehavior(item: thumbLabel, snapToPoint: CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5))
 
-    CustomShapeLayer.createHintShapeLayer(hintLabel, fillColor: thumbBackgroundColor?.lighterColor().CGColor)
+    CustomShapeLayer.createHintShapeLayer(hintLabel, fillColor: thumbBackgroundColor?.lighter().cgColor)
 
     applyThumbStyle(thumbStyle)
     applyStyle(style)
     applyHintStyle(hintStyle)
   }
 
-  func applyThumbStyle(style: ShapeStyle) {
+  func applyThumbStyle(_ style: ShapeStyle) {
     thumbLabel.style       = style
     thumbLabel.borderColor = thumbBorderColor
     thumbLabel.borderWidth = thumbBorderWidth
   }
 
-  func applyHintStyle(style: ShapeStyle) {
+  func applyHintStyle(_ style: ShapeStyle) {
     hintLabel.style = style
   }
 
-  func applyStyle(style: ShapeStyle) {
-    let bgColor: UIColor = .clearColor()
+  func applyStyle(_ style: ShapeStyle) {
+    let bgColor: UIColor = .clear
     let sLayer: CAShapeLayer
 
     if let borderColor = borderColor {
@@ -129,14 +129,14 @@ extension SnappingStepper {
 
   // MARK: - Responding to Gesture Events
 
-  func stepperTouched(sender: UITouchGestureRecognizer) {
-    let touchLocation = sender.locationInView(self)
-    let hitView       = hitTest(touchLocation, withEvent: nil)
+  func stepperTouched(_ sender: UITouchGestureRecognizer) {
+    let touchLocation = sender.location(in: self)
+    let hitView       = hitTest(touchLocation, with: nil)
 
     factorValue = hitView == minusSymbolLabel ? -1 : 1
 
     switch (sender.state, hitView) {
-    case (.Began, .Some(let v)) where v == minusSymbolLabel || v == plusSymbolLabel:
+    case (.began, .some(let v)) where v == minusSymbolLabel || v == plusSymbolLabel:
       if autorepeat {
         startAutorepeat()
       }
@@ -146,10 +146,10 @@ extension SnappingStepper {
         updateValue(value, finished: true)
       }
 
-      v.backgroundColor = backgroundColor?.darkerColor()
-    case (.Changed, .Some(let v)):
+      v.backgroundColor = backgroundColor?.darkened()
+    case (.changed, .some(let v)):
       if v == minusSymbolLabel || v == plusSymbolLabel {
-        v.backgroundColor = backgroundColor?.darkerColor()
+        v.backgroundColor = backgroundColor?.darkened()
 
         if autorepeat {
           startAutorepeat()
@@ -175,25 +175,25 @@ extension SnappingStepper {
     }
   }
 
-  func sliderPanned(sender: UIPanGestureRecognizer) {
+  func sliderPanned(_ sender: UIPanGestureRecognizer) {
     switch sender.state {
-    case .Began:
-      if case .None = hintStyle {} else {
+    case .began:
+      if case .none = hintStyle {} else {
         hintLabel.alpha  = 0
         hintLabel.center = CGPoint(x: center.x, y: center.y - (bounds.size.height * 0.5 + hintLabel.bounds.height))
 
         superview?.addSubview(hintLabel)
 
-        UIView.animateWithDuration(0.2) {
+        UIView.animate(withDuration: 0.2, animations: {
           self.hintLabel.alpha = 1.0
-        }
+        }) 
       }
 
-      touchesBeganPoint = self.direction.getPosition(sender.translationInView(thumbLabel))
+      touchesBeganPoint = self.direction.getPosition(sender.translation(in: thumbLabel))
       dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
-      thumbLabel.backgroundColor = thumbBackgroundColor?.lighterColor()
-      hintLabel.backgroundColor  = thumbBackgroundColor?.lighterColor()
+      thumbLabel.backgroundColor = thumbBackgroundColor?.lighter()
+      hintLabel.backgroundColor  = thumbBackgroundColor?.lighter()
 
       if autorepeat {
         startAutorepeat(autorepeatCount: Int.max)
@@ -201,8 +201,8 @@ extension SnappingStepper {
       else {
         initialValue = _value
       }
-    case .Changed:
-      let translationInView = self.direction.getPosition(sender.translationInView(thumbLabel))
+    case .changed:
+      let translationInView = self.direction.getPosition(sender.translation(in: thumbLabel))
       let bw = self.direction.principalSize(bounds.size)
       let tbw = self.direction.principalSize(thumbLabel.bounds.size)
       let tcenter = self.direction.getPosition(thumbLabel.center)
@@ -213,12 +213,12 @@ extension SnappingStepper {
       thumbLabel.center = self.direction.getPosition(CGPoint(x: centerX, y: tcenter.y))
 
       let locationRatio: CGFloat
-      if self.direction == .Horizontal {
-        locationRatio = (tcenter.x - CGRectGetMidX(bounds)) / ((CGRectGetWidth(bounds) - CGRectGetWidth(thumbLabel.bounds)) / 2)
+      if self.direction == .horizontal {
+        locationRatio = (tcenter.x - bounds.midX) / ((bounds.width - thumbLabel.bounds.width) / 2)
       }
       else {
         // The + is on top of the control in vertical layout, so the locationRatio must be reversed!
-        locationRatio = (CGRectGetMidY(bounds) - tcenter.x) / ((CGRectGetHeight(bounds) - CGRectGetHeight(thumbLabel.bounds)) / 2)
+        locationRatio = (bounds.midY - tcenter.x) / ((bounds.height - thumbLabel.bounds.height) / 2)
       }
       
       let ratio         = Double(Int(locationRatio * 10)) / 10
@@ -232,18 +232,18 @@ extension SnappingStepper {
 
         updateValue(_value, finished: true)
       }
-    case .Ended, .Failed, .Cancelled:
-      if case .None = hintStyle {} else {
-        UIView.animateWithDuration(0.2, animations: {
+    case .ended, .failed, .cancelled:
+      if case .none = hintStyle {} else {
+        UIView.animate(withDuration: 0.2, animations: {
           self.hintLabel.alpha = 0.0
-        }) { _ in
+        }, completion: { _ in
           self.hintLabel.removeFromSuperview()
-        }
+        }) 
       }
 
       dynamicButtonAnimator.addBehavior(snappingBehavior)
 
-      thumbLabel.backgroundColor = thumbBackgroundColor ?? backgroundColor?.lighterColor()
+      thumbLabel.backgroundColor = thumbBackgroundColor ?? backgroundColor?.lighter()
 
       if autorepeat {
         autorepeatHelper.stop()
@@ -252,7 +252,7 @@ extension SnappingStepper {
 
         updateValue(_value, finished: true)
       }
-    case .Possible:
+    case .possible:
       break
     }
   }
@@ -269,7 +269,7 @@ extension SnappingStepper {
     }
   }
 
-  func updateValue(value: Double, finished: Bool = true) {
+  func updateValue(_ value: Double, finished: Bool = true) {
     if !wraps {
       _value = max(minimumValue, min(value, maximumValue))
     }
@@ -283,15 +283,15 @@ extension SnappingStepper {
     if (continuous || finished) && oldValue != _value {
       oldValue = _value
 
-      sendActionsForControlEvents(.ValueChanged)
+      sendActions(for: .valueChanged)
 
       if let _valueChangedBlock = valueChangedBlock {
-        _valueChangedBlock(value: _value)
+        _valueChangedBlock(_value)
       }
     }
   }
 
   func valueAsText() -> String {
-    return value % 1 == 0 ? "\(Int(value))" : "\(value)"
+    return value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : "\(value)"
   }
 }

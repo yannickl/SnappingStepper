@@ -30,72 +30,72 @@
 import UIKit
 
 final class CustomShapeLayer {
-  static func createShape(style: ShapeStyle, bounds: CGRect, color: UIColor) -> CAShapeLayer {
+  static func createShape(_ style: ShapeStyle, bounds: CGRect, color: UIColor) -> CAShapeLayer {
     let shape = CAShapeLayer()
 
     let path        = CustomShapeLayer.shapePathForStyle(style, bounds: bounds)
-    shape.path      = path.CGPath
-    shape.fillColor = color.CGColor
+    shape.path      = path.cgPath
+    shape.fillColor = color.cgColor
 
     return shape
   }
 
-  static func createShape(style: ShapeStyle, bounds: CGRect, color: UIColor, borderColor: UIColor, borderWidth: CGFloat) -> CAShapeLayer {
+  static func createShape(_ style: ShapeStyle, bounds: CGRect, color: UIColor, borderColor: UIColor, borderWidth: CGFloat) -> CAShapeLayer {
     let shape = CAShapeLayer()
 
     let path          = CustomShapeLayer.shapePathForStyle(style, bounds: bounds)
-    shape.path        = path.CGPath
-    shape.fillColor   = color.CGColor
-    shape.strokeColor = borderColor.CGColor
+    shape.path        = path.cgPath
+    shape.fillColor   = color.cgColor
+    shape.strokeColor = borderColor.cgColor
     shape.lineWidth   = borderWidth
 
     return shape
   }
 
-  static func shapePathForStyle(style: ShapeStyle, bounds: CGRect) -> UIBezierPath {
+  static func shapePathForStyle(_ style: ShapeStyle, bounds: CGRect) -> UIBezierPath {
     var path = UIBezierPath()
 
     switch style {
-    case .Box, .None:
+    case .box, .none:
       path = UIBezierPath(rect: bounds)
-    case .Rounded:
+    case .rounded:
       path = UIBezierPath(roundedRect: bounds, cornerRadius: max(1.0, min(bounds.size.width, bounds.size.height) * 0.2))
-    case .RoundedFixed(let cornerRadius):
+    case .roundedFixed(let cornerRadius):
       path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
-    case .Thumb:
+    case .thumb:
       let s    = min(bounds.size.width, bounds.size.height)
       let xOff = (bounds.size.width - s) * 0.5
-      path     = UIBezierPath(ovalInRect: CGRect(x: bounds.origin.x + xOff, y: bounds.origin.y, width: s, height: s))
-    case .Tube:
+      path     = UIBezierPath(ovalIn: CGRect(x: bounds.origin.x + xOff, y: bounds.origin.y, width: s, height: s))
+    case .tube:
       path = UIBezierPath(roundedRect: bounds, cornerRadius: max(1.0, min(bounds.size.width, bounds.size.height) * 0.5))
-    case .Custom(let cpath):
-      path = CustomShapeLayer.getScaledPath(cpath.CGPath, size: bounds.size)
+    case .custom(let cpath):
+      path = CustomShapeLayer.getScaledPath(cpath.cgPath, size: bounds.size)
     }
     
     return path
   }
 
-  static func getScaledPath(path: CGPathRef, size: CGSize) -> UIBezierPath {
+  static func getScaledPath(_ path: CGPath, size: CGSize) -> UIBezierPath {
     let rect        = CGRect(origin:CGPoint(x:0, y:0), size:CGSize(width: size.width, height: size.height))
-    let boundingBox = CGPathGetBoundingBox(path)
+    let boundingBox = path.boundingBox
 
-    let scaleFactorX = CGRectGetWidth(rect) / CGRectGetWidth(boundingBox)
-    let scaleFactorY = CGRectGetHeight(rect) / CGRectGetHeight(boundingBox)
+    let scaleFactorX = rect.width / boundingBox.width
+    let scaleFactorY = rect.height / boundingBox.height
 
-    var scaleTransform = CGAffineTransformIdentity
-    scaleTransform     = CGAffineTransformScale(scaleTransform, scaleFactorX, scaleFactorY)
-    scaleTransform     = CGAffineTransformTranslate(scaleTransform, -CGRectGetMinX(boundingBox), -CGRectGetMinY(boundingBox))
+    var scaleTransform = CGAffineTransform.identity
+    scaleTransform     = scaleTransform.scaledBy(x: scaleFactorX, y: scaleFactorY)
+    scaleTransform     = scaleTransform.translatedBy(x: -boundingBox.minX, y: -boundingBox.minY)
 
-    let scaledSize   = CGSizeApplyAffineTransform(boundingBox.size, CGAffineTransformMakeScale(scaleFactorX, scaleFactorY))
-    let centerOffset = CGSize(width: (CGRectGetWidth(rect) - scaledSize.width) / (scaleFactorX * 2.0), height:(CGRectGetHeight(rect) - scaledSize.height) / (scaleFactorY * 2.0))
-    scaleTransform = CGAffineTransformTranslate(scaleTransform, centerOffset.width, centerOffset.height)
+    let scaledSize   = boundingBox.size.applying(CGAffineTransform(scaleX: scaleFactorX, y: scaleFactorY))
+    let centerOffset = CGSize(width: (rect.width - scaledSize.width) / (scaleFactorX * 2.0), height:(rect.height - scaledSize.height) / (scaleFactorY * 2.0))
+    scaleTransform = scaleTransform.translatedBy(x: centerOffset.width, y: centerOffset.height)
 
-    let scaledPath = CGPathCreateCopyByTransformingPath(path, &scaleTransform)!
+    let scaledPath = path.copy(using: &scaleTransform)!
 
-    return UIBezierPath(CGPath: scaledPath)
+    return UIBezierPath(cgPath: scaledPath)
   }
 
-  static func createHintShapeLayer(label: StyledLabel, fillColor: CGColor?) {
+  static func createHintShapeLayer(_ label: StyledLabel, fillColor: CGColor?) {
     let shape = CAShapeLayer()
     let cp1   = CGPoint(x: label.bounds.width * 0.35, y: label.bounds.height)
     let cp2   = CGPoint(x: label.bounds.width * 0.65, y: label.bounds.height)
@@ -103,13 +103,13 @@ final class CustomShapeLayer {
     let sp    = CGPoint(x: label.bounds.width / 2.0, y: label.bounds.height * 1.5)
 
     let myBezier = UIBezierPath()
-    myBezier.moveToPoint(sp)
-    myBezier.addCurveToPoint(CGPoint(x: label.bounds.width * 0.2, y: label.bounds.height), controlPoint1: cpc, controlPoint2: cp1)
-    myBezier.addLineToPoint(CGPoint(x: label.bounds.width * 0.8, y: label.bounds.height))
-    myBezier.addCurveToPoint(sp, controlPoint1: cp2, controlPoint2: cpc)
-    myBezier.closePath()
+    myBezier.move(to: sp)
+    myBezier.addCurve(to: CGPoint(x: label.bounds.width * 0.2, y: label.bounds.height), controlPoint1: cpc, controlPoint2: cp1)
+    myBezier.addLine(to: CGPoint(x: label.bounds.width * 0.8, y: label.bounds.height))
+    myBezier.addCurve(to: sp, controlPoint1: cp2, controlPoint2: cpc)
+    myBezier.close()
 
-    shape.path      = myBezier.CGPath
+    shape.path      = myBezier.cgPath
     shape.fillColor = fillColor
 
     label.layer.addSublayer(shape)

@@ -99,7 +99,7 @@ class SnappingStepperTests: XCTestCase {
   }
 
   func testContinuous() {
-    let expectation = expectationWithDescription("Value changed")
+    let expect = expectation(description: "Value changed")
 
     let stepper     = SnappingStepper()
     var changeCount = 0
@@ -109,7 +109,7 @@ class SnappingStepperTests: XCTestCase {
       changeCount += 1
 
       if changeCount == 2 {
-        expectation.fulfill()
+        expect.fulfill()
       }
     }
 
@@ -117,11 +117,11 @@ class SnappingStepperTests: XCTestCase {
     stepper.value = 10
     stepper.value = 11
 
-    waitForExpectationsWithTimeout(0.1) { (error) in }
+    waitForExpectations(timeout: 0.1) { (error) in }
   }
 
   func testNonContinuous() {
-    let expectation = expectationWithDescription("Value changed")
+    let expect = expectation(description: "Value changed")
 
     let stepper     = SnappingStepper()
     var changeCount = 0
@@ -131,7 +131,7 @@ class SnappingStepperTests: XCTestCase {
       changeCount += 1
 
       if changeCount == 2 {
-        expectation.fulfill()
+        expect.fulfill()
       }
     }
 
@@ -142,7 +142,7 @@ class SnappingStepperTests: XCTestCase {
     stepper.updateValue(13, finished: false)
     stepper.updateValue(14, finished: true)
     
-    waitForExpectationsWithTimeout(0.1) { (error) in }
+    waitForExpectations(timeout: 0.1) { (error) in }
   }
 
   func testThumbLabelTextValue() {

@@ -31,37 +31,37 @@ import UIKit.UIGestureRecognizerSubclass
 final class UITouchGestureRecognizer: UIGestureRecognizer {
   var isTouchInside = true
 
-  override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent) {
-    if state == .Possible {
-      state = .Began
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+    if state == .possible {
+      state = .began
     }
   }
 
-  override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent) {
+  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
     if let touch = touches.first, let view = view {
-      let touchLocation = touch.locationInView(view)
+      let touchLocation = touch.location(in: view)
 
-      let touchAreaRect = CGRectInset(view.bounds, -10, -10)
-      let isInside      = CGRectContainsPoint(touchAreaRect, touchLocation)
+      let touchAreaRect = view.bounds.insetBy(dx: -10, dy: -10)
+      let isInside      = touchAreaRect.contains(touchLocation)
 
       if !isTouchInside && isInside {
         isTouchInside = true
 
-        state = .Changed
+        state = .changed
       }
       else if isTouchInside && !isInside  {
         isTouchInside = false
 
-        state = .Changed
+        state = .changed
       }
     }
   }
 
-  override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent) {
-    state = .Failed
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+    state = .failed
   }
 
-  override func touchesCancelled(touches: Set<UITouch>, withEvent event: UIEvent) {
-    state = .Failed
+  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+    state = .failed
   }
 }
