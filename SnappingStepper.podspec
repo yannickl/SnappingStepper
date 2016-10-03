@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.dependency 'DynamicColor', '~> 2.4'
+  s.dependency 'DynamicColor', '~> 3.1'
 
   s.framework    = 'UIKit'
   s.source_files = 'Sources/*.swift'
