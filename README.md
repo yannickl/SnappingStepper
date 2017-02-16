@@ -124,6 +124,10 @@ Note that the [Swift Package Manager](https://swift.org/package-manager) is stil
 
 [Download](https://github.com/YannickL/SnappingStepper/archive/master.zip) the project and copy the `SnappingStepper` folder into your project to use it in.
 
+## Contribution
+
+Contributions are welcomed and encouraged *♡*.
+
 # Contact
 
 Yannick Loriot
