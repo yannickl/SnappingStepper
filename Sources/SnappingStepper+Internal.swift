@@ -25,6 +25,7 @@
  */
 
 import UIKit
+import StyledLabel
 
 extension SnappingStepper {
   // MARK: - Managing the Components
@@ -92,7 +93,8 @@ extension SnappingStepper {
 
     snappingBehavior = SnappingStepperBehavior(item: thumbLabel, snapToPoint: CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5))
 
-    CustomShapeLayer.createHintShapeLayer(hintLabel, fillColor: thumbBackgroundColor?.lighter().cgColor)
+    let hsl = StyledShapeLayer.createHintShapeLayer(hintLabel, fillColor: thumbBackgroundColor?.lighter().cgColor)
+    hintLabel.layer.addSublayer(hsl)
 
     applyThumbStyle(thumbStyle)
     applyStyle(style)
@@ -110,21 +112,32 @@ extension SnappingStepper {
   }
 
   func applyStyle(_ style: ShapeStyle) {
-    let bgColor: UIColor = .clear
-    let sLayer: CAShapeLayer
-
-    if let borderColor = borderColor {
-      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
+    if self.styleLayer.superlayer == nil {
+      self.layer.addSublayer(styleLayer)
     }
-    else {
-      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor)
+    
+    let bgColor: UIColor = self.styleColor ?? .clear
+    let bgsLayer = StyledShapeLayer.createShape(style, bounds: bounds, color: bgColor)
+    
+    // Add layer with border, if required
+    if let bLayer = self.createBorderLayer(style, layerRect: bounds) {
+      bgsLayer.addSublayer(bLayer)
     }
-
+    
     if styleLayer.superlayer != nil {
-      layer.replaceSublayer(styleLayer, with: sLayer)
+      layer.replaceSublayer(styleLayer, with: bgsLayer)
     }
-
-    styleLayer = sLayer
+    styleLayer = bgsLayer
+    styleLayer.frame = bounds
+  }
+  
+  func createBorderLayer(_ style: ShapeStyle, layerRect: CGRect) -> CALayer? {
+    let borderWidth = self.borderWidth
+    if borderWidth > 0 && borderColor != nil {
+      let bLayer = StyledShapeLayer.createShape(style, bounds: layerRect, color: .clear, borderColor: borderColor ?? .clear, borderWidth: borderWidth)
+      return bLayer
+    }
+    return nil
   }
 
   // MARK: - Responding to Gesture Events
@@ -146,24 +159,24 @@ extension SnappingStepper {
         updateValue(value, finished: true)
       }
 
-      v.backgroundColor = backgroundColor?.darkened()
+      v.backgroundColor = styleColor?.darkened()
     case (.changed, .some(let v)):
       if v == minusSymbolLabel || v == plusSymbolLabel {
-        v.backgroundColor = backgroundColor?.darkened()
+        v.backgroundColor = styleColor?.darkened()
 
         if autorepeat {
           startAutorepeat()
         }
       }
       else {
-        minusSymbolLabel.backgroundColor = backgroundColor
-        plusSymbolLabel.backgroundColor  = backgroundColor
+        minusSymbolLabel.backgroundColor = styleColor
+        plusSymbolLabel.backgroundColor  = styleColor
 
         autorepeatHelper.stop()
       }
     default:
-      minusSymbolLabel.backgroundColor = backgroundColor
-      plusSymbolLabel.backgroundColor  = backgroundColor
+      minusSymbolLabel.backgroundColor = .clear
+      plusSymbolLabel.backgroundColor  = .clear
 
       if autorepeat {
         autorepeatHelper.stop()
@@ -222,7 +235,7 @@ extension SnappingStepper {
       }
       
       let ratio         = Double(Int(locationRatio * 10)) / 10
-      let factorValue   = ((maximumValue - minimumValue) / 100) * ratio
+      let factorValue   = ((maximumValue - minimumValue) / 100) * ratio * stepFactor
 
       if autorepeat {
         self.factorValue = factorValue
@@ -243,7 +256,7 @@ extension SnappingStepper {
 
       dynamicButtonAnimator.addBehavior(snappingBehavior)
 
-      thumbLabel.backgroundColor = thumbBackgroundColor ?? backgroundColor?.lighter()
+      thumbLabel.backgroundColor = thumbBackgroundColor ?? styleColor?.lighter()
 
       if autorepeat {
         autorepeatHelper.stop()
@@ -292,6 +305,11 @@ extension SnappingStepper {
   }
 
   func valueAsText() -> String {
-    return value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : "\(value)"
+    if let formatting = self.thumbTextFormatString {
+      return String.init(format: formatting, value)
+    }
+    else {
+      return value.truncatingRemainder(dividingBy: 1) == 0 ? "\(Int(value))" : "\(value)"
+    }
   }
 }

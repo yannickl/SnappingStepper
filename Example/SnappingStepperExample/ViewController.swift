@@ -26,23 +26,27 @@ class ViewController: UIViewController {
     assignStepperDefaultSettings(tubeStepper)
     tubeStepper.style                = .tube
     tubeStepper.thumbStyle           = .tube
-    tubeStepper.backgroundColor      = UIColor(hex: 0xB2DFDB)
+    tubeStepper.styleColor           = UIColor(hex: 0xB2DFDB)
     tubeStepper.thumbBackgroundColor = UIColor(hex: 0x009688)
     tubeStepper.hintStyle            = .box
 
     assignStepperDefaultSettings(roundedStepper)
     roundedStepper.style                = .rounded
     roundedStepper.thumbStyle           = .rounded
-    roundedStepper.backgroundColor      = .clear
+    roundedStepper.styleColor           = .clear
     roundedStepper.thumbBackgroundColor = UIColor(hex: 0xFFC107)
     roundedStepper.borderColor          = UIColor(hex: 0xFFC107)
     roundedStepper.borderWidth          = 0.5
-    roundedStepper.hintStyle            = .thumb
+    roundedStepper.hintStyle            = .rounded
+    roundedStepper.thumbTextFormatString = "%0.2f"
+    roundedStepper.maximumValue         = 1
+    roundedStepper.stepValue            = 0.1
+    roundedStepper.stepFactor           = 25
 
     assignStepperDefaultSettings(customStepper)
     customStepper.style                = .custom(path: customDoubleArrowPath())
     customStepper.thumbStyle           = .thumb
-    customStepper.backgroundColor      = .clear
+    customStepper.styleColor           = .clear
     customStepper.borderColor          = UIColor(hex: 0x607D8B)
     customStepper.thumbBackgroundColor = UIColor(hex: 0x607D8B)
     customStepper.borderWidth          = 0.5
@@ -51,18 +55,18 @@ class ViewController: UIViewController {
     assignStepperDefaultSettings(verticalRoundedStepper)
     verticalRoundedStepper.style                = .rounded
     verticalRoundedStepper.thumbStyle           = .rounded
-    verticalRoundedStepper.backgroundColor      = .clear
+    verticalRoundedStepper.styleColor           = UIColor(hex: 0xFFC107).lighter().lighter()
     verticalRoundedStepper.thumbBackgroundColor = UIColor(hex: 0xFFC107)
     verticalRoundedStepper.borderColor          = UIColor(hex: 0xFFC107)
     verticalRoundedStepper.borderWidth          = 0.5
-    verticalRoundedStepper.hintStyle            = .thumb
+    verticalRoundedStepper.hintStyle            = .rounded
     verticalRoundedStepper.direction            = .vertical
   }
 
   func assignStepperDefaultSettings(_ snappingStepper: SnappingStepper) {
     snappingStepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 20)
     snappingStepper.symbolFontColor      = .black
-    snappingStepper.backgroundColor      = UIColor(hex: 0xc0392b)
+    snappingStepper.styleColor           = UIColor(hex: 0xc0392b)
     snappingStepper.thumbWidthRatio      = 0.4
     snappingStepper.thumbText            = nil
     snappingStepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 18)
@@ -75,6 +79,7 @@ class ViewController: UIViewController {
     snappingStepper.minimumValue = 0
     snappingStepper.maximumValue = 1000
     snappingStepper.stepValue    = 1
+    snappingStepper.thumbTextFormatString = "%0.f"
   }
 
   func customDoubleArrowPath() -> UIBezierPath {

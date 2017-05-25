@@ -25,6 +25,7 @@
  */
 
 import UIKit
+import StyledLabel
 
 final class UIBuilder {
   static func defaultLabel() -> UILabel {
