@@ -26,6 +26,7 @@
 
 import DynamicColor
 import UIKit
+import StyledLabel
 
 /**
  A stepper control provides a user interface for incrementing or decrementing a value.
@@ -125,6 +126,15 @@ import UIKit
    */
   @IBInspectable public var stepValue: Double = 1
 
+  /**
+   The step increase/decrease factor applied when sliding the stepper.
+   
+   Must be numerically greater than 0. If you attempt to set this property’s value to 0 or to a negative number, the system raises an NSInvalidArgumentException exception.
+   
+   The default value for this property is 1.
+   */
+  @IBInspectable public var stepFactor: Double = 1
+  
   // MARK: - Accessing the Stepper’s Value
 
   /**
@@ -249,19 +259,25 @@ import UIKit
   }
 
   /// The view’s background color.
-  override public var backgroundColor: UIColor? {
+  @IBInspectable public var styleColor: UIColor? {
     didSet {
-      self.styleColor = backgroundColor
       self.applyStyle(self.style)
 
       if thumbBackgroundColor == nil {
-        thumbLabel.backgroundColor = backgroundColor?.lighter()
+        thumbLabel.backgroundColor = styleColor?.lighter()
       }
     }
   }
 
   // MARK: - Displaying Thumb Text
 
+  /// The thumb text format. If the format string is nil it will display the current value unformatted. Defaults with empty string.
+  public var thumbTextFormatString: String? {
+    didSet {
+      self.applyThumbStyle(thumbStyle)
+    }
+  }
+  
   /// The thumb text to display. If the text is nil it will display the current value of the stepper. Defaults with empty string.
   @IBInspectable public var thumbText: String? = "" {
     didSet {
@@ -328,7 +344,6 @@ import UIKit
   var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPoint.zero)
 
   var styleLayer = CAShapeLayer()
-  var styleColor: UIColor? = .clear
 
   var touchesBeganPoint    = CGPoint.zero
   var initialValue: Double = -1
