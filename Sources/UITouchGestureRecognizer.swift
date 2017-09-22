@@ -29,39 +29,39 @@ import UIKit.UIGestureRecognizerSubclass
 
 /// Gesture to know whether the touch is inside the view
 final class UITouchGestureRecognizer: UIGestureRecognizer {
-  var isTouchInside = true
+    var isTouchInside = true
 
-  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-    if state == .possible {
-      state = .began
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        if state == .possible {
+            state = .began
+        }
     }
-  }
 
-  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
-    if let touch = touches.first, let view = view {
-      let touchLocation = touch.location(in: view)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+        if let touch = touches.first, let view = view {
+            let touchLocation = touch.location(in: view)
+            let touchAreaRect = view.bounds.insetBy(dx: -10, dy: -10)
 
-      let touchAreaRect = view.bounds.insetBy(dx: -10, dy: -10)
-      let isInside      = touchAreaRect.contains(touchLocation)
+            let isInside      = touchAreaRect.contains(touchLocation)
 
-      if !isTouchInside && isInside {
-        isTouchInside = true
+            if !isTouchInside && isInside {
+                isTouchInside = true
 
-        state = .changed
-      }
-      else if isTouchInside && !isInside  {
-        isTouchInside = false
+                state = .changed
+            }
+            else if isTouchInside && !isInside  {
+                isTouchInside = false
 
-        state = .changed
-      }
+                state = .changed
+            }
+        }
     }
-  }
 
-  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
-    state = .failed
-  }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+        state = .failed
+    }
 
-  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
-    state = .failed
-  }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+        state = .failed
+    }
 }
