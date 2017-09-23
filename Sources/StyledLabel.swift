@@ -32,10 +32,10 @@ import UIKit
 /// The `StyledLabel` object is an `UILabel` with a custom shape.
 class StyledLabel: UIView {
   var label                = UILabel()
-  var shapeLayer           = CAShapeLayer()
   var styleColor: UIColor? = .clear
+  var shapeLayer           = CAShapeLayer()
 
-  var style: ShapeStyle = .box {
+    var style: ShapeStyle = .box {
     didSet {
       applyStyle()
     }
@@ -78,7 +78,7 @@ class StyledLabel: UIView {
 
   var font: UIFont? {
     didSet {
-      label.font = font
+      self.label.font = font
     }
   }
 
@@ -117,14 +117,14 @@ class StyledLabel: UIView {
   }
 
   func applyStyle() {
-    let bgColor = styleColor ?? .clear
+    let bgColor = styleColor ?? UIColor.clear
     let sLayer: CAShapeLayer
 
     if let borderColor = borderColor {
-      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
+        sLayer = CustomShapeLayer.createShape(style: style, bounds: bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
     }
     else {
-      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor)
+        sLayer = CustomShapeLayer.createShape(style: style, bounds: bounds, color: bgColor)
     }
 
     if self.shapeLayer.superlayer != nil {

@@ -27,19 +27,20 @@
 import UIKit
 
 final class UIBuilder {
-  static func defaultLabel() -> UILabel {
-    let label                    = UILabel()
-    label.textAlignment          = .center
-    label.isUserInteractionEnabled = true
+    static func defaultLabel() -> UILabel {
+        let label                    = UILabel()
+        label.textAlignment          = .center
+        label.isUserInteractionEnabled = true
 
-    return label
-  }
+        return label
+    }
 
-  static func defaultStyledLabel() -> StyledLabel {
-    let label           = StyledLabel()
-    label.textAlignment = .center
-    label.text          = ""
+    static func defaultStyledLabel() -> StyledLabel {
+        let label           = StyledLabel()
+        label.textAlignment = .center
+        label.text          = ""
 
-    return label
-  }
+        return label
+    }
 }
+
