@@ -37,7 +37,7 @@ import UIKit
     /**
      The principal size is the axis of the direction. Width when the direction is horizontal and height when the direction is vertical.
      */
-    func principalSize(size: CGSize) -> CGFloat {
+    func principalSize(_ size: CGSize) -> CGFloat {
         switch self {
         case .horizontal:
             return size.width
@@ -49,7 +49,7 @@ import UIKit
     /**
      The non-principal size is the perpendicular axis of the direction. Height when the direction is horizontal and width when the direction is vertical.
      */
-    func nonPrincipalSize(size: CGSize) -> CGFloat {
+    func nonPrincipalSize(_ size: CGSize) -> CGFloat {
         switch self {
         case .horizontal:
             return size.height
@@ -61,7 +61,7 @@ import UIKit
     /**
      The principal size of the direction is applied. Vertical direction will flip the width and the height in the size.
      */
-    func getSize(size: CGSize) -> CGSize {
+    func getSize(_ size: CGSize) -> CGSize {
         switch self {
         case .horizontal:
             return size
@@ -73,7 +73,7 @@ import UIKit
     /**
      The principal position of the direction is applied. Vertical direction will flip the X and the Y in the point.
      */
-    func getPosition(p: CGPoint) -> CGPoint {
+    func getPosition(_ p: CGPoint) -> CGPoint {
         switch self {
         case .horizontal:
             return p

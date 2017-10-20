@@ -61,8 +61,8 @@ extension SnappingStepper {
     }
 
     func layoutComponents() {
-        let bw = self.direction.principalSize(size: bounds.size)
-        let bh = self.direction.nonPrincipalSize(size: bounds.size)
+        let bw = self.direction.principalSize(bounds.size)
+        let bh = self.direction.nonPrincipalSize(bounds.size)
         let thumbWidth  = bw * thumbWidthRatio
         let symbolWidth = (bw - thumbWidth) / 2
 
@@ -83,9 +83,9 @@ extension SnappingStepper {
         let thumbLabelFrame       = CGRect(x: symbolWidth, y: 0, width: thumbWidth, height: bh)
         let hintLabelFrame        = CGRect(x: symbolWidth, y: -bounds.height * 1.5, width: thumbWidth, height: bh)
 
-        minusSymbolLabel.frame = CGRect(origin: self.direction.getPosition(p: minusSymbolLabelFrame.origin), size: self.direction.getSize(size: minusSymbolLabelFrame.size))
-        plusSymbolLabel.frame  = CGRect(origin: self.direction.getPosition(p: plusSymbolLabelFrame.origin), size: self.direction.getSize(size: plusSymbolLabelFrame.size))
-        thumbLabel.frame       = CGRect(origin: self.direction.getPosition(p: thumbLabelFrame.origin), size: self.direction.getSize(size: thumbLabelFrame.size))
+        minusSymbolLabel.frame = CGRect(origin: self.direction.getPosition(minusSymbolLabelFrame.origin), size: self.direction.getSize(minusSymbolLabelFrame.size))
+        plusSymbolLabel.frame  = CGRect(origin: self.direction.getPosition(plusSymbolLabelFrame.origin), size: self.direction.getSize(plusSymbolLabelFrame.size))
+        thumbLabel.frame       = CGRect(origin: self.direction.getPosition(thumbLabelFrame.origin), size: self.direction.getSize(thumbLabelFrame.size))
 
         // The hint label is not direction dependent
         hintLabel.frame        = hintLabelFrame
@@ -189,7 +189,7 @@ extension SnappingStepper {
                 }
             }
 
-            touchesBeganPoint = self.direction.getPosition(p: sender.translation(in: thumbLabel))
+            touchesBeganPoint = self.direction.getPosition(sender.translation(in: thumbLabel))
             dynamicButtonAnimator.removeBehavior(snappingBehavior)
 
             thumbLabel.backgroundColor = thumbBackgroundColor?.lighter()
@@ -202,15 +202,15 @@ extension SnappingStepper {
                 initialValue = _value
             }
         case .changed:
-            let translationInView = self.direction.getPosition(p: sender.translation(in: thumbLabel))
-            let bw = self.direction.principalSize(size: bounds.size)
-            let tbw = self.direction.principalSize(size: thumbLabel.bounds.size)
-            let tcenter = self.direction.getPosition(p: thumbLabel.center)
+            let translationInView = self.direction.getPosition(sender.translation(in: thumbLabel))
+            let bw = self.direction.principalSize(bounds.size)
+            let tbw = self.direction.principalSize(thumbLabel.bounds.size)
+            let tcenter = self.direction.getPosition(thumbLabel.center)
 
             var centerX = (bw * 0.5) + ((touchesBeganPoint.x + translationInView.x) * 0.4)
             centerX     = max(tbw / 2, min(centerX, bw - tbw / 2))
 
-            thumbLabel.center = self.direction.getPosition(p: CGPoint(x: centerX, y: tcenter.y))
+            thumbLabel.center = self.direction.getPosition(CGPoint(x: centerX, y: tcenter.y))
 
             let locationRatio: CGFloat
             if self.direction == .horizontal {
@@ -222,7 +222,7 @@ extension SnappingStepper {
             }
 
             let ratio         = Double(Int(locationRatio * 10)) / 10
-            let factorValue   = round(((maximumValue - minimumValue) / 100) * ratio)
+            let factorValue   = (((maximumValue - minimumValue) / 100) * ratio)
 
             if autorepeat {
                 self.factorValue = factorValue
