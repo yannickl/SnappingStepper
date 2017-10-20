@@ -103,9 +103,9 @@ import UIKit
 
      Must be numerically greater than minimumValue. If you attempt to set a value equal to or lower than minimumValue, the system raises an NSInvalidArgumentException exception.
 
-     The default value of this property is 100.
+     The default value of this property is infinity.
      */
-    @IBInspectable public var maximumValue: Double = 100 {
+    @IBInspectable public var maximumValue: Double = .infinity {
         didSet {
             if maximumValue < minimumValue {
                 minimumValue = maximumValue
