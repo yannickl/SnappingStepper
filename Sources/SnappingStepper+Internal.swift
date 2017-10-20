@@ -146,10 +146,10 @@ extension SnappingStepper {
                 updateValue(value: value, finished: true)
             }
 
-            v.backgroundColor = backgroundColor?.darkened()
+            v.backgroundColor = backgroundColor?.darker()
         case (.changed, .some(let v)):
             if v == minusSymbolLabel || v == plusSymbolLabel {
-                v.backgroundColor = backgroundColor?.darkened()
+                v.backgroundColor = backgroundColor?.darker()
 
                 if autorepeat {
                     startAutorepeat()
