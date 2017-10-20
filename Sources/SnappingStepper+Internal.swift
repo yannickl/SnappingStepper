@@ -292,6 +292,9 @@ extension SnappingStepper {
     }
 
     func valueAsText() -> String {
+        if let numberFormatter = numberFormatter, let string = numberFormatter.string(from: NSNumber(value: value)) {
+            return string
+        }
         return (value.truncatingRemainder(dividingBy: 1) == 0) ? "\(Int(value))" : "\(value)"
     }
 }

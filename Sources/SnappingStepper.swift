@@ -275,7 +275,10 @@ import UIKit
             hintLabel.text = valueAsText()
         }
     }
-
+    
+    /// Optional Number Formatter for displaying the value as a String
+    public var numberFormatter: NumberFormatter?
+    
     // MARK: - Deallocating Snappinf Stepper
 
     deinit {
