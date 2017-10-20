@@ -222,7 +222,7 @@ extension SnappingStepper {
             }
 
             let ratio         = Double(Int(locationRatio * 10)) / 10
-            let factorValue   = ((maximumValue - minimumValue) / 100) * ratio
+            let factorValue   = round(((maximumValue - minimumValue) / 100) * ratio)
 
             if autorepeat {
                 self.factorValue = factorValue
