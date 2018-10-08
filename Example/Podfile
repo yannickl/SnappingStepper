@@ -4,7 +4,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 def shared_pods
-  pod 'DynamicColor', '~> 3.1'
+  pod 'DynamicColor', '~> 4.0.2'
 end
 
 target 'SnappingStepper' do

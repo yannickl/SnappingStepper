@@ -54,7 +54,7 @@ final class AutoRepeatHelper {
         let newTimer = Timer(timeInterval: 0.1, target: self, selector: #selector(AutoRepeatHelper.repeatTick), userInfo: nil, repeats: true)
         timer        = newTimer
 
-        RunLoop.current.add(newTimer, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(newTimer, forMode: .common)
     }
 
     @objc func repeatTick(sender: AnyObject?) {

@@ -135,12 +135,12 @@ class SnappingStepperTests: XCTestCase {
       }
     }
 
-    stepper.updateValue(10, finished: false)
-    stepper.updateValue(10, finished: true)
-    stepper.updateValue(11, finished: false)
-    stepper.updateValue(12, finished: false)
-    stepper.updateValue(13, finished: false)
-    stepper.updateValue(14, finished: true)
+    stepper.updateValue(value: 10, finished: false)
+    stepper.updateValue(value: 10, finished: true)
+    stepper.updateValue(value: 11, finished: false)
+    stepper.updateValue(value: 12, finished: false)
+    stepper.updateValue(value: 13, finished: false)
+    stepper.updateValue(value: 14, finished: true)
     
     waitForExpectations(timeout: 0.1) { (error) in }
   }
