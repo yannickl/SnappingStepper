@@ -24,50 +24,50 @@ class ViewController: UIViewController {
     assignStepperDefaultSettings(classicStepper)
 
     assignStepperDefaultSettings(tubeStepper)
-    tubeStepper.style                = .Tube
-    tubeStepper.thumbStyle           = .Tube
+    tubeStepper.style                = .tube
+    tubeStepper.thumbStyle           = .tube
     tubeStepper.backgroundColor      = UIColor(hex: 0xB2DFDB)
     tubeStepper.thumbBackgroundColor = UIColor(hex: 0x009688)
-    tubeStepper.hintStyle            = .Box
+    tubeStepper.hintStyle            = .box
 
     assignStepperDefaultSettings(roundedStepper)
-    roundedStepper.style                = .Rounded
-    roundedStepper.thumbStyle           = .Rounded
-    roundedStepper.backgroundColor      = .clearColor()
+    roundedStepper.style                = .rounded
+    roundedStepper.thumbStyle           = .rounded
+    roundedStepper.backgroundColor      = .clear
     roundedStepper.thumbBackgroundColor = UIColor(hex: 0xFFC107)
     roundedStepper.borderColor          = UIColor(hex: 0xFFC107)
     roundedStepper.borderWidth          = 0.5
-    roundedStepper.hintStyle            = .Thumb
+    roundedStepper.hintStyle            = .thumb
 
     assignStepperDefaultSettings(customStepper)
-    customStepper.style                = .Custom(path: customDoubleArrowPath())
-    customStepper.thumbStyle           = .Thumb
-    customStepper.backgroundColor      = .clearColor()
+    customStepper.style                = .custom(path: customDoubleArrowPath())
+    customStepper.thumbStyle           = .thumb
+    customStepper.backgroundColor      = .clear
     customStepper.borderColor          = UIColor(hex: 0x607D8B)
     customStepper.thumbBackgroundColor = UIColor(hex: 0x607D8B)
     customStepper.borderWidth          = 0.5
-    customStepper.hintStyle            = .Rounded
+    customStepper.hintStyle            = .rounded
     
     assignStepperDefaultSettings(verticalRoundedStepper)
-    verticalRoundedStepper.style                = .Rounded
-    verticalRoundedStepper.thumbStyle           = .Rounded
-    verticalRoundedStepper.backgroundColor      = .clearColor()
+    verticalRoundedStepper.style                = .rounded
+    verticalRoundedStepper.thumbStyle           = .rounded
+    verticalRoundedStepper.backgroundColor      = .clear
     verticalRoundedStepper.thumbBackgroundColor = UIColor(hex: 0xFFC107)
     verticalRoundedStepper.borderColor          = UIColor(hex: 0xFFC107)
     verticalRoundedStepper.borderWidth          = 0.5
-    verticalRoundedStepper.hintStyle            = .Thumb
-    verticalRoundedStepper.direction            = .Vertical
+    verticalRoundedStepper.hintStyle            = .thumb
+    verticalRoundedStepper.direction            = .vertical
   }
 
-  func assignStepperDefaultSettings(snappingStepper: SnappingStepper) {
+  func assignStepperDefaultSettings(_ snappingStepper: SnappingStepper) {
     snappingStepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 20)
-    snappingStepper.symbolFontColor      = .blackColor()
+    snappingStepper.symbolFontColor      = .black
     snappingStepper.backgroundColor      = UIColor(hex: 0xc0392b)
     snappingStepper.thumbWidthRatio      = 0.4
     snappingStepper.thumbText            = nil
     snappingStepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 18)
     snappingStepper.thumbBackgroundColor = UIColor(hex: 0xe74c3c)
-    snappingStepper.thumbTextColor       = .blackColor()
+    snappingStepper.thumbTextColor       = .black
 
     snappingStepper.continuous   = true
     snappingStepper.autorepeat   = true
@@ -80,23 +80,23 @@ class ViewController: UIViewController {
   func customDoubleArrowPath() -> UIBezierPath {
     let da = UIBezierPath()
 
-    da.moveToPoint(CGPoint(x: 232, y: 969))
-    da.addLineToPoint(CGPoint(x: 189, y: 941))
-    da.addLineToPoint(CGPoint(x: 189, y: 955))
-    da.addLineToPoint(CGPoint(x: 62, y: 955))
-    da.addLineToPoint(CGPoint(x: 62, y: 941))
-    da.addLineToPoint(CGPoint(x: 17, y: 972))
-    da.addLineToPoint(CGPoint(x: 62, y: 1000))
-    da.addLineToPoint(CGPoint(x: 62, y: 986))
-    da.addLineToPoint(CGPoint(x: 189, y: 986))
-    da.addLineToPoint(CGPoint(x: 189, y: 1000))
-    da.addLineToPoint(CGPoint(x: 232, y: 972))
-    da.closePath()
+    da.move(to: CGPoint(x: 232, y: 969))
+    da.addLine(to: CGPoint(x: 189, y: 941))
+    da.addLine(to: CGPoint(x: 189, y: 955))
+    da.addLine(to: CGPoint(x: 62, y: 955))
+    da.addLine(to: CGPoint(x: 62, y: 941))
+    da.addLine(to: CGPoint(x: 17, y: 972))
+    da.addLine(to: CGPoint(x: 62, y: 1000))
+    da.addLine(to: CGPoint(x: 62, y: 986))
+    da.addLine(to: CGPoint(x: 189, y: 986))
+    da.addLine(to: CGPoint(x: 189, y: 1000))
+    da.addLine(to: CGPoint(x: 232, y: 972))
+    da.close()
 
     return da
   }
 
-  func updateThumbAttributes(snappingStepper: SnappingStepper, index: Int) {
+  func updateThumbAttributes(_ snappingStepper: SnappingStepper, index: Int) {
     switch index {
     case 1:
       snappingStepper.thumbText = ""
@@ -109,17 +109,17 @@ class ViewController: UIViewController {
     }
   }
 
-  @IBAction func stepperValueChangedAction(sender: SnappingStepper) {
+  @IBAction func stepperValueChangedAction(_ sender: SnappingStepper) {
     for stepper in [classicStepper, tubeStepper, roundedStepper, verticalRoundedStepper, customStepper] {
       if stepper != sender {
-        stepper.value = sender.value
+        stepper?.value = sender.value
       }
     }
 
     valueLabel.text = "\(sender.value)"
   }
 
-  @IBAction func segmentedValueChangedAction(sender: UISegmentedControl) {
+  @IBAction func segmentedValueChangedAction(_ sender: UISegmentedControl) {
     updateThumbAttributes(classicStepper, index: sender.selectedSegmentIndex)
     updateThumbAttributes(customStepper, index: sender.selectedSegmentIndex)
     updateThumbAttributes(tubeStepper, index: sender.selectedSegmentIndex)

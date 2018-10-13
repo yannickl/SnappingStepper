@@ -32,17 +32,17 @@ import UIKit
 /// Specifies the shape style of the snapping stepper.
 public enum ShapeStyle {
   /// No shape
-  case None
+  case none
   /// A box shape.
-  case Box
+  case box
   /// A round shape.
-  case Rounded
+  case rounded
   /// A round shape with given corner radius.
-  case RoundedFixed(cornerRadius: CGFloat)
+  case roundedFixed(cornerRadius: CGFloat)
   /// A thumb shape.
-  case Thumb
+  case thumb
   /// A tube shape.
-  case Tube
+  case tube
   /// A custom shape.
-  case Custom(path: UIBezierPath)
+  case custom(path: UIBezierPath)
 }

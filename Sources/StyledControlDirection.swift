@@ -30,18 +30,18 @@
 
 import UIKit
 
-public enum StyledControlDirection {
-    case Horizontal
-    case Vertical
+@objc public enum StyledControlDirection: Int {
+    case horizontal
+    case vertical
     
     /**
      The principal size is the axis of the direction. Width when the direction is horizontal and height when the direction is vertical.
      */
     func principalSize(size: CGSize) -> CGFloat {
         switch self {
-        case .Horizontal:
+        case .horizontal:
             return size.width
-        case .Vertical:
+        case .vertical:
             return size.height
         }
     }
@@ -51,9 +51,9 @@ public enum StyledControlDirection {
      */
     func nonPrincipalSize(size: CGSize) -> CGFloat {
         switch self {
-        case .Horizontal:
+        case .horizontal:
             return size.height
-        case .Vertical:
+        case .vertical:
             return size.width
         }
     }
@@ -63,10 +63,10 @@ public enum StyledControlDirection {
      */
     func getSize(size: CGSize) -> CGSize {
         switch self {
-        case .Horizontal:
+        case .horizontal:
             return size
-        case .Vertical:
-            return CGSizeMake(size.height, size.width)
+        case .vertical:
+            return CGSize(width: size.width, height: size.height)
         }
     }
     
@@ -75,10 +75,10 @@ public enum StyledControlDirection {
      */
     func getPosition(p: CGPoint) -> CGPoint {
         switch self {
-        case .Horizontal:
+        case .horizontal:
             return p
-        case .Vertical:
-            return CGPointMake(p.y, p.x)
+        case .vertical:
+            return CGPoint(x: p.y, y: p.x)
         }
     }
 }

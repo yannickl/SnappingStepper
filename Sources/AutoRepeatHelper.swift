@@ -27,64 +27,65 @@
 import Foundation
 
 final class AutoRepeatHelper {
-  private var timer: NSTimer?
-  private var autorepeatCount = 0
-  private var tickBlock: (() -> Void)?
+    private var timer: Timer?
+    private var autorepeatCount = 0
+    private var tickBlock: (() -> Void)?
 
-  deinit {
-    stop()
-  }
-
-  // MARK: - Managing Autorepeat
-
-  func stop() {
-    timer?.invalidate()
-  }
-
-  func start(autorepeatCount count: Int = 0, tickBlock block: () -> Void) {
-    if let _timer = timer where _timer.valid {
-      return
+    deinit {
+        stop()
     }
 
-    autorepeatCount = count
-    tickBlock       = block
+    // MARK: - Managing Autorepeat
 
-    repeatTick(nil)
-
-    let newTimer = NSTimer(timeInterval: 0.1, target: self, selector: #selector(AutoRepeatHelper.repeatTick), userInfo: nil, repeats: true)
-    timer        = newTimer
-
-    NSRunLoop.currentRunLoop().addTimer(newTimer, forMode: NSRunLoopCommonModes)
-  }
-
-  @objc func repeatTick(sender: AnyObject?) {
-    let needsIncrement: Bool
-
-    if autorepeatCount < 35 {
-      if autorepeatCount < 10 {
-        needsIncrement = autorepeatCount % 5 == 0
-      }
-      else if autorepeatCount < 20 {
-        needsIncrement = autorepeatCount % 4 == 0
-      }
-      else if autorepeatCount < 25 {
-        needsIncrement = autorepeatCount % 3 == 0
-      }
-      else if autorepeatCount < 30 {
-        needsIncrement = autorepeatCount % 2 == 0
-      }
-      else {
-        needsIncrement = autorepeatCount % 1 == 0
-      }
-
-      autorepeatCount += 1
-    }
-    else {
-      needsIncrement = true
+    func stop() {
+        timer?.invalidate()
     }
 
-    if needsIncrement {
-      tickBlock?()
+    func start(autorepeatCount count: Int = 0, tickBlock block: @escaping () -> Void) {
+        //    if let _timer = timer where _timer.valid {
+        //      return
+        //    }
+
+        autorepeatCount = count
+        tickBlock       = block
+
+        repeatTick(sender: nil)
+
+        let newTimer = Timer(timeInterval: 0.1, target: self, selector: #selector(AutoRepeatHelper.repeatTick), userInfo: nil, repeats: true)
+        timer        = newTimer
+
+        RunLoop.current.add(newTimer, forMode: .common)
     }
-  }
+
+    @objc func repeatTick(sender: AnyObject?) {
+        let needsIncrement: Bool
+
+        if autorepeatCount < 35 {
+            if autorepeatCount < 10 {
+                needsIncrement = autorepeatCount % 5 == 0
+            }
+            else if autorepeatCount < 20 {
+                needsIncrement = autorepeatCount % 4 == 0
+            }
+            else if autorepeatCount < 25 {
+                needsIncrement = autorepeatCount % 3 == 0
+            }
+            else if autorepeatCount < 30 {
+                needsIncrement = autorepeatCount % 2 == 0
+            }
+            else {
+                needsIncrement = autorepeatCount % 1 == 0
+            }
+
+            autorepeatCount += 1
+        }
+        else {
+            needsIncrement = true
+        }
+
+        if needsIncrement {
+            tickBlock?()
+        }
+    }
 }
+

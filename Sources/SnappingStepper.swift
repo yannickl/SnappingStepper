@@ -33,305 +33,306 @@ import UIKit
  The `SnappingStepper` addings a thumb in the middle to allow the user to update the value by sliding it either to the left or the right side. It can also be customizable to display the current value or custom text.
  */
 @IBDesignable public final class SnappingStepper: UIControl {
-  // MARK: - Preparing and Sending Messages using Blocks
+    // MARK: - Preparing and Sending Messages using Blocks
 
-  /**
-   Block to be notify when the value of the stepper change.
+    /**
+     Block to be notify when the value of the stepper change.
 
-   This is a convenient alternative to the `addTarget:Action:forControlEvents:` method of the `UIControl`.
-   */
-  public var valueChangedBlock: ((value: Double) -> Void)?
+     This is a convenient alternative to the `addTarget:Action:forControlEvents:` method of the `UIControl`.
+     */
+    public var valueChangedBlock: ((_ value: Double) -> Void)?
 
-  // MARK: - Configuring the Stepper
+    // MARK: - Configuring the Stepper
 
-  /**
-   The continuous vs. noncontinuous state of the stepper.
+    /**
+     The continuous vs. noncontinuous state of the stepper.
 
-   If true, value change events are sent immediately when the value changes during user interaction. If false, a value change event is sent when user interaction ends.
+     If true, value change events are sent immediately when the value changes during user interaction. If false, a value change event is sent when user interaction ends.
 
-   The default value for this property is true.
-   */
-  @IBInspectable public var continuous: Bool = true
+     The default value for this property is true.
+     */
+    @IBInspectable public var continuous: Bool = true
 
-  /**
-   The automatic vs. nonautomatic repeat state of the stepper.
+    /**
+     The automatic vs. nonautomatic repeat state of the stepper.
 
-   If true, the user pressing and holding on the stepper repeatedly alters value.
+     If true, the user pressing and holding on the stepper repeatedly alters value.
 
-   The default value for this property is true.
-   */
-  @IBInspectable public var autorepeat: Bool = true
+     The default value for this property is true.
+     */
+    @IBInspectable public var autorepeat: Bool = true
 
-  /**
-   The wrap vs. no-wrap state of the stepper.
+    /**
+     The wrap vs. no-wrap state of the stepper.
 
-   If true, incrementing beyond maximumValue sets value to minimumValue; likewise, decrementing below minimumValue sets value to maximumValue. If false, the stepper does not increment beyond maximumValue nor does it decrement below minimumValue but rather holds at those values.
+     If true, incrementing beyond maximumValue sets value to minimumValue; likewise, decrementing below minimumValue sets value to maximumValue. If false, the stepper does not increment beyond maximumValue nor does it decrement below minimumValue but rather holds at those values.
 
-   The default value for this property is false.
-   */
-  @IBInspectable public var wraps: Bool = false
+     The default value for this property is false.
+     */
+    @IBInspectable public var wraps: Bool = false
 
-  /**
-   The direction of the control
-     
-   The default is horizontal
-  */
-  @IBInspectable public var direction: StyledControlDirection = .Horizontal {
-    didSet {
-      self.layoutComponents()
+    /**
+     The direction of the control
+
+     The default is horizontal
+     */
+    @IBInspectable public var direction: StyledControlDirection = .horizontal {
+        didSet {
+            self.layoutComponents()
+        }
     }
-  }
-    
-  /**
-   The lowest possible numeric value for the stepper.
 
-   Must be numerically less than maximumValue. If you attempt to set a value equal to or greater than maximumValue, the system raises an NSInvalidArgumentException exception.
+    /**
+     The lowest possible numeric value for the stepper.
 
-   The default value for this property is 0.
-   */
-  @IBInspectable public var minimumValue: Double = 0 {
-    didSet {
-      if minimumValue > maximumValue {
-        maximumValue = minimumValue
-      }
+     Must be numerically less than maximumValue. If you attempt to set a value equal to or greater than maximumValue, the system raises an NSInvalidArgumentException exception.
 
-      updateValue(max(_value, minimumValue), finished: true)
+     The default value for this property is 0.
+     */
+    @IBInspectable public var minimumValue: Double = 0 {
+        didSet {
+            if minimumValue > maximumValue {
+                maximumValue = minimumValue
+            }
+
+            updateValue(value: max(_value, minimumValue), finished: true)
+        }
     }
-  }
 
-  /**
-   The highest possible numeric value for the stepper.
+    /**
+     The highest possible numeric value for the stepper.
 
-   Must be numerically greater than minimumValue. If you attempt to set a value equal to or lower than minimumValue, the system raises an NSInvalidArgumentException exception.
+     Must be numerically greater than minimumValue. If you attempt to set a value equal to or lower than minimumValue, the system raises an NSInvalidArgumentException exception.
 
-   The default value of this property is 100.
-   */
-  @IBInspectable public var maximumValue: Double = 100 {
-    didSet {
-      if maximumValue < minimumValue {
-        minimumValue = maximumValue
-      }
+     The default value of this property is 100.
+     */
+    @IBInspectable public var maximumValue: Double = 100 {
+        didSet {
+            if maximumValue < minimumValue {
+                minimumValue = maximumValue
+            }
 
-      updateValue(min(_value, maximumValue), finished: true)
+            updateValue(value: min(_value, maximumValue), finished: true)
+        }
     }
-  }
 
-  /**
-   The step, or increment, value for the stepper.
+    /**
+     The step, or increment, value for the stepper.
 
-   Must be numerically greater than 0. If you attempt to set this property’s value to 0 or to a negative number, the system raises an NSInvalidArgumentException exception.
+     Must be numerically greater than 0. If you attempt to set this property’s value to 0 or to a negative number, the system raises an NSInvalidArgumentException exception.
 
-   The default value for this property is 1.
-   */
-  @IBInspectable public var stepValue: Double = 1
+     The default value for this property is 1.
+     */
+    @IBInspectable public var stepValue: Double = 1
 
-  // MARK: - Accessing the Stepper’s Value
+    // MARK: - Accessing the Stepper’s Value
 
-  /**
-   The numeric value of the snapping stepper.
+    /**
+     The numeric value of the snapping stepper.
 
-   When the value changes, the stepper sends the UIControlEventValueChanged flag to its target (see addTarget:action:forControlEvents:). Refer to the description of the continuous property for information about whether value change events are sent continuously or when user interaction ends.
+     When the value changes, the stepper sends the UIControlEventValueChanged flag to its target (see addTarget:action:forControlEvents:). Refer to the description of the continuous property for information about whether value change events are sent continuously or when user interaction ends.
 
-   The default value for this property is 0. This property is clamped at its lower extreme to minimumValue and is clamped at its upper extreme to maximumValue.
-   */
-  @IBInspectable public var value: Double {
-    get {
-      return _value
+     The default value for this property is 0. This property is clamped at its lower extreme to minimumValue and is clamped at its upper extreme to maximumValue.
+     */
+    @IBInspectable public var value: Double {
+        get {
+            return _value
+        }
+        set (newValue) {
+            updateValue(value: newValue, finished: true)
+        }
     }
-    set (newValue) {
-      updateValue(newValue, finished: true)
+
+    var _value: Double = 0 {
+        didSet {
+            if thumbText == nil {
+                thumbLabel.text = valueAsText()
+            }
+
+            hintLabel.text = valueAsText()
+        }
     }
-  }
 
-  var _value: Double = 0 {
-    didSet {
-      if thumbText == nil {
-        thumbLabel.text = valueAsText()
-      }
+    // MARK: - Setting the Stepper Visual Appearance
 
-      hintLabel.text = valueAsText()
+    /// The font of the text symbols (`minus` and `plus`).
+    @IBInspectable public var symbolFont = UIFont(name: "TrebuchetMS-Bold", size: 20) {
+        didSet {
+            minusSymbolLabel.font = symbolFont
+            plusSymbolLabel.font  = symbolFont
+        }
     }
-  }
 
-  // MARK: - Setting the Stepper Visual Appearance
-
-  /// The font of the text symbols (`minus` and `plus`).
-  @IBInspectable public var symbolFont = UIFont(name: "TrebuchetMS-Bold", size: 20) {
-    didSet {
-      minusSymbolLabel.font = symbolFont
-      plusSymbolLabel.font  = symbolFont
+    /// The color of the text symbols (`minus` and `plus`).
+    @IBInspectable public var symbolFontColor: UIColor = .black {
+        didSet {
+            minusSymbolLabel.textColor = symbolFontColor
+            plusSymbolLabel.textColor  = symbolFontColor
+        }
     }
-  }
 
-  /// The color of the text symbols (`minus` and `plus`).
-  @IBInspectable public var symbolFontColor: UIColor = .blackColor() {
-    didSet {
-      minusSymbolLabel.textColor = symbolFontColor
-      plusSymbolLabel.textColor  = symbolFontColor
+    /// The thumb width represented as a ratio of the component width. For example if the width of the stepper is 30px and the ratio is 0.5, the thumb width will be equal to 15px. Defaults to 0.5.
+    @IBInspectable public var thumbWidthRatio: CGFloat = 0.5 {
+        didSet {
+            layoutComponents()
+        }
     }
-  }
 
-  /// The thumb width represented as a ratio of the component width. For example if the width of the stepper is 30px and the ratio is 0.5, the thumb width will be equal to 15px. Defaults to 0.5.
-  @IBInspectable public var thumbWidthRatio: CGFloat = 0.5 {
-    didSet {
-      layoutComponents()
+    /// The font of the thumb label.
+    @IBInspectable public var thumbFont = UIFont(name: "TrebuchetMS-Bold", size: 20) {
+        didSet {
+            thumbLabel.font = thumbFont
+        }
     }
-  }
 
-  /// The font of the thumb label.
-  @IBInspectable public var thumbFont = UIFont(name: "TrebuchetMS-Bold", size: 20) {
-    didSet {
-      thumbLabel.font = thumbFont
+    /// The thumb's background color. If nil the thumb color will be lighter than the background color. Defaults to nil.
+    @IBInspectable public var thumbBackgroundColor: UIColor? {
+        didSet {
+            thumbLabel.backgroundColor = thumbBackgroundColor
+        }
     }
-  }
 
-  /// The thumb's background color. If nil the thumb color will be lighter than the background color. Defaults to nil.
-  @IBInspectable public var thumbBackgroundColor: UIColor? {
-    didSet {
-      thumbLabel.backgroundColor = thumbBackgroundColor
+    /// The thumb's text color. Default's to black
+    @IBInspectable public var thumbTextColor: UIColor = .black {
+        didSet {
+            thumbLabel.textColor = thumbTextColor
+        }
     }
-  }
 
-  /// The thumb's text color. Default's to black
-  @IBInspectable public var thumbTextColor: UIColor = .blackColor() {
-    didSet {
-      thumbLabel.textColor = thumbTextColor
+    /// The thumb's style. Default's to box
+    public var thumbStyle: ShapeStyle = .box {
+        didSet {
+            self.applyThumbStyle(style: thumbStyle)
+        }
     }
-  }
 
-  /// The thumb's style. Default's to box
-  @IBInspectable public var thumbStyle: ShapeStyle = .Box {
-    didSet {
-      self.applyThumbStyle(thumbStyle)
+    /// The view's style. Default's to box.
+    public var style: ShapeStyle = .box {
+        didSet {
+            self.applyStyle(style: style)
+        }
     }
-  }
 
-  /// The view's style. Default's to box.
-  @IBInspectable public var style: ShapeStyle = .Box {
-    didSet {
-      self.applyStyle(style)
+    /// The hint's style. Default's to none, so no hint will be displayed.
+    public var hintStyle: ShapeStyle = .none {
+        didSet {
+            self.applyHintStyle(style: hintStyle)
+        }
     }
-  }
 
-  /// The hint's style. Default's to none, so no hint will be displayed.
-  @IBInspectable public var hintStyle: ShapeStyle = .None {
-    didSet {
-      self.applyHintStyle(hintStyle)
+    /// The view's border color.
+    @IBInspectable public var borderColor: UIColor? {
+        didSet {
+            self.applyStyle(style: style)
+        }
     }
-  }
 
-  /// The view's border color.
-  @IBInspectable public var borderColor: UIColor? {
-    didSet {
-      self.applyStyle(style)
+    /// The thumbs's border color.
+    @IBInspectable public var thumbBorderColor: UIColor? {
+        didSet {
+            self.applyThumbStyle(style: thumbStyle)
+        }
     }
-  }
 
-  /// The thumbs's border color.
-  @IBInspectable public var thumbBorderColor: UIColor? {
-    didSet {
-      self.applyThumbStyle(thumbStyle)
+    /// The view's border width. Default's to 1.0
+    @IBInspectable public var borderWidth: CGFloat = 1.0 {
+        didSet {
+            self.applyStyle(style: style)
+        }
     }
-  }
 
-  /// The view's border width. Default's to 1.0
-  @IBInspectable public var borderWidth: CGFloat = 1.0 {
-    didSet {
-      self.applyStyle(style)
+    /// The thumbs's border width. Default's to 1.0
+    @IBInspectable public var thumbBorderWidth: CGFloat = 1.0 {
+        didSet {
+            self.applyThumbStyle(style: thumbStyle)
+        }
     }
-  }
 
-  /// The thumbs's border width. Default's to 1.0
-  @IBInspectable public var thumbBorderWidth: CGFloat = 1.0 {
-    didSet {
-      self.applyThumbStyle(thumbStyle)
+    /// The view’s background color.
+    override public var backgroundColor: UIColor? {
+        didSet {
+            self.styleColor = backgroundColor
+            self.applyStyle(style: self.style)
+
+            if thumbBackgroundColor == nil {
+                thumbLabel.backgroundColor = backgroundColor?.lighter()
+            }
+        }
     }
-  }
 
-  /// The view’s background color.
-  override public var backgroundColor: UIColor? {
-    didSet {
-      self.styleColor = backgroundColor
-      self.applyStyle(self.style)
+    // MARK: - Displaying Thumb Text
 
-      if thumbBackgroundColor == nil {
-        thumbLabel.backgroundColor = backgroundColor?.lighterColor()
-      }
+    /// The thumb text to display. If the text is nil it will display the current value of the stepper. Defaults with empty string.
+    @IBInspectable public var thumbText: String? = "" {
+        didSet {
+            if thumbText == nil {
+                thumbLabel.text = valueAsText()
+            }
+            else {
+                thumbLabel.text = thumbText
+            }
+
+            hintLabel.text = valueAsText()
+        }
     }
-  }
 
-  // MARK: - Displaying Thumb Text
+    // MARK: - Deallocating Snappinf Stepper
 
-  /// The thumb text to display. If the text is nil it will display the current value of the stepper. Defaults with empty string.
-  @IBInspectable public var thumbText: String? = "" {
-    didSet {
-      if thumbText == nil {
-        thumbLabel.text = valueAsText()
-      }
-      else {
-        thumbLabel.text = thumbText
-      }
-
-      hintLabel.text = valueAsText()
+    deinit {
+        autorepeatHelper.stop()
     }
-  }
 
-  // MARK: - Deallocating Snappinf Stepper
+    // MARK: - Initializing a Snapping Stepper
 
-  deinit {
-    autorepeatHelper.stop()
-  }
+    /// Initializes and returns a newly allocated view object with the specified frame rectangle.
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
 
-  // MARK: - Initializing a Snapping Stepper
+        initComponents()
+        setupGestures()
+    }
 
-  /// Initializes and returns a newly allocated view object with the specified frame rectangle.
-  override public init(frame: CGRect) {
-    super.init(frame: frame)
+    /// Returns an object initialized from data in a given unarchiver.
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
 
-    initComponents()
-    setupGestures()
-  }
+        initComponents()
+        setupGestures()
+    }
 
-  /// Returns an object initialized from data in a given unarchiver.
-  required public init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+    // MARK: - Laying out Subviews
 
-    initComponents()
-    setupGestures()
-  }
+    /// Lays out subviews
+    public override func layoutSubviews() {
+        super.layoutSubviews()
 
-  // MARK: - Laying out Subviews
+        layoutComponents()
+    }
 
-  /// Lays out subviews
-  public override func layoutSubviews() {
-    super.layoutSubviews()
+    // MARK: - Internal Properties
 
-    layoutComponents()
-  }
+    /// The value label that represents the thumb button
+    lazy var thumbLabel: StyledLabel = UIBuilder.defaultStyledLabel()
 
-  // MARK: - Internal Properties
+    /// The hint label
+    lazy var hintLabel: StyledLabel = UIBuilder.defaultStyledLabel()
 
-  /// The value label that represents the thumb button
-  lazy var thumbLabel: StyledLabel = UIBuilder.defaultStyledLabel()
+    /// The minus label
+    lazy var minusSymbolLabel: UILabel = UIBuilder.defaultLabel()
 
-  /// The hint label
-  lazy var hintLabel: StyledLabel = UIBuilder.defaultStyledLabel()
+    /// The plus label
+    lazy var plusSymbolLabel: UILabel = UIBuilder.defaultLabel()
 
-  /// The minus label
-  lazy var minusSymbolLabel: UILabel = UIBuilder.defaultLabel()
+    let autorepeatHelper      = AutoRepeatHelper()
+    let dynamicButtonAnimator = UIDynamicAnimator()
+    var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPoint.zero)
 
-  /// The plus label
-  lazy var plusSymbolLabel: UILabel = UIBuilder.defaultLabel()
+    var styleLayer = CAShapeLayer()
+    var styleColor: UIColor? = .clear
 
-  let autorepeatHelper      = AutoRepeatHelper()
-  let dynamicButtonAnimator = UIDynamicAnimator()
-  var snappingBehavior      = SnappingStepperBehavior(item: nil, snapToPoint: CGPointZero)
-
-  var styleLayer = CAShapeLayer()
-  var styleColor: UIColor? = .clearColor()
-
-  var touchesBeganPoint    = CGPointZero
-  var initialValue: Double = -1
-  var factorValue: Double  = 0
-  var oldValue = Double.infinity * -1
+    var touchesBeganPoint    = CGPoint.zero
+    var initialValue: Double = -1
+    var factorValue: Double  = 0
+    var oldValue = Double.infinity * -1
 }
+

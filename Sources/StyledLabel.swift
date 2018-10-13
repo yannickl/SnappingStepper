@@ -32,10 +32,10 @@ import UIKit
 /// The `StyledLabel` object is an `UILabel` with a custom shape.
 class StyledLabel: UIView {
   var label                = UILabel()
-  var styleColor: UIColor? = .clearColor()
+  var styleColor: UIColor? = .clear
   var shapeLayer           = CAShapeLayer()
 
-  var style: ShapeStyle = .Box {
+    var style: ShapeStyle = .box {
     didSet {
       applyStyle()
     }
@@ -47,7 +47,7 @@ class StyledLabel: UIView {
     }
   }
 
-  var textColor: UIColor = .blackColor() {
+  var textColor: UIColor = .black {
     didSet {
       label.textColor = textColor
     }
@@ -55,7 +55,7 @@ class StyledLabel: UIView {
 
   override var backgroundColor: UIColor? {
     get {
-      return .clearColor()
+      return .clear
     }
     set {
       styleColor = newValue
@@ -78,11 +78,11 @@ class StyledLabel: UIView {
 
   var font: UIFont? {
     didSet {
-      label.font = font
+      self.label.font = font
     }
   }
 
-  var textAlignment: NSTextAlignment = .Center {
+  var textAlignment: NSTextAlignment = .center {
     didSet {
       label.textAlignment = textAlignment
     }
@@ -95,7 +95,7 @@ class StyledLabel: UIView {
   }
     
   init() {
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
         
     self.layer.addSublayer(self.shapeLayer)
   }
@@ -111,20 +111,20 @@ class StyledLabel: UIView {
     label.removeFromSuperview()
         
     self.label.frame = bounds
-    self.label.transform = CGAffineTransformMakeRotation(self.rotationInRadians)
+    self.label.transform = CGAffineTransform(rotationAngle: self.rotationInRadians)
     self.label.frame = bounds
     self.addSubview(label)
   }
 
   func applyStyle() {
-    let bgColor = styleColor ?? .clearColor()
+    let bgColor = styleColor ?? UIColor.clear
     let sLayer: CAShapeLayer
 
     if let borderColor = borderColor {
-      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
+        sLayer = CustomShapeLayer.createShape(style: style, bounds: bounds, color: bgColor, borderColor: borderColor, borderWidth: borderWidth)
     }
     else {
-      sLayer = CustomShapeLayer.createShape(style, bounds: bounds, color: bgColor)
+        sLayer = CustomShapeLayer.createShape(style: style, bounds: bounds, color: bgColor)
     }
 
     if self.shapeLayer.superlayer != nil {
