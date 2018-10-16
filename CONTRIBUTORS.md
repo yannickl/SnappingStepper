@@ -12,5 +12,6 @@ Please keep the list sorted.
 
 ### People and companies, who have contributed
 
+ * [Ergün KOÇAK](https://github.com/ergunkocak)
  * [Martin J. Rehder](https://github.com/mjrehder)
  * [Vincent Tourraine](https://github.com/vtourraine)

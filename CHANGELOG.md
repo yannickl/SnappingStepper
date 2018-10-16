@@ -1,5 +1,10 @@
 # Change log
 
+## [Version 3.0.0](https://github.com/yannickl/SnappingStepper/releases/tag/3.0.0)
+*Released on 2018-10-16.*
+
+- Swift 4.2 supports
+
 ## [Version 2.4.0](https://github.com/yannickl/SnappingStepper/releases/tag/2.4.0)
 *Released on 2016-09-09.*
 

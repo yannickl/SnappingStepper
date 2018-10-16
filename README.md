@@ -26,15 +26,15 @@ let stepper = SnappingStepper(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
 // stepper.stepValue    = 1
 
 stepper.symbolFont           = UIFont(name: "TrebuchetMS-Bold", size: 20)
-stepper.symbolFontColor      = .blackColor()
+stepper.symbolFontColor      = .black
 stepper.backgroundColor      = UIColor(hex: 0xc0392b)
 stepper.thumbWidthRatio      = 0.5
 stepper.thumbText            = ""
 stepper.thumbFont            = UIFont(name: "TrebuchetMS-Bold", size: 20)
 stepper.thumbBackgroundColor = UIColor(hex: 0xe74c3c)
-stepper.thumbTextColor       = .blackColor()
+stepper.thumbTextColor       = .black
 
-stepper.addTarget(self, action: "valueChanged:", forControlEvents: .ValueChanged)
+stepper.addTarget(self, action: "valueChanged:", forControlEvents: .valueChanged)
 
 // If you don't want using the traditional `addTarget:action:` pattern you can use
 // the `valueChangedBlock`
@@ -69,7 +69,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 use_frameworks!
-pod 'SnappingStepper', '~> 2.4.0'
+pod 'SnappingStepper', '~> 3.0.0'
 ```
 
 Install into your project:
@@ -100,7 +100,7 @@ $ brew install carthage
 To integrate `SnappingStepper` into your Xcode project using Carthage, specify it in your `Cartfile` file:
 
 ```ogdl
-github "yannickl/SnappingStepper" >= 2.4.0
+github "yannickl/SnappingStepper" >= 3.0.0
 ```
 
 ## Swift Package Manager
@@ -113,7 +113,7 @@ let package = Package(
     name: "YOUR_PROJECT_NAME",
     targets: [],
     dependencies: [
-        .Package(url: "https://github.com/yannickl/SnappingStepper.git", versions: "2.4.0" ..< Version.max)
+        .Package(url: "https://github.com/yannickl/SnappingStepper.git", versions: "3.0.0" ..< Version.max)
     ]
 )
 ```
