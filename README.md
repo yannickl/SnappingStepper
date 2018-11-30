@@ -5,7 +5,7 @@
 [![License](https://cocoapod-badges.herokuapp.com/l/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Supported Plateforms](https://cocoapod-badges.herokuapp.com/p/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Version](https://cocoapod-badges.herokuapp.com/v/SnappingStepper/badge.svg)](http://cocoadocs.org/docsets/SnappingStepper/) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Build Status](https://travis-ci.org/yannickl/SnappingStepper.svg?branch=master)](https://travis-ci.org/yannickl/SnappingStepper) [![codecov.io](http://codecov.io/github/yannickl/SnappingStepper/coverage.svg?branch=master)](http://codecov.io/github/yannickl/SnappingStepper?branch=master) [![codebeat badge](https://codebeat.co/badges/da2160dc-b263-42e7-b65e-ae39dc41cda8)](https://codebeat.co/projects/github-com-yannickl-snappingstepper)
 
-An elegant alternative to the `UIStepper` with a thumb slider addition to control the value update with more flexibility.
+An elegant alternative to the `UIStepper` in Swift with a thumb slider addition to control the value update with more flexibility.
 
 <p align="center">
   <img src="http://yannickloriot.com/resources/snappingstepper-demo.gif" alt="screenshot" />
